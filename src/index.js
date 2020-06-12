@@ -2,13 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 
-const Movie = {
-  NAME: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: `2014`
+const promoMovie = {
+  name: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  date: `2014`
 };
 
+const moviesNames = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
+
+
 ReactDOM.render(
-    <App movieName={Movie.NAME} movieGenre={Movie.GENRE} movieDate={Movie.DATE}/>,
+    <App promoMovieName={promoMovie.name} promoMovieGenre={promoMovie.genre} promoMovieDate={promoMovie.date} moviesNames={moviesNames}/>,
     document.querySelector(`#root`)
 );
