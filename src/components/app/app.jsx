@@ -1,14 +1,30 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
 
+const cardTitleClickHandler = () => {};
+
 const App = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {movieName, movieGenre, movieDate} = props;
+  const {promoMovieName, promoMovieGenre, promoMovieDate, moviesNames} = props;
 
   return (
-    <Main movieName={movieName} movieGenre={movieGenre} movieDate={movieDate}/>
+    <Main
+      promoMovieName={promoMovieName}
+      promoMovieGenre={promoMovieGenre}
+      promoMovieDate={promoMovieDate}
+      moviesNames={moviesNames}
+      onCardTitleClick={cardTitleClickHandler}
+    />
   );
 };
+
+App.propTypes =
+  {
+    promoMovieName: PropTypes.string.isRequired,
+    promoMovieGenre: PropTypes.string.isRequired,
+    promoMovieDate: PropTypes.string.isRequired,
+    moviesNames: PropTypes.arrayOf(PropTypes.string.isRequired),
+  };
 
 export default App;
