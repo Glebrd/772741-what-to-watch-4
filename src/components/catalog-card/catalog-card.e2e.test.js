@@ -21,7 +21,7 @@ describe(`Catalog card tests`, () => {
         <CatalogCard
           movie = {movie}
           onMovieCardHover={handleMovieCardHover}
-          onCardTitleClick={() => {}}
+          onCardClick={() => {}}
         />
     );
 

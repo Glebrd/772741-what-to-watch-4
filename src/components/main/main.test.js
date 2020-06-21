@@ -9,7 +9,7 @@ const promoMovie = {
 };
 
 const movies = [];
-const onCardTitleClick = () => {};
+const onCardClick = () => {};
 
 it(`Render Main`, () => {
   const tree = renderer
@@ -17,7 +17,7 @@ it(`Render Main`, () => {
         <Main
           movies = {movies}
           promoMovie = {promoMovie}
-          onCardTitleClick={onCardTitleClick}
+          onCardClick={onCardClick}
         />
     ).toJSON();
 

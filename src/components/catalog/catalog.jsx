@@ -14,7 +14,7 @@ class Catalog extends React.PureComponent {
   }
 
   render() {
-    const {movies, onCardTitleClick} = this.props;
+    const {movies, onCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -23,7 +23,7 @@ class Catalog extends React.PureComponent {
             key={`${movie}-${i}`}
             movie={movie}
             onMovieCardHover = {this._handleMovieCardHover}
-            onCardTitleClick = {onCardTitleClick}
+            onCardClick = {onCardClick}
           />
         )}
       </div>
@@ -39,7 +39,7 @@ Catalog.propTypes = {
     title: PropTypes.string,
     picture: PropTypes.string,
   })).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired
 };
 
 export default Catalog;
