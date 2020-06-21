@@ -1,22 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main";
-
-const promoMovie = {
-  name: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`
-};
+import Catalog from "../catalog/catalog";
 
 const movies = [];
 const onCardTitleClick = () => {};
 
-it(`Render Main`, () => {
+it(`Catalog renders correctly`, () => {
   const tree = renderer
     .create(
-        <Main
-          movies = {movies}
-          promoMovie = {promoMovie}
+        <Catalog
+          movies={movies}
           onCardTitleClick={onCardTitleClick}
         />
     ).toJSON();

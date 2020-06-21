@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Catalog from "../catalog/catalog.jsx";
 
 const Main = (props) => {
-  const {promoMovieName, promoMovieGenre, promoMovieDate, moviesNames, onCardTitleClick} = props;
+  const {promoMovie, movies, onCardTitleClick} = props;
+  const {name: promoMovieName, genre: promoMovieGenre, date: PromoMovieDate} = promoMovie;
 
   return (
     <React.Fragment>
@@ -37,7 +39,7 @@ const Main = (props) => {
               <h2 className="movie-card__title">{promoMovieName}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promoMovieGenre}</span>
-                <span className="movie-card__year">{promoMovieDate}</span>
+                <span className="movie-card__year">{PromoMovieDate}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -96,19 +98,10 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {moviesNames.map((movieName, i) =>
-              <article key={`${movieName}-${i}`} className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src={`img/fantastic-beasts-the-crimes-of-grindelwald.jpg`} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"/>
-                </div>
-                <h3 onClick={onCardTitleClick} className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">{movieName}</a>
-                </h3>
-              </article>
-            )}
-          </div>
-
+          <Catalog
+            movies = {movies}
+            onCardTitleClick = {onCardTitleClick}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -132,11 +125,16 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  moviesNames: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
-  promoMovieDate: PropTypes.string.isRequired,
-  promoMovieGenre: PropTypes.string.isRequired,
-  promoMovieName: PropTypes.string.isRequired
+  promoMovie: PropTypes.shape({
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    date: PropTypes.string,
+  }).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    picture: PropTypes.string,
+  })).isRequired,
+  onCardTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
