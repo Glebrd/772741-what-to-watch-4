@@ -11,14 +11,14 @@ Enzyme.configure({
 });
 
 describe(`Main component tests`, () => {
-  test(`Card title should be pressed`, () => {
-    const cardTitleClickHandler = jest.fn();
+  test(`Card should be pressed`, () => {
+    const cardClickHandler = jest.fn();
 
     const main = shallow(
         <Main
           promoMovie={promoMovie}
           movies={movies}
-          onCardTitleClick={cardTitleClickHandler}
+          onCardClick={cardClickHandler}
         />
     );
 
@@ -28,6 +28,6 @@ describe(`Main component tests`, () => {
       movieCardTitle.props().onClick();
     });
 
-    expect(cardTitleClickHandler.mock.calls.length).toBe(movieCardTitles.length);
+    expect(cardClickHandler.mock.calls.length).toBe(movieCardTitles.length);
   });
 });

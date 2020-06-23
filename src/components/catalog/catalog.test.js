@@ -3,14 +3,14 @@ import renderer from "react-test-renderer";
 import Catalog from "../catalog/catalog";
 
 const movies = [];
-const onCardTitleClick = () => {};
+const onCardClick = () => {};
 
 it(`Catalog renders correctly`, () => {
   const tree = renderer
     .create(
         <Catalog
           movies={movies}
-          onCardTitleClick={onCardTitleClick}
+          onCardClick={onCardClick}
         />
     ).toJSON();
 

@@ -6,7 +6,7 @@ const movie = {
   title: `Hotel Transylvania`,
   picture: `img/fantastic-beasts-t she-crimes-of-grindelwald.jpg`,
 };
-const onCardTitleClick = () => {};
+const onCardClick = () => {};
 const onMovieCardHover = () => {};
 
 it(`Catalog renders correctly`, () => {
@@ -14,7 +14,7 @@ it(`Catalog renders correctly`, () => {
     .create(
         <CatalogCard
           movie={movie}
-          onCardTitleClick={onCardTitleClick}
+          onCardClick={onCardClick}
           onMovieCardHover={onMovieCardHover}
         />
     ).toJSON();
