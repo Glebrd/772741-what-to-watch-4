@@ -1,5 +1,5 @@
 import React from "react";
-import Catalog from "../catalog/catalog.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 
 const getMovieRank = (rating) => {
@@ -120,7 +120,7 @@ const MoviePage = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <Catalog
+          <MoviesList
             movies = {movies}
             onCardClick = {onCardClick}
           />

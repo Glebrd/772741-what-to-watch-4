@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Catalog from "../catalog/catalog.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
 
 const Main = (props) => {
-  const {promoMovie, movies, onCardClick} = props;
-  const {name: promoMovieName, genre: promoMovieGenre, date: PromoMovieDate} = promoMovie;
+  const {movieCard, movies, onCardClick} = props;
+  const {title, genre, date} = movieCard;
 
   return (
     <React.Fragment>
@@ -36,10 +36,10 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoMovieName}</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoMovieGenre}</span>
-                <span className="movie-card__year">{PromoMovieDate}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{date}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -98,7 +98,7 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <Catalog
+          <MoviesList
             movies = {movies}
             onCardClick = {onCardClick}
           />
@@ -125,16 +125,23 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  promoMovie: PropTypes.shape({
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    date: PropTypes.string,
-  }).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.shape({
+  movies: PropTypes.arrayOf(PropTypes.object),
+  movieCard: PropTypes.shape({
+    id: PropTypes.number,
     title: PropTypes.string,
     picture: PropTypes.string,
-  })).isRequired,
-  onCardClick: PropTypes.func.isRequired
+    genre: PropTypes.string,
+    date: PropTypes.string,
+    poster: PropTypes.string,
+    background: PropTypes.string,
+    rating: PropTypes.number,
+    scores: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    description: PropTypes.string,
+    videoPreview: PropTypes.string,
+  }),
+  onCardClick: PropTypes.func,
 };
 
 export default Main;

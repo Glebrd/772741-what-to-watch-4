@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Catalog renders correctly 1`] = `
-<div
-  className="catalog__movies-list"
-/>
-`;
