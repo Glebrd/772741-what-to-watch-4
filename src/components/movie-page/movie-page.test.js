@@ -3,19 +3,54 @@ import renderer from "react-test-renderer";
 import MoviePage from "./movie-page";
 
 const onCardClick = () => {};
-const movies = [];
+
+const movies = [
+  {
+    id: 37,
+    title: `1+1`,
+    picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    genre: `Comedy`,
+    date: `2010`,
+    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    rating: 9.5,
+    scores: 898,
+    director: `Gardener Grigoriev`,
+    starring: [`Maible Rosling`, `Tarrah Sillett`, `Christoper Dunford`, `Helga Stammer`],
+    description: `After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.`,
+    videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  },
+  {
+    id: 35,
+    title: `Inception`,
+    picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    genre: `Comedy`,
+    date: `2010`,
+    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    rating: 9.1,
+    scores: 456,
+    director: `Evan Ruit`,
+    starring: [`Levi Reisen`, `Waldon Verner`, `Ardith Bogace`],
+    description: `A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.`,
+    videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  },
+];
+
 const movie = {
-  title: `Johnny English`,
-  picture: `img/johnny-english.jpg`,
-  genre: `Comedy`,
-  date: `2000`,
-  poster: `img/johnny-english.jpg`,
-  background: `img/johnny-english.jpg`,
-  rating: 8,
-  scores: 124,
-  director: `Basil Watmough`,
-  starring: [`Kellen Screwton`, `Joaquin Brideoke`, `Willie Slyman`],
-  description: `Evan Treborn grows up in a small town with his single, working mother and his friends. He suffers from memory blackouts where he suddenly finds himself somewhere else, confused. Evan's friends and mother hardly believe him, thinking he makes it up just to get out of trouble. As Evan grows up he has fewer of these blackouts until he seems to have recovered. Since the age of seven he has written a diary of his blackout moments so he can remember what happens. One day at college he starts to read one of his old diaries, and suddenly a flashback hits him like a brick!`
+  id: 478,
+  title: `Pulp Fiction`,
+  picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  genre: `Crime`,
+  date: `1994`,
+  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  rating: 7.9,
+  scores: 845,
+  director: `Kathi Gasticke`,
+  starring: [`Adolphus McIndoe`, `Carly Spilsted`, `Rosalind Goodger`, `Teodorico Levey`],
+  description: `The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.`,
+  videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
 it(`Movie page renders`, () => {
