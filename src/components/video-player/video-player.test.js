@@ -22,7 +22,7 @@ it(`Video-player renders correctly`, () => {
   const tree = renderer
     .create(
         <VideoPlayer
-          videoRef={() => {}}
+          videoRef={React.createRef()}
           poster={movie.picture}
           videoPreview = {movie.videoPreview}
         />).toJSON();

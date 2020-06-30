@@ -82,6 +82,18 @@ App.propTypes = {
     director: PropTypes.string,
     starring: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
+    videoPreview: PropTypes.string,
+    runTime: PropTypes.string,
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      user: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+      }),
+      rating: PropTypes.number,
+      comment: PropTypes.string,
+      date: PropTypes.string,
+    }))
   }),
 };
 
