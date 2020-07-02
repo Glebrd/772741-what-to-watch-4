@@ -1,26 +1,21 @@
 import React from "react";
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
+import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
 
-const getMovieRank = (rating) => {
-  let movieRank = ``;
-  if (rating === 10) {
-    movieRank = `Awesome`;
-  } else if (rating >= 8) {
-    movieRank = `Very good`;
-  } else if (rating >= 5) {
-    movieRank = `Good`;
-  } else if (rating >= 3) {
-    movieRank = `Normal`;
-  } else {
-    movieRank = `Bad`;
-  }
-  return movieRank;
+const sameGenreMoviesProperties = {
+  MIN_LENGTH: 0,
+  MAX_LENGTH: 3,
 };
+
+const getSameGenreMovies = (movies, movie) =>
+  movies
+    .filter(({id, genre}) => id !== movie.id && genre === movie.genre)
+    .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
 
 const MoviePage = (props) => {
   const {movie, movies, onCardClick} = props;
-  const {title, genre, date, poster, background, rating, description, starring, director, scores} = movie;
+  const {title, genre, date, poster, background} = movie;
 
   return (
     <React.Fragment>
@@ -81,38 +76,9 @@ const MoviePage = (props) => {
               <img src={poster} alt="The Grand Budapest Hotel poster" width="218"
                 height="327"/>
             </div>
-
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{getMovieRank(rating)}</span>
-                  <span className="movie-rating__count">{scores} ratings</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{description}</p>
-
-                <p className="movie-card__director"><strong>Director: {director } </strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {starring.join(`, `)} </strong></p>
-              </div>
-            </div>
+            <MovieCardTabs
+              movie = {movie}
+            />
           </div>
         </div>
       </section>
@@ -121,7 +87,7 @@ const MoviePage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <MoviesList
-            movies = {movies}
+            movies = {getSameGenreMovies(movies, movie)}
             onCardClick = {onCardClick}
           />
         </section>

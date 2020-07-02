@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {MOVIE_WAIT} from "../../const.js";
 
-class SmallMovieCard extends React.PureComponent {
+class SmallMovieCard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,9 @@ class SmallMovieCard extends React.PureComponent {
     clearTimeout(this._timeout);
     this._videoRef.current.load();
   }
-
+  componentWillUnmount() {
+    clearTimeout(this._timeout);
+  }
   render() {
     const {smallMovieCard, onCardClick} = this.props;
     const {picture, title, videoPreview} = smallMovieCard;
