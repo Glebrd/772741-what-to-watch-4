@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
 import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
+import CatalogButton from "../../catalog-button/catalog-button.jsx";
+import {ActionCreator} from "../../reducer";
 
 export const getFilteredMovies = (movies, currentGenre) => {
   return currentGenre === `All genres`
@@ -12,7 +14,7 @@ export const getFilteredMovies = (movies, currentGenre) => {
 };
 
 const Main = (props) => {
-  const {movieCard, movies, currentGenre} = props;
+  const {movieCard, movies, currentGenre, numberOfMoviesOnMain} = props;
   const {title, genre, date, background, poster} = movieCard;
 
   return (
@@ -77,11 +79,12 @@ const Main = (props) => {
           <CatalogGenresList/>
 
           <MoviesList
-            movies = {getFilteredMovies(movies, currentGenre)}
+            movies = {getFilteredMovies(movies, currentGenre).slice(0, numberOfMoviesOnMain)}
           />
 
           <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
+            {numberOfMoviesOnMain <= getFilteredMovies(movies, currentGenre).length
+            && <CatalogButton/>}
           </div>
         </section>
 
@@ -105,6 +108,7 @@ const mapStateToProps = (state) => ({
   movies: state.movies,
   movieCard: state.movieCard,
   currentGenre: state.currentGenre,
+  numberOfMoviesOnMain: state.numberOfMoviesOnMain,
 });
 
 Main.propTypes = {

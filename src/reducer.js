@@ -10,6 +10,7 @@ const initialState = {
   currentMovie: movieMock, // для тестового доступа по /dev-film
   currentGenre: `All genres`,
   currentScreen: ScreenType.MAIN,
+  numberOfMoviesOnMain: 8,
 };
 
 // Перечисление имеющихся типов действий
@@ -17,6 +18,7 @@ const ActionType = {
   SET_CURRENT_GENRE: `SET_CURRENT_GENRE`,
   SET_CURRENT_MOVIE: `SET_CURRENT_MOVIE`,
   SET_CURRENT_SCREEN: `SET_CURRENT_SCREEN`,
+  INCREASE_NUMBER_OF_MOVIES_ON_MAIN: `INCREASE_NUMBER_OF_MOVIES_ON_MAIN`,
 };
 
 // Создаем action
@@ -38,6 +40,12 @@ const ActionCreator = {
       type: ActionType.SET_CURRENT_SCREEN,
       payload: currentScreen
     };
+  },
+  increaseNumberOfMoviesOnMain: (numberOfMoviesToAdd) => {
+    return {
+      type: ActionType.INCREASE_NUMBER_OF_MOVIES_ON_MAIN,
+      payload: numberOfMoviesToAdd
+    };
   }
 };
 
@@ -50,6 +58,8 @@ const reducer = (state = initialState, action) => {
       return extend(state, {currentMovie: action.payload});
     case ActionType.SET_CURRENT_SCREEN:
       return extend(state, {currentScreen: action.payload});
+    case ActionType.INCREASE_NUMBER_OF_MOVIES_ON_MAIN:
+      return extend(state, {numberOfMoviesOnMain: state.numberOfMoviesOnMain + action.payload});
   }
   return state;
 };
