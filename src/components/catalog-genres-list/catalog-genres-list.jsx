@@ -5,9 +5,15 @@ import PropTypes from "prop-types";
 
 export const getGenres = (state) => {
   const genresSet = new Set([`All genres`]);
-  state.movies.forEach((movie) => genresSet.add(movie.genre));
+  for (let movie of state.movies) {
+    genresSet.add(movie.genre);
+    if (genresSet.size === 10) {
+      break;
+    }
+  }
   return genresSet;
 };
+
 
 const CatalogGenresList = (props)=>{
   const {currentGenre, onChange, genres} = props;
