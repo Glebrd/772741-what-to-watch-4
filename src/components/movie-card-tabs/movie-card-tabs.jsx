@@ -5,6 +5,7 @@ import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-detail
 import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews.jsx";
 import {Tabs} from "../../const";
 import PropTypes from "prop-types";
+import {movieType} from "../../types";
 
 const MovieCardTabs = (props) => {
   const {movie, onChangeTab, active} = props;
@@ -82,31 +83,7 @@ const MovieCardTabs = (props) => {
 };
 
 MovieCardTabs.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    picture: PropTypes.string,
-    genre: PropTypes.string,
-    date: PropTypes.string,
-    poster: PropTypes.string,
-    background: PropTypes.string,
-    rating: PropTypes.number,
-    scores: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    videoPreview: PropTypes.string,
-    runTime: PropTypes.string,
-    comments: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
-      user: PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-      }),
-      rating: PropTypes.number,
-      comment: PropTypes.string,
-      date: PropTypes.string,
-    }))
-  }),
+  movie: movieType,
   active: PropTypes.string,
   onChangeTab: PropTypes.func,
 };

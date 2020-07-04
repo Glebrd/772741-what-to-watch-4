@@ -1,6 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+import {ScreenType} from "../../const";
+
+const mockStore = configureStore([]);
 
 const movie = {
   id: 79,
@@ -50,13 +55,20 @@ const movies = [
   },
 ];
 
+const store = mockStore({
+  movies,
+  movieCard: movie,
+  currentGenre: `All genres`,
+  currentScreen: ScreenType.MAIN,
+});
+
 it(`Render App`, () => {
   const tree = renderer
     .create(
-        <App
-          movie={movie}
-          movies={movies}
-        />
+        <Provider store={store}>
+          <App
+          />
+        </Provider>
     ).toJSON();
   expect(tree).toMatchSnapshot();
 });

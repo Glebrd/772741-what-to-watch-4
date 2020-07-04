@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {MOVIE_WAIT} from "../../const.js";
+import {ActionCreator} from "../../reducer";
+import {connect} from "react-redux";
+import {ScreenType} from "../../const";
+import {movieType} from "../../types";
 
 class SmallMovieCard extends React.Component {
   constructor(props) {
@@ -54,23 +58,17 @@ class SmallMovieCard extends React.Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  onCardClick(currentMovie) {
+    dispatch(ActionCreator.setCurrentMovie(currentMovie));
+    dispatch(ActionCreator.setCurrentScreen(ScreenType.MOVIE));
+  },
+});
+
 SmallMovieCard.propTypes = {
-  smallMovieCard: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    picture: PropTypes.string,
-    genre: PropTypes.string,
-    date: PropTypes.string,
-    poster: PropTypes.string,
-    background: PropTypes.string,
-    rating: PropTypes.number,
-    scores: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    videoPreview: PropTypes.string,
-  }),
+  smallMovieCard: movieType,
   onCardClick: PropTypes.func,
 };
 
-export default SmallMovieCard;
+export {SmallMovieCard};
+export default connect(null, mapDispatchToProps)(SmallMovieCard);

@@ -4,44 +4,30 @@ import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {ScreenType} from "../../const.js";
+import {connect} from "react-redux";
+import {movieType} from "../../types";
 
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    this.state =
-      {
-        activeScreen: ScreenType.MAIN,
-        activePromoMovieCard: false
-      };
-
-    this._cardClickHandler = this._cardClickHandler.bind(this);
   }
   _renderApp() {
-    const {movies, movie} = this.props;
-    const {activeScreen} = this.state;
-    switch (activeScreen) {
+    const {currentScreen} = this.props;
+    switch (currentScreen) {
       case ScreenType.MOVIE:
         return (
           <MoviePage
-            movie={this.state.activePromoMovieCard}
-            movies={movies}
-            onCardClick={this._cardClickHandler}
           />
         );
       case ScreenType.MAIN:
         return (
           <Main
-            movieCard = {movie}
-            movies={movies}
-            onCardClick={this._cardClickHandler}
           />
         );
     }
     return null;
   }
   render() {
-    const {movies} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -50,9 +36,6 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path="/dev-film">
             <MoviePage
-              movie = {movies[0]}
-              movies = {movies}
-              onCardClick={this._cardClickHandler}
             />
           </Route>
         </Switch>
@@ -60,41 +43,17 @@ class App extends React.PureComponent {
     );
   }
 
-  _cardClickHandler(movie) {
-    this.setState({
-      activeScreen: ScreenType.MOVIE,
-      activePromoMovieCard: movie,
-    });
-  }
 }
 
+const mapStateToProps = (state) => ({
+  currentScreen: state.currentScreen,
+});
+
 App.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object),
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    picture: PropTypes.string,
-    genre: PropTypes.string,
-    date: PropTypes.string,
-    poster: PropTypes.string,
-    background: PropTypes.string,
-    rating: PropTypes.number,
-    scores: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    videoPreview: PropTypes.string,
-    runTime: PropTypes.string,
-    comments: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
-      user: PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-      }),
-      rating: PropTypes.number,
-      comment: PropTypes.string,
-      date: PropTypes.string,
-    }))
-  }),
+  movies: PropTypes.arrayOf(movieType),
+  movie: movieType,
+  currentScreen: PropTypes.string,
 };
 
-export default App;
+export {App};
+export default connect(mapStateToProps)(App);

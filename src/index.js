@@ -1,25 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 import App from "./components/app/app.jsx";
-import movies from "./mocks/movies";
+import {reducer} from "./reducer.js";
 
-const movie = {
-  id: 55,
-  title: `The Grand Budapest Hotel`,
-  picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  genre: `Drama`,
-  date: `2014`,
-  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  rating: 9,
-  scores: 240,
-  director: `Wes Andreson`,
-  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
-  videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-};
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
 ReactDOM.render(
-    <App movie={movie} movies={movies}/>,
+    <Provider store={store}>
+      <App/>,
+    </Provider>,
     document.querySelector(`#root`)
 );

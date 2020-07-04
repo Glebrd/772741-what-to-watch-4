@@ -2,6 +2,8 @@ import React from "react";
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
+import {connect} from "react-redux";
+import {movieType} from "../../types";
 
 const sameGenreMoviesProperties = {
   MIN_LENGTH: 0,
@@ -14,8 +16,8 @@ const getSameGenreMovies = (movies, movie) =>
     .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
 
 const MoviePage = (props) => {
-  const {movie, movies, onCardClick} = props;
-  const {title, genre, date, poster, background} = movie;
+  const {currentMovie, movies} = props;
+  const {title, genre, date, poster, background} = currentMovie;
 
   return (
     <React.Fragment>
@@ -77,7 +79,7 @@ const MoviePage = (props) => {
                 height="327"/>
             </div>
             <MovieCardTabs
-              movie = {movie}
+              movie = {currentMovie}
             />
           </div>
         </div>
@@ -87,8 +89,7 @@ const MoviePage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <MoviesList
-            movies = {getSameGenreMovies(movies, movie)}
-            onCardClick = {onCardClick}
+            movies = {getSameGenreMovies(movies, currentMovie)}
           />
         </section>
 
@@ -110,22 +111,15 @@ const MoviePage = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  currentMovie: state.currentMovie,
+});
+
 MoviePage.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object),
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    picture: PropTypes.string,
-    genre: PropTypes.string,
-    date: PropTypes.string,
-    poster: PropTypes.string,
-    background: PropTypes.string,
-    rating: PropTypes.number,
-    scores: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-  }),
-  onCardClick: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(movieType),
+  currentMovie: movieType,
 };
 
-export default MoviePage;
+export {MoviePage};
+export default connect(mapStateToProps)(MoviePage);
