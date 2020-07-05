@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
 import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
-import CatalogButton from "../../catalog-button/catalog-button.jsx";
+import CatalogButton from "../catalog-button/catalog-button.jsx";
 
 export const getFilteredMovies = (movies, currentGenre) => {
   return currentGenre === `All genres`
