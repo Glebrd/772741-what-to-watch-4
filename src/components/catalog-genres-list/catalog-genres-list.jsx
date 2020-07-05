@@ -20,10 +20,11 @@ const CatalogGenresList = (props)=>{
   return (
     <ul className="catalog__genres-list">
       {[...genres].map((genre) => {
+        let currentCLassName = `catalog__genres-item ${currentGenre === genre ? `catalog__genres-item--active` : ``}`;
         return (
           <li
             key={genre}
-            className= {`catalog__genres-item ${currentGenre === genre ? `catalog__genres-item--active` : ``}`}
+            className={currentCLassName}
           >
             <a href="#" className="catalog__genres-link"
               onClick={(evt) => {

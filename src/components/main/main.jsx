@@ -5,7 +5,6 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
 import CatalogButton from "../../catalog-button/catalog-button.jsx";
-import {ActionCreator} from "../../reducer";
 
 export const getFilteredMovies = (movies, currentGenre) => {
   return currentGenre === `All genres`
@@ -14,7 +13,7 @@ export const getFilteredMovies = (movies, currentGenre) => {
 };
 
 const Main = (props) => {
-  const {movieCard, movies, currentGenre, numberOfMoviesOnMain} = props;
+  const {movieCard, filteredMovies, numberOfMoviesOnMain} = props;
   const {title, genre, date, background, poster} = movieCard;
 
   return (
@@ -79,11 +78,11 @@ const Main = (props) => {
           <CatalogGenresList/>
 
           <MoviesList
-            movies = {getFilteredMovies(movies, currentGenre).slice(0, numberOfMoviesOnMain)}
+            movies = {filteredMovies.slice(0, numberOfMoviesOnMain)}
           />
 
           <div className="catalog__more">
-            {numberOfMoviesOnMain <= getFilteredMovies(movies, currentGenre).length
+            {numberOfMoviesOnMain <= filteredMovies.length
             && <CatalogButton/>}
           </div>
         </section>
@@ -105,16 +104,17 @@ const Main = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies,
+  filteredMovies: getFilteredMovies(state.movies, state.currentGenre),
   movieCard: state.movieCard,
   currentGenre: state.currentGenre,
   numberOfMoviesOnMain: state.numberOfMoviesOnMain,
 });
 
 Main.propTypes = {
-  movies: PropTypes.arrayOf(movieType),
+  filteredMovies: PropTypes.arrayOf(movieType),
   movieCard: movieType,
   currentGenre: PropTypes.string,
+  numberOfMoviesOnMain: PropTypes.number,
 };
 
 export {Main};
