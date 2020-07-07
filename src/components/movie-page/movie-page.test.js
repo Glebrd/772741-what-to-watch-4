@@ -1,8 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MoviePage from "./movie-page";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
 
-const onCardClick = () => {};
+const mockStore = configureStore([]);
 
 const movies = [
   {
@@ -53,14 +55,18 @@ const movie = {
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
+const store = mockStore({
+  movies,
+  currentMovie: movie,
+});
+
 it(`Movie page renders`, () => {
   const tree = renderer
     .create(
-        <MoviePage
-          onCardClick={onCardClick}
-          movies={movies}
-          movie={movie}
-        />
+        <Provider store={store}>
+          <MoviePage
+          />
+        </Provider>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

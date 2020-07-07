@@ -1,16 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
+import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
+import {movieType} from "../../types";
+
+export const getFilteredMovies = (movies, currentGenre) => {
+  return currentGenre === `All genres`
+    ? movies
+    : movies.filter((movie) => movie.genre === currentGenre);
+};
 
 const Main = (props) => {
-  const {movieCard, movies, onCardClick} = props;
-  const {title, genre, date} = movieCard;
+  const {movieCard, movies, currentGenre} = props;
+  const {title, genre, date, background, poster} = movieCard;
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={`img/bg-the-grand-budapest-hotel.jpg`} alt="The Grand Budapest Hotel"/>
+          <img src={background} alt="The Grand Budapest Hotel"/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -32,7 +41,7 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={`img/the-grand-budapest-hotel-poster.jpg`} alt="The Grand Budapest Hotel poster" width="218" height="327"/>
+              <img src={poster} alt="The Grand Budapest Hotel poster" width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
@@ -65,42 +74,10 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <CatalogGenresList/>
 
           <MoviesList
-            movies = {movies}
-            onCardClick = {onCardClick}
+            movies = {getFilteredMovies(movies, currentGenre)}
           />
 
           <div className="catalog__more">
@@ -124,24 +101,17 @@ const Main = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  movieCard: state.movieCard,
+  currentGenre: state.currentGenre,
+});
+
 Main.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object),
-  movieCard: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    picture: PropTypes.string,
-    genre: PropTypes.string,
-    date: PropTypes.string,
-    poster: PropTypes.string,
-    background: PropTypes.string,
-    rating: PropTypes.number,
-    scores: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    videoPreview: PropTypes.string,
-  }),
-  onCardClick: PropTypes.func,
+  movies: PropTypes.arrayOf(movieType),
+  movieCard: movieType,
+  currentGenre: PropTypes.string,
 };
 
-export default Main;
+export {Main};
+export default connect(mapStateToProps)(Main);

@@ -1,4 +1,4 @@
-export default [
+export const moviesMock = [
   {
     id: 1,
     title: `Fantastic Beasts`,
@@ -837,3 +837,47 @@ export default [
   },
 ];
 
+export const movieMock = {
+  id: 55,
+  title: `The Grand Budapest Hotel`,
+  picture: `img/the-grand-budapest-hotel-poster.jpg`,
+  genre: `Drama`,
+  date: `2014`,
+  poster: `img/the-grand-budapest-hotel-poster.jpg`,
+  background: `img/bg-the-grand-budapest-hotel.jpg`,
+  rating: 9,
+  scores: 240,
+  director: `Wes Andreson`,
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
+  videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  runTime: `1h 00m`,
+  comments: [{
+    id: 16,
+    user: {
+      id: 153,
+      name: `Ephrem Shelborne`,
+    },
+    rating: 9,
+    comment: `A movie that makes you smile and cry, simultaneously. `,
+    date: `April 15, 2019`
+  }, {
+    id: 17,
+    user: {
+      id: 67,
+      name: `Chelsie Greep`,
+    },
+    rating: 10,
+    comment: `I have seen this movie probably 7 or 8 times in the past three years, wrote a paper about it for my college film class last semester, and basically regard it as my favorite movie of all time.`,
+    date: `July 24, 2018`
+  }, {
+    id: 18,
+    user: {
+      id: 147,
+      name: `Robert McColl`,
+    },
+    rating: 9,
+    comment: `A movie that will make even the most macho man cry`,
+    date: `March 30, 2010`
+  }]
+};
