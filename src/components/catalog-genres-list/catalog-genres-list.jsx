@@ -1,26 +1,16 @@
 import React from "react";
-import {ActionCreator} from "../../reducer";
-import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import withTabs from "../../hocs/with-tabs/with-tabs";
 
-export const getGenres = (state) => {
-  const genresSet = new Set([`All genres`]);
-  for (let movie of state.movies) {
-    genresSet.add(movie.genre);
-    if (genresSet.size === 10) {
-      break;
-    }
-  }
-  return genresSet;
-};
-
+const DEFAULT_ACTIVE_ITEM = `All genres`;
 
 const CatalogGenresList = (props)=>{
-  const {currentGenre, onChange, genres} = props;
+  const {onGenreChange, onChangeTab, activeTab, genres} = props;
+  let currentlyActiveTab = activeTab ? activeTab : DEFAULT_ACTIVE_ITEM;
   return (
     <ul className="catalog__genres-list">
       {[...genres].map((genre) => {
-        let currentCLassName = `catalog__genres-item ${currentGenre === genre ? `catalog__genres-item--active` : ``}`;
+        let currentCLassName = `catalog__genres-item ${currentlyActiveTab === genre ? `catalog__genres-item--active` : ``}`;
         return (
           <li
             key={genre}
@@ -29,7 +19,8 @@ const CatalogGenresList = (props)=>{
             <a href="#" className="catalog__genres-link"
               onClick={(evt) => {
                 evt.preventDefault();
-                onChange(genre);
+                onChangeTab(currentlyActiveTab);
+                onGenreChange(genre);
               }}
 
             >{genre}</a>
@@ -40,22 +31,14 @@ const CatalogGenresList = (props)=>{
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentGenre: state.currentGenre,
-  genres: getGenres(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onChange(genre) {
-    dispatch(ActionCreator.setCurrentGenre(genre));
-  },
-});
-
 CatalogGenresList.propTypes = {
   currentGenre: PropTypes.string,
   genres: PropTypes.object,
   onChange: PropTypes.func,
+  onChangeTab: PropTypes.func,
+  onGenreChange: PropTypes.func,
+  activeTab: PropTypes.string,
 };
 
 export {CatalogGenresList};
-export default connect(mapStateToProps, mapDispatchToProps)(CatalogGenresList);
+export default withTabs(CatalogGenresList);

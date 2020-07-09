@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {ScreenType} from "../../const";
 import {movieType} from "../../types";
 
-class SmallMovieCard extends React.Component {
+class SmallMovieCard extends React.PureComponent {
   constructor(props) {
     super(props);
 

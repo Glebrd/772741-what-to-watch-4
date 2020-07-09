@@ -1,5 +1,5 @@
 import React from "react";
-import withTabs from "../../hocs/with-tabs/with-tabs.jsx";
+import withTabs from "../../hocs/with-tabs/with-tabs.js";
 import MovieCardTabOverview from "../movie-card-tab-overview/movie-card-tab-overview.jsx";
 import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-details.jsx";
 import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews.jsx";
@@ -7,16 +7,18 @@ import {Tabs} from "../../const";
 import PropTypes from "prop-types";
 import {movieType} from "../../types";
 
-const MovieCardTabs = (props) => {
-  const {movie, onChangeTab, active} = props;
-  const {rating, description, starring, director, scores, comments, date, runTime, genre} = movie;
+const DEFAULT_ACTIVE_ITEM = Tabs.OVERVIEW;
 
+const MovieCardTabs = (props) => {
+  const {movie, onChangeTab, activeTab} = props;
+  const {rating, description, starring, director, scores, comments, date, runTime, genre} = movie;
+  let currentlyActiveTab = activeTab ? activeTab : DEFAULT_ACTIVE_ITEM;
   return (
     <div className="movie-card__desc">
       <nav className="movie-nav movie-card__nav">
         <ul className="movie-nav__list">
 
-          <li className= {`movie-nav__item ${active === Tabs.OVERVIEW ? `movie-nav__item--active` : ``}`}>
+          <li className= {`movie-nav__item ${currentlyActiveTab === Tabs.OVERVIEW ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
@@ -26,7 +28,7 @@ const MovieCardTabs = (props) => {
               Overview
             </a>
           </li>
-          <li className= {`movie-nav__item ${active === Tabs.DETAILS ? `movie-nav__item--active` : ``}`}>
+          <li className= {`movie-nav__item ${currentlyActiveTab === Tabs.DETAILS ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
@@ -36,7 +38,7 @@ const MovieCardTabs = (props) => {
               Details
             </a>
           </li>
-          <li className= {`movie-nav__item ${active === Tabs.REVIEWS ? `movie-nav__item--active` : ``}`}>
+          <li className= {`movie-nav__item ${currentlyActiveTab === Tabs.REVIEWS ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link"
               onClick={(evt) => {
                 evt.preventDefault();
@@ -50,7 +52,7 @@ const MovieCardTabs = (props) => {
         </ul>
       </nav>
       {(() => {
-        switch (active) {
+        switch (currentlyActiveTab) {
           case Tabs.OVERVIEW:
             return (
               <MovieCardTabOverview
@@ -84,7 +86,7 @@ const MovieCardTabs = (props) => {
 
 MovieCardTabs.propTypes = {
   movie: movieType,
-  active: PropTypes.string,
+  activeTab: PropTypes.string,
   onChangeTab: PropTypes.func,
 };
 

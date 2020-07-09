@@ -5,6 +5,7 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button.jsx";
+import {ActionCreator} from "../../reducer";
 
 export const getFilteredMovies = (movies, currentGenre) => {
   return currentGenre === `All genres`
@@ -12,8 +13,19 @@ export const getFilteredMovies = (movies, currentGenre) => {
     : movies.filter((movie) => movie.genre === currentGenre);
 };
 
+export const getGenres = (state) => {
+  const genresSet = new Set([`All genres`]);
+  for (let movie of state.movies) {
+    genresSet.add(movie.genre);
+    if (genresSet.size === 10) {
+      break;
+    }
+  }
+  return genresSet;
+};
+
 const Main = (props) => {
-  const {movieCard, filteredMovies, numberOfMoviesOnMain} = props;
+  const {movieCard, filteredMovies, numberOfMoviesOnMain, genres, onChange} = props;
   const {title, genre, date, background, poster} = movieCard;
 
   return (
@@ -75,7 +87,10 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <CatalogGenresList/>
+          <CatalogGenresList
+            onGenreChange={onChange}
+            genres={genres}
+          />
 
           <MoviesList
             movies = {filteredMovies.slice(0, numberOfMoviesOnMain)}
@@ -104,10 +119,17 @@ const Main = (props) => {
 };
 
 const mapStateToProps = (state) => ({
+  genres: getGenres(state),
   filteredMovies: getFilteredMovies(state.movies, state.currentGenre),
   movieCard: state.movieCard,
   currentGenre: state.currentGenre,
   numberOfMoviesOnMain: state.numberOfMoviesOnMain,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onChange(genre) {
+    dispatch(ActionCreator.setCurrentGenre(genre));
+  },
 });
 
 Main.propTypes = {
@@ -115,7 +137,9 @@ Main.propTypes = {
   movieCard: movieType,
   currentGenre: PropTypes.string,
   numberOfMoviesOnMain: PropTypes.number,
+  genres: PropTypes.object,
+  onChange: PropTypes.func,
 };
 
 export {Main};
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
