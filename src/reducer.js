@@ -6,8 +6,7 @@ import {ScreenType} from "./const";
 // Изначальное состояние.
 const initialState = {
   movies: moviesMock,
-  movieCard: movieMock,
-  currentMovie: movieMock, // для тестового доступа по /dev-film
+  currentMovie: movieMock,
   currentGenre: `All genres`,
   currentScreen: ScreenType.MAIN,
   numberOfMoviesOnMain: 8,

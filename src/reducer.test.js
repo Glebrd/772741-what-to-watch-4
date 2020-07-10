@@ -5,7 +5,6 @@ import {extend} from "./utils";
 
 const initialState = {
   movies: moviesMock,
-  movieCard: movieMock,
   currentMovie: movieMock,
   currentGenre: `All genres`,
   currentScreen: ScreenType.MAIN,

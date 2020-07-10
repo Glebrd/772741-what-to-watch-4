@@ -58,7 +58,7 @@ const movies = [
 const store = mockStore({
   movies,
   currentGenre: `All genres`,
-  movieCard: movie,
+  currentMovie: movie,
 });
 
 it(`Render Main`, () => {

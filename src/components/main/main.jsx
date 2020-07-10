@@ -6,6 +6,7 @@ import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button.jsx";
 import {ActionCreator} from "../../reducer";
+import {ScreenType} from "../../const.js";
 
 export const getFilteredMovies = (movies, currentGenre) => {
   return currentGenre === `All genres`
@@ -25,8 +26,8 @@ export const getGenres = (state) => {
 };
 
 const Main = (props) => {
-  const {movieCard, filteredMovies, numberOfMoviesOnMain, genres, onChange} = props;
-  const {title, genre, date, background, poster} = movieCard;
+  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onPlayClick} = props;
+  const {title, genre, date, background, poster} = currentMovie;
 
   return (
     <React.Fragment>
@@ -65,7 +66,10 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  onClick = {onPlayClick}
+                  className="btn btn--play movie-card__button" type="button"
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -88,7 +92,7 @@ const Main = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <CatalogGenresList
-            onGenreChange={onChange}
+            onGenreChange={onGenreChange}
             genres={genres}
           />
 
@@ -121,24 +125,28 @@ const Main = (props) => {
 const mapStateToProps = (state) => ({
   genres: getGenres(state),
   filteredMovies: getFilteredMovies(state.movies, state.currentGenre),
-  movieCard: state.movieCard,
+  currentMovie: state.currentMovie,
   currentGenre: state.currentGenre,
   numberOfMoviesOnMain: state.numberOfMoviesOnMain,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChange(genre) {
+  onGenreChange(genre) {
     dispatch(ActionCreator.setCurrentGenre(genre));
+  },
+  onPlayClick() {
+    dispatch(ActionCreator.setCurrentScreen(ScreenType.PLAYER));
   },
 });
 
 Main.propTypes = {
   filteredMovies: PropTypes.arrayOf(movieType),
-  movieCard: movieType,
+  currentMovie: movieType,
   currentGenre: PropTypes.string,
   numberOfMoviesOnMain: PropTypes.number,
   genres: PropTypes.object,
-  onChange: PropTypes.func,
+  onGenreChange: PropTypes.func,
+  onPlayClick: PropTypes.func,
 };
 
 export {Main};

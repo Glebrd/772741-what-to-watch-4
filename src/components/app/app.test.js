@@ -57,7 +57,7 @@ const movies = [
 
 const store = mockStore({
   movies,
-  movieCard: movie,
+  currentMovie: movie,
   currentGenre: `All genres`,
   currentScreen: ScreenType.MAIN,
 });

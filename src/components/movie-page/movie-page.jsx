@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
 import {connect} from "react-redux";
 import {movieType} from "../../types";
+import {ActionCreator} from "../../reducer";
+import {ScreenType} from "../../const";
 
 const sameGenreMoviesProperties = {
   MIN_LENGTH: 0,
@@ -16,7 +18,7 @@ const getSameGenreMovies = (movies, movie) =>
     .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
 
 const MoviePage = (props) => {
-  const {currentMovie, movies} = props;
+  const {currentMovie, movies, onPlayClick} = props;
   const {title, genre, date, poster, background} = currentMovie;
 
   return (
@@ -54,7 +56,9 @@ const MoviePage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  onClick = {onPlayClick}
+                  className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -116,10 +120,17 @@ const mapStateToProps = (state) => ({
   currentMovie: state.currentMovie,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onPlayClick() {
+    dispatch(ActionCreator.setCurrentScreen(ScreenType.PLAYER));
+  },
+});
+
 MoviePage.propTypes = {
   movies: PropTypes.arrayOf(movieType),
   currentMovie: movieType,
+  onPlayClick: PropTypes.func,
 };
 
 export {MoviePage};
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
