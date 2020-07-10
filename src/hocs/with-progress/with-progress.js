@@ -21,6 +21,12 @@ const withProgress = (Component) => {
       this._video.onloadedmetadata = () => this.setState({timeLeft: this._video.duration});
       this._video.ontimeupdate = () => this._handleTimeUpdate(this._video.currentTime, this._video.duration);
     }
+
+    componentWillUnmount() {
+      this._video.onloadedmetadata = null;
+      this._video.ontimeupdate = null;
+    }
+
     _handleTimeUpdate(currentTime, duration) {
       const remainingTime = duration - currentTime;
       const progressValue = currentTime / duration * FRACTION_TO_PERCENT_COEFFICIENT;

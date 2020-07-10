@@ -17,7 +17,7 @@ const PlayerControls = (props) => {
 
 PlayerControls.propTypes = {
   progressValue: PropTypes.number,
-  remainingTime: PropTypes.number,
+  remainingTime: PropTypes.string,
 };
 
 export {PlayerControls};
