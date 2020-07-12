@@ -19,11 +19,14 @@ const getSameGenreMovies = (movies, movie) =>
 
 const MoviePage = (props) => {
   const {currentMovie, movies, onPlayClick} = props;
-  const {title, genre, date, poster, background} = currentMovie;
+  const {title, genre, date, poster, background, backgroundColor} = currentMovie;
 
   return (
     <React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section
+        style={{backgroundColor}}
+        className="movie-card movie-card--full"
+      >
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={background} alt="The Grand Budapest Hotel"/>

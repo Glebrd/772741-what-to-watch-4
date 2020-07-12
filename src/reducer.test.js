@@ -1,6 +1,6 @@
 import {reducer, ActionType} from "./reducer.js";
 import {ScreenType} from "./const";
-import {moviesMock, movieMock} from "./mocks/movies";
+import {moviesMock, movieMock} from "./adapters/movies";
 import {extend} from "./utils";
 
 const initialState = {

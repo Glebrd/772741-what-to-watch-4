@@ -21,7 +21,7 @@ const withTabs = (Component) => {
       return (
         <Component
           {...this.props}
-          active={currentTab}
+          activeTab={currentTab}
           onChangeTab={this._handleTabSwitch}
         />
       );
