@@ -41,10 +41,10 @@ const MovieCardTabDetails = (props) => {
 
 MovieCardTabDetails.propTypes = {
   genre: PropTypes.string,
-  date: PropTypes.string,
+  date: PropTypes.number,
   director: PropTypes.string,
   starring: PropTypes.arrayOf(PropTypes.string),
-  runTime: PropTypes.string,
+  runTime: PropTypes.number,
 };
 
 

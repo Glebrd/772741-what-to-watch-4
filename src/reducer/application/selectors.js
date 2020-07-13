@@ -1,4 +1,4 @@
-import {getMovies, getCurrentMovie} from "../data/selectors";
+import {getMovies} from "../data/selectors";
 import {createSelector} from "reselect";
 
 const sameGenreMoviesProperties = {
@@ -9,6 +9,7 @@ const sameGenreMoviesProperties = {
 export const getCurrentScreen = (state) => state.application.currentScreen;
 export const getCurrentGenre = (state) => state.application.currentGenre;
 export const getNumberOfMoviesOnMain = (state) => state.application.numberOfMoviesOnMain;
+export const getCurrentMovie = (state) => state.application.currentMovie;
 
 export const getSameGenreMovies = createSelector(
     getMovies, getCurrentMovie,
@@ -17,11 +18,6 @@ export const getSameGenreMovies = createSelector(
       .filter(({id, genre}) => id !== movie.id && genre === movie.genre)
       .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH)
 );
-
-// export const getSameGenreMovies = (movies, movie) =>
-//   movies
-//     .filter(({id, genre}) => id !== movie.id && genre === movie.genre)
-//     .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
 
 export const getFilteredMovies = createSelector(
     getMovies, getCurrentGenre,

@@ -10,7 +10,6 @@ Array [
     >
       <img
         alt="The Grand Budapest Hotel"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       />
     </div>
     <h1
@@ -73,7 +72,6 @@ Array [
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
-            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
             width="218"
           />
         </div>
@@ -82,9 +80,7 @@ Array [
         >
           <h2
             className="movie-card__title"
-          >
-            WALL·E
-          </h2>
+          />
           <p
             className="movie-card__meta"
           >
@@ -95,9 +91,7 @@ Array [
             </span>
             <span
               className="movie-card__year"
-            >
-              2008
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
@@ -205,8 +199,6 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
               width="280"
             />
           </div>
@@ -216,9 +208,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            >
-              The Prestige
-            </a>
+            />
           </h3>
         </article>
         <article
@@ -233,8 +223,6 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
               width="280"
             />
           </div>
@@ -244,9 +232,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            >
-              Lock, Stock and Two Smoking Barrels
-            </a>
+            />
           </h3>
         </article>
       </div>

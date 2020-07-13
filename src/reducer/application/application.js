@@ -3,6 +3,7 @@ import {ScreenType} from "../../const";
 
 // Изначальное состояние.
 const initialState = {
+  currentMovie: {},
   currentGenre: `All genres`,
   currentScreen: ScreenType.MAIN,
   numberOfMoviesOnMain: 8,

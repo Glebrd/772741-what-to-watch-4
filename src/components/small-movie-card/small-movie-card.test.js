@@ -7,7 +7,7 @@ const movie = {
   title: `The Dark Knight`,
   picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   genre: `Crime`,
-  date: `2008`,
+  date: 2008,
   poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   rating: 8,

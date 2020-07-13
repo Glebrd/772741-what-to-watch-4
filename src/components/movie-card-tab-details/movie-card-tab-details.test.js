@@ -7,7 +7,7 @@ const movie = {
   title: `Game`,
   picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   genre: `Thrller`,
-  date: `1997`,
+  date: 1997,
   poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   rating: 8.3,
@@ -16,7 +16,7 @@ const movie = {
   starring: [`Bunnie Litchmore`, `Philippine Tick`, `Paige Keasey`, `Kikelia Agar`],
   description: `After a wealthy banker is given an opportunity to participate in a mysterious game, his life is turned upside down when he becomes unable to distinguish between the game and reality.`,
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  runTime: `2h 03m`,
+  runTime: 95,
   comments: [{
     id: 1,
     user: {

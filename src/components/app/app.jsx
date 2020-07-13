@@ -8,15 +8,15 @@ import {connect} from "react-redux";
 import {movieType} from "../../types";
 import Player from "../player-page/player-page.jsx";
 import {ActionCreator} from "../../reducer/application/application";
-import {getCurrentScreen} from "../../reducer/application/selectors";
-import {getCurrentMovie} from "../../reducer/data/selectors";
+import {getCurrentMovie, getCurrentScreen} from "../../reducer/application/selectors";
+import {getPromoMovie} from "../../reducer/data/selectors";
 
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
   }
   _renderApp() {
-    const {currentScreen, currentMovie, onExit} = this.props;
+    const {currentScreen, promoMovie, currentMovie, onExit} = this.props;
     switch (currentScreen) {
       case ScreenType.MOVIE:
         return (
@@ -32,7 +32,8 @@ class App extends React.PureComponent {
         return (
           <Player
             onExit = {onExit}
-            currentMovie = {currentMovie}
+            // Если выбран фильм в каталоге,то показываем его,если нет,то промо фильм.
+            currentMovie = {Object.keys(currentMovie).length ? currentMovie : promoMovie}
           />
         );
     }
@@ -58,6 +59,7 @@ class App extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   currentScreen: getCurrentScreen(state),
+  promoMovie: getPromoMovie(state),
   currentMovie: getCurrentMovie(state),
 });
 
@@ -71,6 +73,7 @@ App.propTypes = {
   currentScreen: PropTypes.string,
   onExit: PropTypes.func,
   currentMovie: movieType,
+  promoMovie: movieType,
 };
 
 export {App};

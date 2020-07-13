@@ -4,6 +4,7 @@ import App from "./app";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import {ScreenType} from "../../const";
+import {adaptMovie, adaptMovies} from "../../adapters/movies";
 
 const mockStore = configureStore([]);
 
@@ -56,10 +57,8 @@ const movies = [
 ];
 
 const store = mockStore({
-  movies,
-  currentMovie: movie,
-  currentGenre: `All genres`,
-  currentScreen: ScreenType.MAIN,
+  data: {movies: adaptMovies(movies), promoMovie: adaptMovie(movie)},
+  application: {currentGenre: `All genres`, currentScreen: ScreenType.MAIN}
 });
 
 it(`Render App`, () => {

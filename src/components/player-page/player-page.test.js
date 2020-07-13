@@ -7,7 +7,7 @@ const currentMovie = {
   title: `Revenant `,
   picture: `img/revenant.jpg`,
   genre: `Comedy`,
-  date: `2015`,
+  date: 2015,
   poster: `img/revenant.jpg`,
   background: `img/revenant.jpg`,
   rating: 8.1,
@@ -16,7 +16,7 @@ const currentMovie = {
   starring: [`Eirena Corain`, `Kamila Skelhorn`, `Manuel Elcott`],
   description: `A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.`,
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  runTime: `1h 38`,
+  runTime: 120,
   comments: [{
     id: 1,
     user: {

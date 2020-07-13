@@ -8,7 +8,7 @@ const movie = {
   title: `Home`,
   picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   genre: `Documentary`,
-  date: `2009`,
+  date: 2009,
   poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   rating: 6,

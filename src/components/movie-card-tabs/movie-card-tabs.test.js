@@ -7,7 +7,7 @@ const movie = {
   title: `Django Unchained`,
   picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   genre: `Drama`,
-  date: `2012`,
+  date: 2012,
   poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   rating: 8.6,
@@ -16,7 +16,7 @@ const movie = {
   starring: [`Sally Cullin`, `Harman Kleinstein`, `Chilton Petican`, `Chico Magwood`],
   description: `With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.`,
   videoPreview: `https: //upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  runTime: `2h 45m`,
+  runTime: 123,
   comments: [{
     id: 1,
     user: {

@@ -4,6 +4,11 @@ exports[`Movie page renders 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
     <div
       className="movie-card__hero"
@@ -13,7 +18,6 @@ Array [
       >
         <img
           alt="The Grand Budapest Hotel"
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         />
       </div>
       <h1
@@ -73,7 +77,6 @@ Array [
             className="movie-card__title"
           >
              
-            Pulp Fiction
              
           </h2>
           <p
@@ -86,9 +89,7 @@ Array [
             </span>
             <span
               className="movie-card__year"
-            >
-              1994
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
@@ -150,7 +151,6 @@ Array [
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
-            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
             width="218"
           />
         </div>
@@ -217,7 +217,6 @@ Array [
               <span
                 className="movie-rating__count"
               >
-                845
                  ratings
               </span>
             </p>

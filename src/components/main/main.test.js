@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import Main from "./main";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import {adaptMovie, adaptMovies} from "../../adapters/movies";
 
 const mockStore = configureStore([]);
 
@@ -56,9 +57,8 @@ const movies = [
 ];
 
 const store = mockStore({
-  movies,
-  currentGenre: `All genres`,
-  currentMovie: movie,
+  data: {movies: adaptMovies(movies), promoMovie: adaptMovie(movie)},
+  application: {currentGenre: `All genres`}
 });
 
 it(`Render Main`, () => {

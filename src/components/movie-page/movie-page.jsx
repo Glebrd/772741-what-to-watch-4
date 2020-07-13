@@ -6,8 +6,7 @@ import {connect} from "react-redux";
 import {movieType} from "../../types";
 import {ActionCreator} from "../../reducer/application/application";
 import {ScreenType} from "../../const";
-import {getCurrentMovie} from "../../reducer/data/selectors";
-import {getSameGenreMovies} from "../../reducer/application/selectors";
+import {getCurrentMovie, getSameGenreMovies} from "../../reducer/application/selectors";
 
 const MoviePage = (props) => {
   const {currentMovie, sameGenreMovies, onPlayClick} = props;
@@ -122,7 +121,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 MoviePage.propTypes = {
-  movies: PropTypes.arrayOf(movieType),
+  sameGenreMovies: PropTypes.arrayOf(movieType),
   currentMovie: movieType,
   onPlayClick: PropTypes.func,
 };

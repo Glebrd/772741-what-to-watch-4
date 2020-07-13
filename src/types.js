@@ -4,7 +4,7 @@ export const movieType = PropTypes.shape({
   title: PropTypes.string,
   picture: PropTypes.string,
   genre: PropTypes.string,
-  date: PropTypes.string,
+  date: PropTypes.number,
   poster: PropTypes.string,
   background: PropTypes.string,
   rating: PropTypes.number,
@@ -13,7 +13,7 @@ export const movieType = PropTypes.shape({
   starring: PropTypes.arrayOf(PropTypes.string),
   description: PropTypes.string,
   videoPreview: PropTypes.string,
-  runTime: PropTypes.string,
+  runTime: PropTypes.number,
   comments: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     user: PropTypes.shape({

@@ -13,7 +13,7 @@ import {
   getGenres,
   getNumberOfMoviesOnMain
 } from "../../reducer/application/selectors";
-import {getCurrentMovie} from "../../reducer/data/selectors";
+import {getPromoMovie} from "../../reducer/data/selectors";
 
 const Main = (props) => {
   const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onPlayClick} = props;
@@ -115,7 +115,7 @@ const Main = (props) => {
 const mapStateToProps = (state) => ({
   genres: getGenres(state),
   filteredMovies: getFilteredMovies(state),
-  currentMovie: getCurrentMovie(state),
+  currentMovie: getPromoMovie(state),
   currentGenre: getCurrentGenre(state),
   numberOfMoviesOnMain: getNumberOfMoviesOnMain(state),
 });

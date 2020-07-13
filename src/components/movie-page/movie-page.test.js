@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import MoviePage from "./movie-page";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {adaptMovie, adaptMovies} from "../../adapters/movies";
 
 const mockStore = configureStore([]);
 
@@ -56,8 +57,8 @@ const movie = {
 };
 
 const store = mockStore({
-  movies,
-  currentMovie: movie,
+  data: {movies: adaptMovies(movies)},
+  application: {currentMovie: adaptMovie(movie)},
 });
 
 it(`Movie page renders`, () => {
