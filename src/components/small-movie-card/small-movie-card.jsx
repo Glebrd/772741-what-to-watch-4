@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {MOVIE_WAIT} from "../../const.js";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/application/application";
 import {connect} from "react-redux";
 import {ScreenType} from "../../const";
 import {movieType} from "../../types";

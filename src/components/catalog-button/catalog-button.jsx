@@ -1,7 +1,8 @@
 import React from "react";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/application/application";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import {getCurrentGenre} from "../../reducer/application/selectors";
 
 const CatalogButton = (props)=>{
   const {increaseNumberOfMovies} = props;
@@ -14,7 +15,7 @@ const CatalogButton = (props)=>{
 };
 
 const mapStateToProps = (state) => ({
-  currentGenre: state.currentGenre,
+  currentGenre: getCurrentGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

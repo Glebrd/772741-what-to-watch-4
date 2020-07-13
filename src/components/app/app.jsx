@@ -7,7 +7,9 @@ import {ScreenType} from "../../const.js";
 import {connect} from "react-redux";
 import {movieType} from "../../types";
 import Player from "../player-page/player-page.jsx";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/application/application";
+import {getCurrentScreen} from "../../reducer/application/selectors";
+import {getCurrentMovie} from "../../reducer/data/selectors";
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -55,8 +57,8 @@ class App extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  currentScreen: state.currentScreen,
-  currentMovie: state.currentMovie,
+  currentScreen: getCurrentScreen(state),
+  currentMovie: getCurrentMovie(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

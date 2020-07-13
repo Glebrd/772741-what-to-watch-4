@@ -5,25 +5,15 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button.jsx";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/application/application";
 import {ScreenType} from "../../const.js";
-
-export const getFilteredMovies = (movies, currentGenre) => {
-  return currentGenre === `All genres`
-    ? movies
-    : movies.filter((movie) => movie.genre === currentGenre);
-};
-
-export const getGenres = (state) => {
-  const genresSet = new Set([`All genres`]);
-  for (let movie of state.movies) {
-    genresSet.add(movie.genre);
-    if (genresSet.size === 10) {
-      break;
-    }
-  }
-  return genresSet;
-};
+import {
+  getCurrentGenre,
+  getFilteredMovies,
+  getGenres,
+  getNumberOfMoviesOnMain
+} from "../../reducer/application/selectors";
+import {getCurrentMovie} from "../../reducer/data/selectors";
 
 const Main = (props) => {
   const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onPlayClick} = props;
@@ -124,10 +114,10 @@ const Main = (props) => {
 
 const mapStateToProps = (state) => ({
   genres: getGenres(state),
-  filteredMovies: getFilteredMovies(state.movies, state.currentGenre),
-  currentMovie: state.currentMovie,
-  currentGenre: state.currentGenre,
-  numberOfMoviesOnMain: state.numberOfMoviesOnMain,
+  filteredMovies: getFilteredMovies(state),
+  currentMovie: getCurrentMovie(state),
+  currentGenre: getCurrentGenre(state),
+  numberOfMoviesOnMain: getNumberOfMoviesOnMain(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

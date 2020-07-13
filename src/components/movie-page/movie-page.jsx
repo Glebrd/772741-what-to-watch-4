@@ -4,21 +4,13 @@ import PropTypes from "prop-types";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
 import {connect} from "react-redux";
 import {movieType} from "../../types";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/application/application";
 import {ScreenType} from "../../const";
-
-const sameGenreMoviesProperties = {
-  MIN_LENGTH: 0,
-  MAX_LENGTH: 3,
-};
-
-const getSameGenreMovies = (movies, movie) =>
-  movies
-    .filter(({id, genre}) => id !== movie.id && genre === movie.genre)
-    .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
+import {getCurrentMovie} from "../../reducer/data/selectors";
+import {getSameGenreMovies} from "../../reducer/application/selectors";
 
 const MoviePage = (props) => {
-  const {currentMovie, movies, onPlayClick} = props;
+  const {currentMovie, sameGenreMovies, onPlayClick} = props;
   const {title, genre, date, poster, background, backgroundColor} = currentMovie;
 
   return (
@@ -96,7 +88,7 @@ const MoviePage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <MoviesList
-            movies = {getSameGenreMovies(movies, currentMovie)}
+            movies = {sameGenreMovies}
           />
         </section>
 
@@ -119,8 +111,8 @@ const MoviePage = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies,
-  currentMovie: state.currentMovie,
+  sameGenreMovies: getSameGenreMovies(state),
+  currentMovie: getCurrentMovie(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
