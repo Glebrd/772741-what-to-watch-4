@@ -10,13 +10,16 @@ import Player from "../player-page/player-page.jsx";
 import {ActionCreator} from "../../reducer/application/application";
 import {getCurrentMovie, getCurrentScreen} from "../../reducer/application/selectors";
 import {getPromoMovie} from "../../reducer/data/selectors";
+import SignIn from "../sign-in/sign-in.jsx";
+import {Operation} from "../../reducer/user/user";
+import {checkIfObjectEmpty} from "../../utils";
 
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
   }
   _renderApp() {
-    const {currentScreen, promoMovie, currentMovie, onExit} = this.props;
+    const {currentScreen, promoMovie, currentMovie, onExit, login} = this.props;
     switch (currentScreen) {
       case ScreenType.MOVIE:
         return (
@@ -33,7 +36,15 @@ class App extends React.PureComponent {
           <Player
             onExit = {onExit}
             // Если выбран фильм в каталоге,то показываем его,если нет,то промо фильм.
-            currentMovie = {Object.keys(currentMovie).length ? currentMovie : promoMovie}
+            currentMovie = {checkIfObjectEmpty(currentMovie)
+              ? currentMovie
+              : promoMovie}
+          />
+        );
+      case ScreenType.SIGN_IN:
+        return (
+          <SignIn
+            onSubmit={login}
           />
         );
     }
@@ -67,11 +78,16 @@ const mapDispatchToProps = (dispatch) => ({
   onExit() {
     dispatch(ActionCreator.setCurrentScreen(ScreenType.MAIN));
   },
+  login(authData) {
+    dispatch(Operation.login(authData));
+    dispatch(ActionCreator.setCurrentScreen(ScreenType.MAIN));
+  },
 });
 
 App.propTypes = {
   currentScreen: PropTypes.string,
   onExit: PropTypes.func,
+  login: PropTypes.func,
   currentMovie: movieType,
   promoMovie: movieType,
 };

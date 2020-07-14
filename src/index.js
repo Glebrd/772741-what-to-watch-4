@@ -8,6 +8,7 @@ import {createAPI} from "./api";
 import {compose} from "redux";
 import {applyMiddleware} from "redux";
 import {Operation} from "./reducer/data/data";
+import {Operation as UserOperation} from "./reducer/user/user";
 import thunk from "redux-thunk";
 
 const api = createAPI(() => {});
@@ -22,6 +23,7 @@ const store = createStore(
 
 store.dispatch(Operation.loadMovies());
 store.dispatch(Operation.loadPromoMovie());
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>

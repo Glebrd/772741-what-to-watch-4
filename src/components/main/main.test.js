@@ -58,7 +58,8 @@ const movies = [
 
 const store = mockStore({
   data: {movies: adaptMovies(movies), promoMovie: adaptMovie(movie)},
-  application: {currentGenre: `All genres`}
+  application: {currentGenre: `All genres`},
+  user: {user: {avatarURL: `img/1.png`}},
 });
 
 it(`Render Main`, () => {

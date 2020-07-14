@@ -25,3 +25,11 @@ export const movieType = PropTypes.shape({
     date: PropTypes.string,
   }))
 });
+
+export const userType = PropTypes.shape({
+  id: PropTypes.number,
+  email: PropTypes.string,
+  name: PropTypes.string,
+  avatarURL: PropTypes.string,
+});
+

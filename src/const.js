@@ -2,6 +2,7 @@ export const ScreenType = {
   MAIN: `main`,
   MOVIE: `movie`,
   PLAYER: `player`,
+  SIGN_IN: `sign in`,
 };
 
 export const Tabs = {
