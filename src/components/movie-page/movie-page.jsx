@@ -3,14 +3,16 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
 import {connect} from "react-redux";
-import {movieType} from "../../types";
+import {movieType, userType} from "../../types";
 import {ActionCreator} from "../../reducer/application/application";
 import {ScreenType} from "../../const";
 import {getCurrentMovie, getSameGenreMovies} from "../../reducer/application/selectors";
 import UserBlock from "../user-block/user-block.jsx";
+import {getUser} from "../../reducer/user/selectors";
+import {checkIfObjectEmpty} from "../../utils";
 
 const MoviePage = (props) => {
-  const {currentMovie, sameGenreMovies, onPlayClick} = props;
+  const {currentMovie, sameGenreMovies, onPlayClick, user} = props;
   const {title, genre, date, poster, background, backgroundColor} = currentMovie;
 
   return (
@@ -61,7 +63,10 @@ const MoviePage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {checkIfObjectEmpty(user)
+                  ? <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  : ``
+                }
               </div>
             </div>
           </div>
@@ -109,6 +114,7 @@ const MoviePage = (props) => {
 const mapStateToProps = (state) => ({
   sameGenreMovies: getSameGenreMovies(state),
   currentMovie: getCurrentMovie(state),
+  user: getUser(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -121,6 +127,7 @@ MoviePage.propTypes = {
   sameGenreMovies: PropTypes.arrayOf(movieType),
   currentMovie: movieType,
   onPlayClick: PropTypes.func,
+  user: userType,
 };
 
 export {MoviePage};

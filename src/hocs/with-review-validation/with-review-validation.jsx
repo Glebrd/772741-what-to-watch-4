@@ -3,13 +3,11 @@ import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
 import {getMovies} from "../../reducer/data/selectors";
 import {compose} from "redux";
+import {movieType} from "../../types";
+import PropTypes from "prop-types";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
-
-// const validateRating = (rating) => {
-//   return rating;
-// };
 
 const validateReview = (review) => {
   return review.length >= MIN_REVIEW_LENGTH && review.length <= MAX_REVIEW_LENGTH;
@@ -33,12 +31,8 @@ const withReviewValidation = (Component) => {
         networkError: false,
       };
     }
-    // componentWillMount() {
-    //   setTimeout(Math.random(1), 5000);
-    // }
     _handleReviewChange(evt) {
       const {value} = evt.target;
-      console.log(this.state);
       this.setState({
         review: value,
         reviewIsValid: validateReview(value),
@@ -46,7 +40,6 @@ const withReviewValidation = (Component) => {
     }
     _handleRatingChange(evt) {
       const {value} = evt.target;
-      // console.log(this.state);
       this.setState({
         rating: value,
         ratingIsValid: !!value,
@@ -56,6 +49,7 @@ const withReviewValidation = (Component) => {
       evt.preventDefault();
       const {onUploadReview, currentMovie} = this.props;
       const {review, rating} = this.state;
+
       this.setState((state) => ({
         isLoading: !state.isLoading,
       }));
@@ -64,14 +58,12 @@ const withReviewValidation = (Component) => {
         .then((response) => {
           if (!response.data) {
             this.setState({networkError: response.message});
-            console.log(this.state);
           } else {
             this.setState({networkError: false});
           }
           this.setState((state) => ({
             isLoading: !state.isLoading,
           }));
-          console.log(this.state);
         });
     }
 
@@ -93,6 +85,11 @@ const withReviewValidation = (Component) => {
     }
   }
 
+  WithReviewValidation.propTypes = {
+    onUploadReview: PropTypes.func,
+    currentMovie: movieType,
+  };
+
   return WithReviewValidation;
 };
 
@@ -105,7 +102,8 @@ const mapDispatchToProps = {
   onUploadReview: Operation.uploadReview,
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(withReviewValidation);
+export {withReviewValidation};
+
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withReviewValidation

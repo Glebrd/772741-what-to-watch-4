@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCardTabs from "./movie-card-tabs";
+import {MovieCardTabs} from "./movie-card-tabs.jsx";
 
 const movie = {
   id: 201,

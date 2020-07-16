@@ -34,4 +34,4 @@ const init = () => {
   );
 };
 // Временно, чтоб работал маршрут /dev-review
-setTimeout(init, 1000)
+setTimeout(init, 1000);

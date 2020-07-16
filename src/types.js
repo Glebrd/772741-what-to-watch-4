@@ -33,3 +33,14 @@ export const userType = PropTypes.shape({
   avatarURL: PropTypes.string,
 });
 
+export const commentType = PropTypes.shape({
+  id: PropTypes.number,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }),
+  rating: PropTypes.number,
+  comment: PropTypes.string,
+  date: PropTypes.string,
+});
+

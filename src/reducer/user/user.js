@@ -50,7 +50,9 @@ const Operation = {
     return api.get(`/login`)
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-        dispatch(ActionCreator.setUser(response.data));
+        if (response.data !== undefined) {
+          dispatch(ActionCreator.setUser(response.data));
+        }
       })
       .catch((err) => {
         throw err;

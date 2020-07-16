@@ -5,7 +5,7 @@ import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-detail
 import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews.jsx";
 import {Tabs} from "../../const";
 import PropTypes from "prop-types";
-import {movieType} from "../../types";
+import {commentType, movieType} from "../../types";
 import {getComments} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
 
@@ -94,6 +94,9 @@ MovieCardTabs.propTypes = {
   movie: movieType,
   activeTab: PropTypes.string,
   onChangeTab: PropTypes.func,
+  comments: PropTypes.arrayOf(commentType),
 };
+
+export {MovieCardTabs};
 
 export default connect(mapStateToProps)(withTabs(MovieCardTabs));

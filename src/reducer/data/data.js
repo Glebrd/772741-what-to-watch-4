@@ -65,9 +65,6 @@ const Operation = {
           dispatch(ActionCreator.setComments(response.data));
         }
         return response;
-      })
-      .catch((error) => {
-        throw new Error(`${error} on uploading review`);
       });
   },
 };

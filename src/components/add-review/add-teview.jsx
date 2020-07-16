@@ -1,14 +1,19 @@
 import React from "react";
 import withReviewValidation from "../../hocs/with-review-validation/with-review-validation.jsx";
+import UserBlock from "../user-block/user-block.jsx";
+import {movieType} from "../../types";
+import PropTypes from "prop-types";
 
 const AddReview = (props) => {
   const {onRatingChange, onReviewChange, onSubmit, reviewIsValid, ratingIsValid, currentMovie, isLoading, networkError} = props;
-  const {title} = currentMovie;
+  const {title, background, poster, backgroundColor} = currentMovie;
   return (
-    <section className="movie-card movie-card--full">
+    <section
+      style={{backgroundColor}}
+      className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+          <img src={background} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -34,14 +39,12 @@ const AddReview = (props) => {
           </nav>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-            </div>
+            <UserBlock/>
           </div>
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+          <img src={poster} alt={title} width="218"
             height="327"/>
         </div>
       </div>
@@ -101,5 +104,18 @@ const AddReview = (props) => {
     </section>
   );
 };
+
+AddReview.propTypes = {
+  currentMovie: movieType,
+  onReviewChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  onRatingChange: PropTypes.func,
+  ratingIsValid: PropTypes.bool,
+  reviewIsValid: PropTypes.bool,
+  networkError: PropTypes.bool,
+  isLoading: PropTypes.bool,
+};
+
+export {AddReview};
 
 export default withReviewValidation(AddReview);
