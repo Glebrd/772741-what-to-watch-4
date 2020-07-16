@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {MOVIE_WAIT} from "../../const.js";
 import {ActionCreator} from "../../reducer/application/application";
+import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
 import {ScreenType} from "../../const";
 import {movieType} from "../../types";
@@ -62,6 +63,7 @@ const mapDispatchToProps = (dispatch) => ({
   onCardClick(currentMovie) {
     dispatch(ActionCreator.setCurrentMovie(currentMovie));
     dispatch(ActionCreator.setCurrentScreen(ScreenType.MOVIE));
+    dispatch(Operation.loadComments(currentMovie));
   },
 });
 

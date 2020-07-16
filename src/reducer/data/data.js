@@ -12,6 +12,7 @@ const initialState = {
 const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
+  SET_COMMENTS: `SET_COMMENTS`,
 };
 
 // Создаем action
@@ -28,6 +29,12 @@ const ActionCreator = {
       payload: movie,
     };
   },
+  setComments: (comments) => {
+    return {
+      type: ActionType.SET_COMMENTS,
+      payload: comments,
+    };
+  }
 };
 
 // Создаем operation
@@ -44,6 +51,25 @@ const Operation = {
         dispatch(ActionCreator.loadPromoMovie(response.data));
       });
   },
+
+  loadComments: (movie) => (dispatch, getState, api) => {
+    return api.get(`/comments/${movie.id}`)
+      .then(({data}) => {
+        dispatch(ActionCreator.setComments(data));
+      });
+  },
+  uploadReview: (movie, comment, rating) => (dispatch, _, api) => {
+    return api.post(`/comments/${movie.id}`, {rating, comment})
+      .then((response) => {
+        if (response !== undefined) {
+          dispatch(ActionCreator.setComments(response.data));
+        }
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(`${error} on uploading review`);
+      });
+  },
 };
 
 // Reducer На вход передаём state и action. Если state не указан,то берем изначальный.
@@ -56,6 +82,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_PROMO_MOVIE:
       return extend(state, {
         promoMovie: adaptMovie(action.payload),
+      });
+    case ActionType.SET_COMMENTS:
+      return extend(state, {
+        comments: action.payload,
       });
   }
   return state;

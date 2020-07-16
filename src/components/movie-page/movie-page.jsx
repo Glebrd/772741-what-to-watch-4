@@ -7,6 +7,7 @@ import {movieType} from "../../types";
 import {ActionCreator} from "../../reducer/application/application";
 import {ScreenType} from "../../const";
 import {getCurrentMovie, getSameGenreMovies} from "../../reducer/application/selectors";
+import UserBlock from "../user-block/user-block.jsx";
 
 const MoviePage = (props) => {
   const {currentMovie, sameGenreMovies, onPlayClick} = props;
@@ -34,11 +35,7 @@ const MoviePage = (props) => {
               </a>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </div>
+            <UserBlock/>
           </header>
 
           <div className="movie-card__wrap">

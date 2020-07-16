@@ -25,9 +25,13 @@ store.dispatch(Operation.loadMovies());
 store.dispatch(Operation.loadPromoMovie());
 store.dispatch(UserOperation.checkAuth());
 
-ReactDOM.render(
-    <Provider store={store}>
-      <App/>,
-    </Provider>,
-    document.querySelector(`#root`)
-);
+const init = () => {
+  ReactDOM.render(
+      <Provider store={store}>
+        <App/>,
+      </Provider>,
+      document.querySelector(`#root`)
+  );
+};
+// Временно, чтоб работал маршрут /dev-review
+setTimeout(init, 1000)

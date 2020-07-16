@@ -13,6 +13,7 @@ import {getPromoMovie} from "../../reducer/data/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation} from "../../reducer/user/user";
 import {checkIfObjectEmpty} from "../../utils";
+import AddReview from "../add-review/add-teview.jsx";
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -60,6 +61,9 @@ class App extends React.PureComponent {
           <Route exact path="/dev-film">
             <MoviePage
             />
+          </Route>
+          <Route exact path="/dev-review">
+            <AddReview/>
           </Route>
         </Switch>
       </BrowserRouter>
