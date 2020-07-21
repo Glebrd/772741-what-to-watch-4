@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import {ScreenType} from "../../const.js";
 import {connect} from "react-redux";
 import {movieType} from "../../types";
@@ -13,63 +13,26 @@ import {getPromoMovie} from "../../reducer/data/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation} from "../../reducer/user/user";
 import {checkIfObjectEmpty} from "../../utils";
-import AddReview from "../add-review/add-teview.jsx";
+import history from "../../history";
+import AddReview from "../add-review/add-review.jsx";
 
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
   }
-  _renderApp() {
-    const {currentScreen, promoMovie, currentMovie, onExit, login} = this.props;
-    switch (currentScreen) {
-      case ScreenType.MOVIE:
-        return (
-          <MoviePage
-          />
-        );
-      case ScreenType.MAIN:
-        return (
-          <Main
-          />
-        );
-      case ScreenType.PLAYER:
-        return (
-          <Player
-            onExit = {onExit}
-            // Если выбран фильм в каталоге,то показываем его,если нет,то промо фильм.
-            currentMovie = {checkIfObjectEmpty(currentMovie)
-              ? currentMovie
-              : promoMovie}
-          />
-        );
-      case ScreenType.SIGN_IN:
-        return (
-          <SignIn
-            onSubmit={login}
-          />
-        );
-    }
-    return null;
-  }
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path="/">
-            {this._renderApp()}
-          </Route>
-          <Route exact path="/dev-film">
-            <MoviePage
-            />
-          </Route>
-          <Route exact path="/dev-review">
-            <AddReview/>
-          </Route>
+          <Route exact path='/films/:id' component={MoviePage} />
+          <Route exact path='/films/:id/player' component={Player}/>
+          <Route exact path='/films/:id/review' component={AddReview}/>
+          <Route exact path='/login' component={SignIn}/>
+          <Route exact path='/' component={Main}/>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
-
 }
 
 const mapStateToProps = (state) => ({
@@ -78,15 +41,6 @@ const mapStateToProps = (state) => ({
   currentMovie: getCurrentMovie(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onExit() {
-    dispatch(ActionCreator.setCurrentScreen(ScreenType.MAIN));
-  },
-  login(authData) {
-    dispatch(Operation.login(authData));
-    dispatch(ActionCreator.setCurrentScreen(ScreenType.MAIN));
-  },
-});
 
 App.propTypes = {
   currentScreen: PropTypes.string,
@@ -97,4 +51,4 @@ App.propTypes = {
 };
 
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

@@ -7,22 +7,23 @@ import {ScreenType} from "../../const";
 import {checkIfObjectEmpty} from "../../utils";
 import PropTypes from "prop-types";
 import {userType} from "../../types";
+import {Link} from "react-router-dom";
 
 
 const UserBlock = (props) => {
-  const {user, onSignInClick} = props;
+  const {user} = props;
   const {avatarURL} = user;
   let fullAvatarURL = `https://4.react.pages.academy${avatarURL}`;
 
   const userAvatarBlock =
-    <div className="user-block__avatar">
-      <img src={fullAvatarURL} alt="User avatar" width="63" height="63"/>
-    </div>;
+    <Link to={`/mylist`}>
+      <div className="user-block__avatar">
+        <img src={fullAvatarURL} alt="User avatar" width="63" height="63"/>
+      </div>
+    </Link>;
 
   const userSignInLink =
-    <a
-      onClick={onSignInClick} href="" className="user-block__link">Sign in
-    </a>;
+    <Link to={`/login`} href="" className="user-block__link">Sign in</Link>;
 
   return (
     <div className="user-block">

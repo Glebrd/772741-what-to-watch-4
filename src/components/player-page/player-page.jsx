@@ -3,6 +3,11 @@ import withVideo from "../../hocs/with-video/with-video";
 import PlayerControls from "../player-controls/player-controls.jsx";
 import PropTypes from "prop-types";
 import {movieType} from "../../types";
+import history from "../../history";
+import {getCurrentMovie, getCurrentMovieByID} from "../../reducer/application/selectors";
+import {connect} from "react-redux";
+import {getMovies} from "../../reducer/data/selectors";
+import {Link} from "react-router-dom";
 
 const getSvgIconPlayPause = (isPlaying) =>
   isPlaying
@@ -10,21 +15,22 @@ const getSvgIconPlayPause = (isPlaying) =>
     : `#play-s`;
 
 const PlayerPage = (props)=>{
-  const {currentMovie, videoRef, onPlayPause, onFullScreen, isPlaying, onExit} = props;
-  const {poster, videoPreview, title} = currentMovie;
+  const {currentMovie, videoRef, onPlayPause, onFullScreen, isPlaying, history} = props;
+  const {picture, videoLink, title} = currentMovie;
   return (
     <div className="player">
       <video
-        src={videoPreview}
+        src={videoLink}
         ref={videoRef}
-        className="player__video" poster={poster}
+        className="player__video" poster={picture}
       >
       </video>
 
+
       <button
-        onClick = {onExit}
-        type="button" className="player__exit">Exit
-      </button>
+        onClick={history.goBack}
+        type="button" className="player__exit">Exit </button>
+
 
       <div className="player__controls">
 
@@ -67,5 +73,11 @@ PlayerPage.propTypes = {
   onExit: PropTypes.func,
 };
 
+
+const mapStateToProps = (state, props) => ({
+  currentMovie: getCurrentMovieByID(state, props.match.params.id),
+});
+
 export {PlayerPage};
-export default withVideo(PlayerPage);
+
+export default connect(mapStateToProps)(withVideo(PlayerPage));

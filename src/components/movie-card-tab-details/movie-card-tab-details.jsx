@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 const MovieCardTabDetails = (props) => {
   const {runTime, starring, director, date, genre} = props;
+  const runTimeFormated = moment(runTime).format(`H[h] MM[m]`);
 
   return (
     <div className="movie-card__text movie-card__row">
@@ -24,7 +26,7 @@ const MovieCardTabDetails = (props) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{runTime}</span>
+          <span className="movie-card__details-value">{runTimeFormated}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>

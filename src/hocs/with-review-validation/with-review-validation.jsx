@@ -5,6 +5,7 @@ import {getMovies} from "../../reducer/data/selectors";
 import {compose} from "redux";
 import {movieType} from "../../types";
 import PropTypes from "prop-types";
+import {getCurrentMovieByID} from "../../reducer/application/selectors";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
@@ -93,9 +94,8 @@ const withReviewValidation = (Component) => {
   return WithReviewValidation;
 };
 
-const mapStateToProps = (state) => ({
-  // Временно, чтоб работал маршрут /dev-review
-  currentMovie: getMovies(state)[2],
+const mapStateToProps = (state, props) => ({
+  currentMovie: getCurrentMovieByID(state, props.match.params.id),
 });
 
 const mapDispatchToProps = {

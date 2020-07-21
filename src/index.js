@@ -21,9 +21,6 @@ const store = createStore(
     )
 );
 
-store.dispatch(Operation.loadMovies());
-store.dispatch(Operation.loadPromoMovie());
-store.dispatch(UserOperation.checkAuth());
 
 const init = () => {
   ReactDOM.render(
@@ -33,5 +30,9 @@ const init = () => {
       document.querySelector(`#root`)
   );
 };
-// Временно, чтоб работал маршрут /dev-review
-setTimeout(init, 1000);
+
+store.dispatch(Operation.loadPromoMovie());
+store.dispatch(Operation.loadMovies()).then(init);
+
+
+

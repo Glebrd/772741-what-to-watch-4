@@ -6,7 +6,7 @@ export const adaptMovie = (movie) => {
     picture: movie.preview_image,
     background: movie.background_image,
     backgroundColor: movie.background_color,
-    videoLInk: movie.video_link,
+    videoLink: movie.video_link,
     videoPreview: movie.preview_video_link,
     description: movie.description,
     rating: movie.rating,

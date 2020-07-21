@@ -3,6 +3,9 @@ import withReviewValidation from "../../hocs/with-review-validation/with-review-
 import UserBlock from "../user-block/user-block.jsx";
 import {movieType} from "../../types";
 import PropTypes from "prop-types";
+import {getCurrentMovieByID} from "../../reducer/application/selectors";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 const AddReview = (props) => {
   const {onRatingChange, onReviewChange, onSubmit, reviewIsValid, ratingIsValid, currentMovie, isLoading, networkError} = props;
@@ -20,17 +23,17 @@ const AddReview = (props) => {
 
         <header className="page-header">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link to="/" className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">{title}</a>
+                <Link to={`/films/${currentMovie.id}`} className="breadcrumbs__link">{title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>

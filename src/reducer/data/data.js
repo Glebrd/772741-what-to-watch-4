@@ -1,6 +1,7 @@
 import {extend} from "../../utils";
 import {adaptMovies} from "../../adapters/movies";
 import {adaptMovie} from "../../adapters/movies";
+import {replaceMovie, replacePromo} from "../../utils";
 
 // Изначальное состояние.
 const initialState = {
@@ -13,6 +14,7 @@ const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
   SET_COMMENTS: `SET_COMMENTS`,
+  UPDATE_MOVIE: `UPDATE_MOVIE`,
 };
 
 // Создаем action
@@ -34,7 +36,13 @@ const ActionCreator = {
       type: ActionType.SET_COMMENTS,
       payload: comments,
     };
-  }
+  },
+  updateMovie: (movie) => {
+    return {
+      type: ActionType.UPDATE_MOVIE,
+      payload: movie
+    };
+  },
 };
 
 // Создаем operation
@@ -51,7 +59,6 @@ const Operation = {
         dispatch(ActionCreator.loadPromoMovie(response.data));
       });
   },
-
   loadComments: (movie) => (dispatch, getState, api) => {
     return api.get(`/comments/${movie.id}`)
       .then(({data}) => {
@@ -67,23 +74,45 @@ const Operation = {
         return response;
       });
   },
+  changeFavoriteStatus: (currentMovie) => (dispatch, _, api) => {
+    return api.post(`/favorite/${currentMovie.id}/${+!currentMovie.isFavorite}`)
+      .then(({data}) => {
+        if (data) {
+          dispatch(ActionCreator.updateMovie(data));
+        }
+      });
+  },
 };
 
 // Reducer На вход передаём state и action. Если state не указан,то берем изначальный.
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_MOVIES:
-      return extend(state, {
-        movies: adaptMovies(action.payload),
-      });
+      return extend(state,
+          {
+            movies: adaptMovies(action.payload),
+          });
     case ActionType.LOAD_PROMO_MOVIE:
-      return extend(state, {
-        promoMovie: adaptMovie(action.payload),
-      });
+      return extend(state,
+          {
+            promoMovie: adaptMovie(action.payload),
+          });
     case ActionType.SET_COMMENTS:
-      return extend(state, {
-        comments: action.payload,
-      });
+      return extend(state,
+          {
+            comments: action.payload,
+          });
+    case ActionType.UPDATE_MOVIE:
+      const updatedMovie = adaptMovie(action.payload);
+
+      return Object.assign({},
+          state,
+          {
+            movies: replaceMovie(updatedMovie,
+                state.movies),
+            promoMovie: replacePromo(updatedMovie,
+                state.promoMovie)
+          });
   }
   return state;
 };

@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 const MovieCardTabReviews = (props) => {
   const {comments} = props;
   const secondColumnStart = Math.ceil(comments.length / 2);
+  const formatDate = (date) => moment(date).format(`MMMM DD, YYYY`);
 
   return (
     <div className="movie-card__reviews movie-card__row">
@@ -15,7 +17,7 @@ const MovieCardTabReviews = (props) => {
 
               <footer className="review__details">
                 <cite className="review__author">{comment.name}</cite>
-                <time className="review__date" dateTime="2015-11-18">{comment.date}</time>
+                <time className="review__date" dateTime="2015-11-18">{formatDate(comment.date)}</time>
               </footer>
             </blockquote>
 
@@ -31,7 +33,7 @@ const MovieCardTabReviews = (props) => {
 
               <footer className="review__details">
                 <cite className="review__author">{comment.name}</cite>
-                <time className="review__date" dateTime="2015-11-18">{comment.date}</time>
+                <time className="review__date" dateTime="2015-11-18">{formatDate(comment.date)}</time>
               </footer>
             </blockquote>
 

@@ -10,14 +10,12 @@ export const getCurrentScreen = (state) => state.application.currentScreen;
 export const getCurrentGenre = (state) => state.application.currentGenre;
 export const getNumberOfMoviesOnMain = (state) => state.application.numberOfMoviesOnMain;
 export const getCurrentMovie = (state) => state.application.currentMovie;
+export const getCurrentMovieByID = (state, currentMovieID) => state.data.movies.find((movie) => movie.id === parseInt(currentMovieID, 10));
 
-export const getSameGenreMovies = createSelector(
-    getMovies, getCurrentMovie,
-    (movies, movie) =>
-      movies
-      .filter(({id, genre}) => id !== movie.id && genre === movie.genre)
-      .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH)
-);
+export const getSameGenreMovies = (state, currentMovie) =>
+  state.data.movies
+  .filter(({id, genre}) => id !== currentMovie.id && genre === currentMovie.genre)
+  .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
 
 export const getFilteredMovies = createSelector(
     getMovies, getCurrentGenre,

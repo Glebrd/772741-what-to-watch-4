@@ -5,8 +5,9 @@ import {MOVIE_WAIT} from "../../const.js";
 import {ActionCreator} from "../../reducer/application/application";
 import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
-import {ScreenType} from "../../const";
 import {movieType} from "../../types";
+import {Link} from "react-router-dom";
+
 
 class SmallMovieCard extends React.PureComponent {
   constructor(props) {
@@ -44,28 +45,34 @@ class SmallMovieCard extends React.PureComponent {
           onCardClick(smallMovieCard);
         }}
         className="small-movie-card catalog__movies-card">
-        <div className="small-movie-card__image">
-          <VideoPlayer
-            videoRef={this._videoRef}
-            poster={picture}
-            videoPreview = {videoPreview}
-          />
-        </div>
+        <Link
+          to={`/films/${smallMovieCard.id}`}
+        >
+          <div className="small-movie-card__image">
+            <VideoPlayer
+              videoRef={this._videoRef}
+              poster={picture}
+              videoPreview = {videoPreview}
+            />
+          </div>
+        </Link>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+          <Link
+            className="small-movie-card__link"
+            to={`/films/${smallMovieCard.id}`}
+          >{title}        </Link>
         </h3>
       </article>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onCardClick(currentMovie) {
-    dispatch(ActionCreator.setCurrentMovie(currentMovie));
-    dispatch(ActionCreator.setCurrentScreen(ScreenType.MOVIE));
-    dispatch(Operation.loadComments(currentMovie));
-  },
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   onCardClick(currentMovie) {
+//     dispatch(ActionCreator.setCurrentMovie(currentMovie));
+//     dispatch(Operation.loadComments(currentMovie));
+//   },
+// });
 
 SmallMovieCard.propTypes = {
   smallMovieCard: movieType,
@@ -73,4 +80,4 @@ SmallMovieCard.propTypes = {
 };
 
 export {SmallMovieCard};
-export default connect(null, mapDispatchToProps)(SmallMovieCard);
+export default SmallMovieCard;

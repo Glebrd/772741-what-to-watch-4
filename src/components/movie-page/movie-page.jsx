@@ -5,16 +5,24 @@ import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
 import {connect} from "react-redux";
 import {movieType, userType} from "../../types";
 import {ActionCreator} from "../../reducer/application/application";
+import {Operation} from "../../reducer/data/data";
 import {ScreenType} from "../../const";
-import {getCurrentMovie, getSameGenreMovies} from "../../reducer/application/selectors";
+import {getCurrentMovie, getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application/selectors";
 import UserBlock from "../user-block/user-block.jsx";
 import {getUser} from "../../reducer/user/selectors";
 import {checkIfObjectEmpty} from "../../utils";
+import {getMovies} from "../../reducer/data/selectors";
+import {Link} from "react-router-dom";
+
+const getSvgIconMyList = (isFavorite) =>
+  isFavorite
+    ? `#in-list`
+    : `#add`;
 
 const MoviePage = (props) => {
-  const {currentMovie, sameGenreMovies, onPlayClick, user} = props;
-  const {title, genre, date, poster, background, backgroundColor} = currentMovie;
-
+  const {currentMovie, sameGenreMovies, changeFavoriteStatus, user, history} = props;
+  const {title, genre, date, poster, background, backgroundColor, isFavorite} = currentMovie;
+  console.log(history);
   return (
     <React.Fragment>
       <section
@@ -30,11 +38,11 @@ const MoviePage = (props) => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to="/" className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <UserBlock/>
@@ -49,22 +57,26 @@ const MoviePage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
+                <Link to={`/films/${currentMovie.id}/player`}>
+                  <button
+                  // onClick = {onPlayClick}
+                    className="btn btn--play movie-card__button" type="button">
+                    <svg viewBox="0 0 19 19" width="19" height="19">
+                      <use xlinkHref="#play-s"></use>
+                    </svg>
+                    <span>Play</span>
+                  </button>
+                </Link>
                 <button
-                  onClick = {onPlayClick}
-                  className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                  onClick={() => {changeFavoriteStatus(currentMovie)}}
+                  className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
+                    <use xlinkHref={getSvgIconMyList(isFavorite)}></use>
                   </svg>
                   <span>My list</span>
                 </button>
                 {checkIfObjectEmpty(user)
-                  ? <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  ? <Link to={`/films/${currentMovie.id}/review`} href="add-review.html" className="btn movie-card__button">Add review</Link>
                   : ``
                 }
               </div>
@@ -111,17 +123,22 @@ const MoviePage = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  sameGenreMovies: getSameGenreMovies(state),
-  currentMovie: getCurrentMovie(state),
-  user: getUser(state),
-});
+const mapStateToProps = (state, props) => {
+  const currentMovie = getCurrentMovieByID(state, props.match.params.id);
+  return {
+    currentMovie,
+    sameGenreMovies: getSameGenreMovies(state, currentMovie),
+    user: getUser(state),
+    // currentMovie: getMovies(state).find((x) => x.id === parseInt(props.match.params.id, 10)),
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  onPlayClick() {
-    dispatch(ActionCreator.setCurrentScreen(ScreenType.PLAYER));
+  changeFavoriteStatus(movie) {
+    dispatch(Operation.changeFavoriteStatus(movie));
   },
 });
+
 
 MoviePage.propTypes = {
   sameGenreMovies: PropTypes.arrayOf(movieType),

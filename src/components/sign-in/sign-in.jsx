@@ -1,6 +1,11 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import withValidation from "../../hocs/with-validation/with-validation.js";
+import {ActionCreator} from "../../reducer/application/application";
+import {ScreenType} from "../../const";
+import {Operation} from "../../reducer/user/user";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 
 class SignIn extends PureComponent {
@@ -13,13 +18,14 @@ class SignIn extends PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(evt) {
-    const {onSubmit, isValid} = this.props;
+    const {onSubmit, isValid, history} = this.props;
     evt.preventDefault();
     if (isValid) {
       onSubmit({
         login: this.loginRef.current.value,
         password: this.passwordRef.current.value,
       });
+      history.push(`/`);
     }
   }
 
@@ -30,11 +36,11 @@ class SignIn extends PureComponent {
       <div className="user-page">
         <header className="page-header user-page__head">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link to="/" className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <h1 className="page-title user-page__title">Sign in</h1>
@@ -96,6 +102,16 @@ SignIn.propTypes = {
   onChange: PropTypes.func,
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  onExit() {
+    dispatch(ActionCreator.setCurrentScreen(ScreenType.MAIN));
+  },
+  onSubmit(authData) {
+    dispatch(Operation.login(authData));
+  },
+});
+
 export {SignIn};
 
-export default withValidation(SignIn);
+// export default withValidation(SignIn);
+export default connect(null, mapDispatchToProps)(withValidation(SignIn));

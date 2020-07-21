@@ -6,7 +6,8 @@ import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button.jsx";
 import {ActionCreator} from "../../reducer/application/application";
-import {ScreenType} from "../../const.js";
+// import history from "../../history";
+
 import {
   getCurrentGenre,
   getFilteredMovies,
@@ -15,9 +16,10 @@ import {
 } from "../../reducer/application/selectors";
 import {getPromoMovie} from "../../reducer/data/selectors";
 import UserBlock from "../user-block/user-block.jsx";
+import {Link} from "react-router-dom";
 
 const Main = (props) => {
-  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onPlayClick} = props;
+  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, history, onPlayClick} = props;
   const {title, genre, date, background, poster} = currentMovie;
 
   return (
@@ -53,15 +55,14 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button
-                  onClick = {onPlayClick}
-                  className="btn btn--play movie-card__button" type="button"
-                >
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
+                <Link to={`/films/${currentMovie.id}/player`}>
+                  <button className="btn btn--play movie-card__button" type="button">
+                    <svg viewBox="0 0 19 19" widtth="19" height="19">
+                      <use xlinkHref="#play-s"></use>
+                    </svg>
+                    <span>Play</span>
+                  </button>
+                </Link>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
@@ -121,8 +122,8 @@ const mapDispatchToProps = (dispatch) => ({
   onGenreChange(genre) {
     dispatch(ActionCreator.setCurrentGenre(genre));
   },
-  onPlayClick() {
-    dispatch(ActionCreator.setCurrentScreen(ScreenType.PLAYER));
+  onPlayClick(currentMovie) {
+    dispatch(ActionCreator.setCurrentMovie(currentMovie));
   },
 });
 
