@@ -5,7 +5,6 @@ export const extend = (a, b) => {
 };
 
 export const formatTime = (seconds) => {
-  console.log(seconds);
   return new Date(seconds * MILLISECONDS_IN_SECOND).toISOString()
     .substr(ISOStringProperties.START_OF_HOURS, ISOStringProperties.LENGTH_OF_HH_MM_SS_SUBSTRING);
 };

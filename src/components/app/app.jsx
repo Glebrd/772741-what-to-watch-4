@@ -3,16 +3,12 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import {Switch, Route, Router} from "react-router-dom";
-import {ScreenType} from "../../const.js";
 import {connect} from "react-redux";
 import {movieType} from "../../types";
 import Player from "../player-page/player-page.jsx";
-import {ActionCreator} from "../../reducer/application/application";
 import {getCurrentMovie, getCurrentScreen} from "../../reducer/application/selectors";
 import {getPromoMovie} from "../../reducer/data/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
-import {Operation} from "../../reducer/user/user";
-import {checkIfObjectEmpty} from "../../utils";
 import history from "../../history";
 import AddReview from "../add-review/add-review.jsx";
 

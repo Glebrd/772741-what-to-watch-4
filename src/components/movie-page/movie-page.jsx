@@ -4,14 +4,11 @@ import PropTypes from "prop-types";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
 import {connect} from "react-redux";
 import {movieType, userType} from "../../types";
-import {ActionCreator} from "../../reducer/application/application";
 import {Operation} from "../../reducer/data/data";
-import {ScreenType} from "../../const";
-import {getCurrentMovie, getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application/selectors";
+import {getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application/selectors";
 import UserBlock from "../user-block/user-block.jsx";
 import {getUser} from "../../reducer/user/selectors";
 import {checkIfObjectEmpty} from "../../utils";
-import {getMovies} from "../../reducer/data/selectors";
 import {Link} from "react-router-dom";
 
 const getSvgIconMyList = (isFavorite) =>
@@ -20,9 +17,8 @@ const getSvgIconMyList = (isFavorite) =>
     : `#add`;
 
 const MoviePage = (props) => {
-  const {currentMovie, sameGenreMovies, changeFavoriteStatus, user, history} = props;
+  const {currentMovie, sameGenreMovies, onButtonListClick, user} = props;
   const {title, genre, date, poster, background, backgroundColor, isFavorite} = currentMovie;
-  console.log(history);
   return (
     <React.Fragment>
       <section
@@ -68,7 +64,9 @@ const MoviePage = (props) => {
                   </button>
                 </Link>
                 <button
-                  onClick={() => {changeFavoriteStatus(currentMovie)}}
+                  onClick={() => {
+                    onButtonListClick(currentMovie);
+                  }}
                   className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref={getSvgIconMyList(isFavorite)}></use>
@@ -129,12 +127,11 @@ const mapStateToProps = (state, props) => {
     currentMovie,
     sameGenreMovies: getSameGenreMovies(state, currentMovie),
     user: getUser(state),
-    // currentMovie: getMovies(state).find((x) => x.id === parseInt(props.match.params.id, 10)),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  changeFavoriteStatus(movie) {
+  onButtonListClick(movie) {
     dispatch(Operation.changeFavoriteStatus(movie));
   },
 });
@@ -145,6 +142,7 @@ MoviePage.propTypes = {
   currentMovie: movieType,
   onPlayClick: PropTypes.func,
   user: userType,
+  onButtonListClick: PropTypes.func,
 };
 
 export {MoviePage};

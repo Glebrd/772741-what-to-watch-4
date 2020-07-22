@@ -1,7 +1,7 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
 import {reducer, ActionType, Operation} from "./data.js";
-import {extend} from "../../utils";
+import {extend, replaceMovie, replacePromo} from "../../utils";
 import {adaptMovie, adaptMovies} from "../../adapters/movies";
 
 const initialState = {
@@ -167,20 +167,29 @@ describe(`Reducer works correctly`, () => {
     })).toEqual(extend(initialState,
         {movies: adaptMovies(moviesMock)}));
   });
-
+  it(`Reducer should update movies correctly`, () => {
+    expect(reducer(initialState, {
+      type: ActionType.UPDATE_MOVIE,
+      payload: movieMock,
+    })).toEqual(extend(initialState,
+        {
+          movies: replaceMovie(adaptMovie(movieMock), initialState.movies),
+          promoMovie: replacePromo(adaptMovie(movieMock), initialState.promoMovie)
+        }));
+  });
 });
 
 describe(`Operations work correctly`, () => {
   it(`Should make a correct API call to /films/promo`, function () {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const questionLoader = Operation.loadPromoMovie();
+    const promoMovieLoader = Operation.loadPromoMovie();
 
     apiMock
       .onGet(`/films/promo`)
       .reply(200, [{fake: true}]);
 
-    return questionLoader(dispatch, () => {}, api)
+    return promoMovieLoader(dispatch, () => {}, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
@@ -192,13 +201,13 @@ describe(`Operations work correctly`, () => {
   it(`Should make a correct API call to /films`, function () {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const questionLoader = Operation.loadMovies();
+    const moviesLoader = Operation.loadMovies();
 
     apiMock
       .onGet(`/films`)
       .reply(200, [{fake: true}]);
 
-    return questionLoader(dispatch, () => {}, api)
+    return moviesLoader(dispatch, () => {}, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {

@@ -25,7 +25,7 @@ const getSvgIconMyList = (isFavorite) =>
     : `#add`;
 
 const Main = (props) => {
-  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, changeFavoriteStatus} = props;
+  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onButtonListClick} = props;
   const {title, genre, date, background, poster, isFavorite} = currentMovie;
 
   return (
@@ -70,7 +70,9 @@ const Main = (props) => {
                   </button>
                 </Link>
                 <button
-                  onClick={() => {changeFavoriteStatus(currentMovie)}}
+                  onClick={() => {
+                    onButtonListClick(currentMovie);
+                  }}
                   className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref={getSvgIconMyList(isFavorite)}></use>
@@ -133,7 +135,7 @@ const mapDispatchToProps = (dispatch) => ({
   onPlayClick(currentMovie) {
     dispatch(ActionCreator.setCurrentMovie(currentMovie));
   },
-  changeFavoriteStatus(movie) {
+  onButtonListClick(movie) {
     dispatch(Operation.changeFavoriteStatus(movie));
   },
 });
@@ -146,6 +148,7 @@ Main.propTypes = {
   genres: PropTypes.object,
   onGenreChange: PropTypes.func,
   onPlayClick: PropTypes.func,
+  onButtonListClick: PropTypes.func,
 };
 
 export {Main};

@@ -3,11 +3,8 @@ import withVideo from "../../hocs/with-video/with-video";
 import PlayerControls from "../player-controls/player-controls.jsx";
 import PropTypes from "prop-types";
 import {movieType} from "../../types";
-import history from "../../history";
-import {getCurrentMovie, getCurrentMovieByID} from "../../reducer/application/selectors";
+import {getCurrentMovieByID} from "../../reducer/application/selectors";
 import {connect} from "react-redux";
-import {getMovies} from "../../reducer/data/selectors";
-import {Link} from "react-router-dom";
 
 const getSvgIconPlayPause = (isPlaying) =>
   isPlaying
@@ -71,6 +68,7 @@ PlayerPage.propTypes = {
   onFullScreen: PropTypes.func,
   isPlaying: PropTypes.bool,
   onExit: PropTypes.func,
+  history: PropTypes.object,
 };
 
 

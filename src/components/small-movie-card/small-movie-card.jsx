@@ -2,9 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {MOVIE_WAIT} from "../../const.js";
-import {ActionCreator} from "../../reducer/application/application";
-import {Operation} from "../../reducer/data/data";
-import {connect} from "react-redux";
 import {movieType} from "../../types";
 import {Link} from "react-router-dom";
 

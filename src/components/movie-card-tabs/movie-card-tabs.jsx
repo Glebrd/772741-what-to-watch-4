@@ -6,9 +6,8 @@ import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-review
 import {Tabs} from "../../const";
 import PropTypes from "prop-types";
 import {commentType, movieType} from "../../types";
-import {getComments, getMovies} from "../../reducer/data/selectors";
+import {getComments} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/application/application";
 import {Operation} from "../../reducer/data/data";
 
 const DEFAULT_ACTIVE_ITEM = Tabs.OVERVIEW;
@@ -17,10 +16,10 @@ class MovieCardTabs extends React.PureComponent {
     super(props);
   }
   componentDidMount() {
-    this.props.onRewiewsTabClick(this.props.movie);
+    this.props.onReviewsTabClick(this.props.movie);
   }
   render() {
-    const {movie, onChangeTab, activeTab, comments, onRewiewsTabClick} = this.props;
+    const {movie, onChangeTab, activeTab, comments} = this.props;
     const {rating, description, starring, director, scores, date, runTime, genre} = movie;
     let currentlyActiveTab = activeTab ? activeTab : DEFAULT_ACTIVE_ITEM;
     return (
@@ -100,7 +99,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onRewiewsTabClick(movie) {
+  onReviewsTabClick(movie) {
     dispatch(Operation.loadComments(movie));
   },
 });
@@ -110,6 +109,7 @@ MovieCardTabs.propTypes = {
   activeTab: PropTypes.string,
   onChangeTab: PropTypes.func,
   comments: PropTypes.arrayOf(commentType),
+  onReviewsTabClick: PropTypes.func,
 };
 
 export {MovieCardTabs};

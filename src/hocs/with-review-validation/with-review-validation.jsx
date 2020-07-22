@@ -1,7 +1,6 @@
 import React from "react";
 import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
-import {getMovies} from "../../reducer/data/selectors";
 import {compose} from "redux";
 import {movieType} from "../../types";
 import PropTypes from "prop-types";
