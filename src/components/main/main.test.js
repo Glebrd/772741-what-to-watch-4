@@ -4,6 +4,8 @@ import Main from "./main";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {adaptMovie, adaptMovies} from "../../adapters/movies";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const mockStore = configureStore([]);
 
@@ -65,10 +67,12 @@ const store = mockStore({
 it(`Render Main`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <Main
-          />
-        </Provider>
+        <Router history={history}>
+          <Provider store={store}>
+            <Main
+            />
+          </Provider>
+        </Router>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

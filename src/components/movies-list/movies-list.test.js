@@ -3,6 +3,8 @@ import renderer from "react-test-renderer";
 import MoviesList from "./movies-list";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const mockStore = configureStore([]);
 
@@ -46,11 +48,13 @@ it(`Catalog renders correctly`, () => {
   const tree = renderer
 
     .create(
-        <Provider store={store}>
-          <MoviesList
-            movies={movies}
-          />
-        </Provider>
+        <Router history={history}>
+          <Provider store={store}>
+            <MoviesList
+              movies={movies}
+            />
+          </Provider>
+        </Router>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

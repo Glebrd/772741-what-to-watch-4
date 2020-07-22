@@ -7,14 +7,12 @@ exports[`Player page renders 1`] = `
   <video
     className="player__video"
     poster="img/revenant.jpg"
-    src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
   />
   <button
     className="player__exit"
-    onClick={[Function]}
     type="button"
   >
-    Exit
+    Exit 
   </button>
   <div
     className="player__controls"

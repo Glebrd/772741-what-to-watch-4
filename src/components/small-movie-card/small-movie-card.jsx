@@ -64,13 +64,6 @@ class SmallMovieCard extends React.PureComponent {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//   onCardClick(currentMovie) {
-//     dispatch(ActionCreator.setCurrentMovie(currentMovie));
-//     dispatch(Operation.loadComments(currentMovie));
-//   },
-// });
-
 SmallMovieCard.propTypes = {
   smallMovieCard: movieType,
   onCardClick: PropTypes.func,

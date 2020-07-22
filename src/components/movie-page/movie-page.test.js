@@ -1,9 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePage from "./movie-page";
+import {MoviePage} from "./movie-page";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import {adaptMovie, adaptMovies} from "../../adapters/movies";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const mockStore = configureStore([]);
 
@@ -13,7 +15,7 @@ const movies = [
     title: `1+1`,
     picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     genre: `Comedy`,
-    date: `2010`,
+    date: 2010,
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     rating: 9.5,
@@ -28,7 +30,7 @@ const movies = [
     title: `Inception`,
     picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     genre: `Comedy`,
-    date: `2010`,
+    date: 2010,
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     rating: 9.1,
@@ -45,7 +47,7 @@ const movie = {
   title: `Pulp Fiction`,
   picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   genre: `Crime`,
-  date: `1994`,
+  date: 1994,
   poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   background: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   rating: 7.9,
@@ -56,6 +58,8 @@ const movie = {
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
+jest.mock(`../movie-card-tabs/movie-card-tabs.jsx`, () => `movieCardTabs`);
+
 const store = mockStore({
   data: {movies: adaptMovies(movies)},
   application: {currentMovie: adaptMovie(movie)},
@@ -65,10 +69,15 @@ const store = mockStore({
 it(`Movie page renders`, () => {
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <MoviePage
-          />
-        </Provider>
+        <Router history={history}>
+          <Provider store={store}>
+            <MoviePage
+              currentMovie={movie}
+              user = {{}}
+              sameGenreMovies = {movies}
+            />
+          </Provider>
+        </Router>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

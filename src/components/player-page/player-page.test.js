@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {PlayerPage} from "./player-page";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const currentMovie = {
   id: 7,
@@ -53,10 +55,13 @@ const onExit = () => {};
 it(`Player page renders`, () => {
   const tree = renderer
     .create(
-        <PlayerPage
-          onExit = {onExit}
-          currentMovie = {currentMovie}
-        />
+        <Router history={history}>
+          <PlayerPage
+            onExit = {onExit}
+            currentMovie = {currentMovie}
+            history={{}}
+          />
+        </Router>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

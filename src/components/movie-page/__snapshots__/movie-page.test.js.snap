@@ -18,6 +18,7 @@ Array [
       >
         <img
           alt="The Grand Budapest Hotel"
+          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         />
       </div>
       <h1
@@ -33,7 +34,8 @@ Array [
         >
           <a
             className="logo__link"
-            href="main.html"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -55,16 +57,21 @@ Array [
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            href="/mylist"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="https://4.react.pages.academyimg/1.png"
-              width="63"
-            />
-          </div>
+            <div
+              className="user-block__avatar"
+            >
+              <img
+                alt="User avatar"
+                height="63"
+                src="https://4.react.pages.academyimg/1.png"
+                width="63"
+              />
+            </div>
+          </a>
         </div>
       </header>
       <div
@@ -77,6 +84,7 @@ Array [
             className="movie-card__title"
           >
              
+            Pulp Fiction
              
           </h2>
           <p
@@ -89,31 +97,38 @@ Array [
             </span>
             <span
               className="movie-card__year"
-            />
+            >
+              1994
+            </span>
           </p>
           <div
             className="movie-card__buttons"
           >
-            <button
-              className="btn btn--play movie-card__button"
+            <a
+              href="/films/478/player"
               onClick={[Function]}
-              type="button"
             >
-              <svg
-                height="19"
-                viewBox="0 0 19 19"
-                width="19"
+              <button
+                className="btn btn--play movie-card__button"
+                type="button"
               >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-            </button>
+                <svg
+                  height="19"
+                  viewBox="0 0 19 19"
+                  width="19"
+                >
+                  <use
+                    xlinkHref="#play-s"
+                  />
+                </svg>
+                <span>
+                  Play
+                </span>
+              </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -129,12 +144,7 @@ Array [
                 My list
               </span>
             </button>
-            <a
-              className="btn movie-card__button"
-              href="add-review.html"
-            >
-              Add review
-            </a>
+            
           </div>
         </div>
       </div>
@@ -151,102 +161,34 @@ Array [
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
+            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
             width="218"
           />
         </div>
-        <div
-          className="movie-card__desc"
-        >
-          <nav
-            className="movie-nav movie-card__nav"
-          >
-            <ul
-              className="movie-nav__list"
-            >
-              <li
-                className="movie-nav__item movie-nav__item--active"
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Overview
-                </a>
-              </li>
-              <li
-                className="movie-nav__item "
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Details
-                </a>
-              </li>
-              <li
-                className="movie-nav__item "
-              >
-                <a
-                  className="movie-nav__link"
-                  href="#"
-                  onClick={[Function]}
-                >
-                  Reviews
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div
-            className="movie-rating"
-          >
-            <div
-              className="movie-rating__score"
-            >
-              7.9
-            </div>
-            <p
-              className="movie-rating__meta"
-            >
-              <span
-                className="movie-rating__level"
-              >
-                Good
-              </span>
-              <span
-                className="movie-rating__count"
-              >
-                 ratings
-              </span>
-            </p>
-          </div>
-          <div
-            className="movie-card__text"
-          >
-            <p>
-              The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.
-            </p>
-            <p
-              className="movie-card__director"
-            >
-              <strong>
-                Director: 
-                Kathi Gasticke
-                 
-              </strong>
-            </p>
-            <p
-              className="movie-card__starring"
-            >
-              <strong>
-                Starring: 
-                Adolphus McIndoe, Carly Spilsted, Rosalind Goodger, Teodorico Levey
-                 
-              </strong>
-            </p>
-          </div>
-        </div>
+        <movieCardTabs
+          movie={
+            Object {
+              "background": "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
+              "date": 1994,
+              "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+              "director": "Kathi Gasticke",
+              "genre": "Crime",
+              "id": 478,
+              "picture": "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
+              "poster": "img/fantastic-beasts-the-crimes-of-grindelwald.jpg",
+              "rating": 7.9,
+              "scores": 845,
+              "starring": Array [
+                "Adolphus McIndoe",
+                "Carly Spilsted",
+                "Rosalind Goodger",
+                "Teodorico Levey",
+              ],
+              "title": "Pulp Fiction",
+              "videoPreview": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
+            }
+          }
+        />
       </div>
     </div>
   </section>,
@@ -263,7 +205,78 @@ Array [
       </h2>
       <div
         className="catalog__movies-list"
-      />
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            href="/films/37"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                muted={true}
+                poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/37"
+              onClick={[Function]}
+            >
+              1+1
+                      
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            href="/films/35"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                muted={true}
+                poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/35"
+              onClick={[Function]}
+            >
+              Inception
+                      
+            </a>
+          </h3>
+        </article>
+      </div>
     </section>
     <footer
       className="page-footer"

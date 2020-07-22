@@ -16,7 +16,7 @@ exports[`Movie card tab reviews renders correctly 1`] = `
         <p
           className="review__text"
         >
-           Se7en is well crafted and ingeniously clever, making it one of the greatest films of the 90's
+          Two detectives, a rookie and a veteran, hunt a serial killer who uses
         </p>
         <footer
           className="review__details"
@@ -28,82 +28,19 @@ exports[`Movie card tab reviews renders correctly 1`] = `
             className="review__date"
             dateTime="2015-11-18"
           >
-            March 16, 2010
+            May 08, 2019
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        9
-      </div>
-    </div>
-    <div
-      className="review"
-    >
-      <blockquote
-        className="review__quote"
-      >
-        <p
-          className="review__text"
-        >
-          Dark and disturbing thriller that will stay with you forever.
-        </p>
-        <footer
-          className="review__details"
-        >
-          <cite
-            className="review__author"
-          />
-          <time
-            className="review__date"
-            dateTime="2015-11-18"
-          >
-            July 22, 2015
-          </time>
-        </footer>
-      </blockquote>
-      <div
-        className="review__rating"
-      >
-        8
+        8.9
       </div>
     </div>
   </div>
   <div
     className="movie-card__reviews-col"
-  >
-    <div
-      className="review"
-    >
-      <blockquote
-        className="review__quote"
-      >
-        <p
-          className="review__text"
-        >
-          One of the best-made films of its era and genre
-        </p>
-        <footer
-          className="review__details"
-        >
-          <cite
-            className="review__author"
-          />
-          <time
-            className="review__date"
-            dateTime="2015-11-18"
-          >
-            November 10, 2008
-          </time>
-        </footer>
-      </blockquote>
-      <div
-        className="review__rating"
-      >
-        10
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;

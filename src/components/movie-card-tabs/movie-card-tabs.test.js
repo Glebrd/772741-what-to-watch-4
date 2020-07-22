@@ -52,6 +52,7 @@ it(`Movie card tabs component renders`, () => {
     .create(
         <MovieCardTabs
           movie = {movie}
+          onReviewsTabClick={() => {}}
         />
     ).toJSON();
 

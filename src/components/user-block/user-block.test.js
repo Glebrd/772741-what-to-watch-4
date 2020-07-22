@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {UserBlock} from "./user-block";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const onSignInClick = () => {};
 const user = {
@@ -10,10 +12,12 @@ const user = {
 it(`UserBlock component renders`, () => {
   const tree = renderer
     .create(
-        <UserBlock
-          user={user}
-          onSignInClick={onSignInClick}
-        />
+        <Router history={history}>
+          <UserBlock
+            user={user}
+            onSignInClick={onSignInClick}
+          />
+        </Router>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

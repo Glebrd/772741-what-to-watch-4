@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {SmallMovieCard} from "./small-movie-card.jsx";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const movie = {
   id: 29,
@@ -24,11 +26,13 @@ const onMovieCardHover = () => {};
 it(`Catalog renders correctly`, () => {
   const tree = renderer
     .create(
-        <SmallMovieCard
-          smallMovieCard={movie}
-          onCardClick={onCardClick}
-          onMovieCardHover={onMovieCardHover}
-        />
+        <Router history={history}>
+          <SmallMovieCard
+            smallMovieCard={movie}
+            onCardClick={onCardClick}
+            onMovieCardHover={onMovieCardHover}
+          />
+        </Router>
         , {
           createNodeMock: () => {
             return {};
