@@ -6,7 +6,6 @@ exports[`Catalog renders correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -35,13 +34,11 @@ exports[`Catalog renders correctly 1`] = `
         onClick={[Function]}
       >
         Back to the Future
-                
       </a>
     </h3>
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -70,7 +67,6 @@ exports[`Catalog renders correctly 1`] = `
         onClick={[Function]}
       >
         Psycho 
-                
       </a>
     </h3>
   </article>

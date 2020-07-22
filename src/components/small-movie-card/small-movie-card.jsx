@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import {MOVIE_WAIT} from "../../const.js";
 import {movieType} from "../../types";
@@ -27,7 +26,7 @@ class SmallMovieCard extends React.PureComponent {
     clearTimeout(this._timeout);
   }
   render() {
-    const {smallMovieCard, onCardClick} = this.props;
+    const {smallMovieCard} = this.props;
     const {picture, title, videoPreview} = smallMovieCard;
     return (
       <article
@@ -36,10 +35,6 @@ class SmallMovieCard extends React.PureComponent {
         }}
         onMouseLeave={() => {
           this._handleMovieCardUnhover();
-        }}
-        onClick={(evt) => {
-          evt.preventDefault();
-          onCardClick(smallMovieCard);
         }}
         className="small-movie-card catalog__movies-card">
         <Link
@@ -57,7 +52,9 @@ class SmallMovieCard extends React.PureComponent {
           <Link
             className="small-movie-card__link"
             to={`/films/${smallMovieCard.id}`}
-          >{title}        </Link>
+          >
+            {title}
+          </Link>
         </h3>
       </article>
     );
@@ -66,7 +63,6 @@ class SmallMovieCard extends React.PureComponent {
 
 SmallMovieCard.propTypes = {
   smallMovieCard: movieType,
-  onCardClick: PropTypes.func,
 };
 
 export {SmallMovieCard};

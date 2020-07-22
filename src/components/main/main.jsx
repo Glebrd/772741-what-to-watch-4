@@ -6,7 +6,6 @@ import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button.jsx";
 import {ActionCreator} from "../../reducer/application/application";
-// import history from "../../history";
 
 import {
   getCurrentGenre,

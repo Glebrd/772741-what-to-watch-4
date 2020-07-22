@@ -199,7 +199,6 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -224,14 +223,11 @@ Array [
               className="small-movie-card__link"
               href="/films/51"
               onClick={[Function]}
-            >
-                      
-            </a>
+            />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -256,9 +252,7 @@ Array [
               className="small-movie-card__link"
               href="/films/132"
               onClick={[Function]}
-            >
-                      
-            </a>
+            />
           </h3>
         </article>
       </div>

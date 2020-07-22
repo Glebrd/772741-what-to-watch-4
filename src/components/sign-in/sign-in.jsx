@@ -66,6 +66,7 @@ class SignIn extends PureComponent {
               <div className="sign-in__field">
                 <input
                   ref={this.passwordRef}
+                  autoComplete="on"
                   className="sign-in__input" type="password" placeholder="Password" name="user-password"
                   id="user-password"
                 />
@@ -114,5 +115,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export {SignIn};
 
-// export default withValidation(SignIn);
 export default connect(null, mapDispatchToProps)(withValidation(SignIn));
