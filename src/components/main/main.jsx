@@ -17,10 +17,16 @@ import {
 import {getPromoMovie} from "../../reducer/data/selectors";
 import UserBlock from "../user-block/user-block.jsx";
 import {Link} from "react-router-dom";
+import {Operation} from "../../reducer/data/data";
+
+const getSvgIconMyList = (isFavorite) =>
+  isFavorite
+    ? `#in-list`
+    : `#add`;
 
 const Main = (props) => {
-  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, history, onPlayClick} = props;
-  const {title, genre, date, background, poster} = currentMovie;
+  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, changeFavoriteStatus} = props;
+  const {title, genre, date, background, poster, isFavorite} = currentMovie;
 
   return (
     <React.Fragment>
@@ -63,9 +69,11 @@ const Main = (props) => {
                     <span>Play</span>
                   </button>
                 </Link>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button
+                  onClick={() => {changeFavoriteStatus(currentMovie)}}
+                  className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
+                    <use xlinkHref={getSvgIconMyList(isFavorite)}></use>
                   </svg>
                   <span>My list</span>
                 </button>
@@ -124,6 +132,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onPlayClick(currentMovie) {
     dispatch(ActionCreator.setCurrentMovie(currentMovie));
+  },
+  changeFavoriteStatus(movie) {
+    dispatch(Operation.changeFavoriteStatus(movie));
   },
 });
 

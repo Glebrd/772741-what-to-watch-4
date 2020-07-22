@@ -33,6 +33,6 @@ const init = () => {
 
 store.dispatch(Operation.loadPromoMovie());
 store.dispatch(Operation.loadMovies()).then(init);
-
+store.dispatch(UserOperation.checkAuth());
 
 
