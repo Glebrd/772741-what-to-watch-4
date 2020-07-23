@@ -11,6 +11,8 @@ import {getPromoMovie} from "../../reducer/data/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import history from "../../history";
 import AddReview from "../add-review/add-review.jsx";
+import MyList from "../my-list/my-list.jsx";
+import PrivateRoute from "../private-route/private-route.jsx";
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -22,7 +24,22 @@ class App extends React.PureComponent {
         <Switch>
           <Route exact path='/films/:id' component={MoviePage} />
           <Route exact path='/films/:id/player' component={Player}/>
-          <Route exact path='/films/:id/review' component={AddReview}/>
+          <PrivateRoute
+            exact
+            path='/films/:id/review'
+            render={(match) => {
+              return <AddReview
+                match={match}
+              />;
+            }}
+          />
+          <PrivateRoute
+            exact
+            path='/mylist'
+            render={() => {
+              return <MyList/>;
+            }}
+          />
           <Route exact path='/login' component={SignIn}/>
           <Route exact path='/' component={Main}/>
         </Switch>

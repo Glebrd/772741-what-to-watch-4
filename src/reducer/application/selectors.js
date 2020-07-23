@@ -17,6 +17,10 @@ export const getSameGenreMovies = (state, currentMovie) =>
   .filter(({id, genre}) => id !== currentMovie.id && genre === currentMovie.genre)
   .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
 
+export const getFavoriteMovies = (state) =>
+  state.data.movies
+    .filter(({isFavorite}) => isFavorite);
+
 export const getFilteredMovies = createSelector(
     getMovies, getCurrentGenre,
     (movies, currentGenre) => {
