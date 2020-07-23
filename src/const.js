@@ -18,6 +18,8 @@ export const ISOStringProperties = {
 
 export const MILLISECONDS_IN_SECOND = 1000;
 
+export const MINUTES_IN_HOUR = 60;
+
 export const FRACTION_TO_PERCENT_COEFFICIENT = 100;
 
 export const MOVIE_WAIT = 1000;
