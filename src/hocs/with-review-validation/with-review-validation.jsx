@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {movieType} from "../../types";
 import PropTypes from "prop-types";
+import history from "../../history";
 import {getCurrentMovieByID} from "../../reducer/application/selectors";
 
 const MIN_REVIEW_LENGTH = 50;
@@ -56,14 +57,19 @@ const withReviewValidation = (Component) => {
 
       onUploadReview(currentMovie, review, rating)
         .then((response) => {
-          if (!response.data) {
-            this.setState({networkError: response.message});
+          console.log(response);
+          if (response.status !== 200) {
+            this.setState((state) => ({
+              isLoading: !state.isLoading,
+              networkError: response.message
+            }));
           } else {
-            this.setState({networkError: false});
+            this.setState((state) => ({
+              isLoading: !state.isLoading,
+              networkError: false,
+            }));
+            history.push(`/films/${currentMovie.id}`);
           }
-          this.setState((state) => ({
-            isLoading: !state.isLoading,
-          }));
         });
     }
 

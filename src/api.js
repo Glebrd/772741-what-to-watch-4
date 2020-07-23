@@ -18,7 +18,11 @@ export const createAPI = () => {
 
   const onFail = (err) => {
     const {response} = err;
-    if (response.status === Error.UNAUTHORIZED && response.config.url !== `/login`) {
+    console.log(response);
+    if (response.status === Error.UNAUTHORIZED
+      && response.config.url !== `/login`
+      && !response.config.url.includes(`comments`)) {
+      console.log(response);
       history.push(`/login`);
     }
     return err;
