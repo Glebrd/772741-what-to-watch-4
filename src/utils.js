@@ -25,6 +25,4 @@ export const replacePromo = (updatedMovie, promoMovie) => {
   return updatedMovie.id === promoMovie.id ? updatedMovie : promoMovie;
 };
 
-export const checkIfObjectEmpty = (object) => Object.keys(object).length;
-
 
