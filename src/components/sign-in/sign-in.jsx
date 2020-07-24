@@ -1,8 +1,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import withValidation from "../../hocs/with-validation/with-validation.js";
-import {ActionCreator} from "../../reducer/application/application";
-import {ScreenType} from "../../const";
 import {Operation} from "../../reducer/user/user";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
@@ -16,9 +14,9 @@ class SignIn extends PureComponent {
     this.loginRef = createRef();
     this.passwordRef = createRef();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
-  handleSubmit(evt) {
+  _handleSubmit(evt) {
     const {onSubmit, isValid} = this.props;
     evt.preventDefault();
     if (isValid) {
@@ -49,7 +47,7 @@ class SignIn extends PureComponent {
 
         <div className="sign-in user-page__content">
           <form
-            onSubmit={this.handleSubmit}
+            onSubmit={this._handleSubmit}
             action="" className="sign-in__form">
             {!isValid &&
             <div className="sign-in__message">
@@ -106,9 +104,6 @@ SignIn.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onExit() {
-    dispatch(ActionCreator.setCurrentScreen(ScreenType.MAIN));
-  },
   onSubmit(authData) {
     dispatch(Operation.login(authData));
   },

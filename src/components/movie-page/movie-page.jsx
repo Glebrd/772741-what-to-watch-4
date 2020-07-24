@@ -122,6 +122,15 @@ const MoviePage = (props) => {
   );
 };
 
+MoviePage.propTypes = {
+  sameGenreMovies: PropTypes.arrayOf(movieType),
+  currentMovie: movieType,
+  onPlayClick: PropTypes.func,
+  user: userType,
+  onButtonListClick: PropTypes.func,
+  authorizationStatus: PropTypes.string,
+};
+
 const mapStateToProps = (state, props) => {
   const currentMovie = getCurrentMovieByID(state, props.match.params.id);
   return {
@@ -136,16 +145,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(Operation.changeFavoriteStatus(movie));
   },
 });
-
-
-MoviePage.propTypes = {
-  sameGenreMovies: PropTypes.arrayOf(movieType),
-  currentMovie: movieType,
-  onPlayClick: PropTypes.func,
-  user: userType,
-  onButtonListClick: PropTypes.func,
-  authorizationStatus: PropTypes.string,
-};
 
 export {MoviePage};
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

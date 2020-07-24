@@ -120,6 +120,17 @@ const Main = (props) => {
   );
 };
 
+Main.propTypes = {
+  filteredMovies: PropTypes.arrayOf(movieType),
+  currentMovie: movieType,
+  currentGenre: PropTypes.string,
+  numberOfMoviesOnMain: PropTypes.number,
+  genres: PropTypes.object,
+  onGenreChange: PropTypes.func,
+  onPlayClick: PropTypes.func,
+  onButtonListClick: PropTypes.func,
+};
+
 const mapStateToProps = (state) => ({
   genres: getGenres(state),
   filteredMovies: getFilteredMovies(state),
@@ -139,17 +150,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(Operation.changeFavoriteStatus(movie));
   },
 });
-
-Main.propTypes = {
-  filteredMovies: PropTypes.arrayOf(movieType),
-  currentMovie: movieType,
-  currentGenre: PropTypes.string,
-  numberOfMoviesOnMain: PropTypes.number,
-  genres: PropTypes.object,
-  onGenreChange: PropTypes.func,
-  onPlayClick: PropTypes.func,
-  onButtonListClick: PropTypes.func,
-};
 
 export {Main};
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -5,13 +5,17 @@ import PropTypes from "prop-types";
 import {getCurrentGenre} from "../../reducer/application/selectors";
 
 const CatalogButton = (props)=>{
-  const {increaseNumberOfMovies} = props;
+  const {onCatalogButtonClick} = props;
   return (
     <button
-      onClick={increaseNumberOfMovies}
+      onClick={onCatalogButtonClick}
       className="catalog__button" type="button">Show more
     </button>
   );
+};
+
+CatalogButton.propTypes = {
+  onCatalogButtonClick: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -19,14 +23,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  increaseNumberOfMovies() {
+  onCatalogButtonClick() {
     dispatch(ActionCreator.increaseNumberOfMoviesOnMain(8));
   },
 });
-
-CatalogButton.propTypes = {
-  increaseNumberOfMovies: PropTypes.func,
-};
 
 export {CatalogButton};
 export default connect(mapStateToProps, mapDispatchToProps)(CatalogButton);

@@ -6,7 +6,6 @@ const sameGenreMoviesProperties = {
   MAX_LENGTH: 3,
 };
 
-export const getCurrentScreen = (state) => state.application.currentScreen;
 export const getCurrentGenre = (state) => state.application.currentGenre;
 export const getNumberOfMoviesOnMain = (state) => state.application.numberOfMoviesOnMain;
 export const getCurrentMovie = (state) => state.application.currentMovie;

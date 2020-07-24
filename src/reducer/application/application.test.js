@@ -1,12 +1,10 @@
 import {reducer} from "./application.js";
-import {ScreenType} from "../../const";
 import {ActionType} from "./application";
 import {extend} from "../../utils";
 
 const initialState = {
   currentMovie: {},
   currentGenre: `All genres`,
-  currentScreen: ScreenType.MAIN,
   numberOfMoviesOnMain: 8,
 };
 
@@ -76,14 +74,6 @@ describe(`Reducer works correctly`, () => {
       payload: movieMock,
     })).toEqual(extend(initialState,
         {currentMovie: movieMock}));
-  });
-
-  test(`Reducer sets current screen correctly (by using SET_CURRENT_SCREEN)`, () => {
-    expect(reducer(initialState, {
-      type: ActionType.SET_CURRENT_SCREEN,
-      payload: ScreenType.MOVIE,
-    })).toEqual(extend(initialState,
-        {currentScreen: ScreenType.MOVIE}));
   });
 
   test(`Reducer sets current number of movies on main page correctly (by using INCREASE_NUMBER_OF_MOVIES_ON_MAIN)`, () => {

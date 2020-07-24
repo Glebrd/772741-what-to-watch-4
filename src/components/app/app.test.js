@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import App from "./app";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {ScreenType} from "../../const";
 import {adaptMovie, adaptMovies} from "../../adapters/movies";
 
 const mockStore = configureStore([]);
@@ -58,7 +57,7 @@ const movies = [
 
 const store = mockStore({
   data: {movies: adaptMovies(movies), promoMovie: adaptMovie(movie)},
-  application: {currentGenre: `All genres`, currentScreen: ScreenType.MAIN},
+  application: {currentGenre: `All genres`},
   user: {user: {avatarURL: `img/1.png`}},
 });
 

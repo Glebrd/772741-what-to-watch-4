@@ -12,6 +12,9 @@ class SmallMovieCard extends React.PureComponent {
     this._timeout = null;
     this._videoRef = React.createRef();
   }
+  componentWillUnmount() {
+    clearTimeout(this._timeout);
+  }
   _handleMovieCardHover() {
     this._timeout = setTimeout(() => {
       this._videoRef.current.play();
@@ -21,9 +24,6 @@ class SmallMovieCard extends React.PureComponent {
   _handleMovieCardUnhover() {
     clearTimeout(this._timeout);
     this._videoRef.current.load();
-  }
-  componentWillUnmount() {
-    clearTimeout(this._timeout);
   }
   render() {
     const {smallMovieCard} = this.props;

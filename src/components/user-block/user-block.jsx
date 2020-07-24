@@ -1,8 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors";
-import {ActionCreator} from "../../reducer/application/application";
-import {ScreenType} from "../../const";
 import PropTypes from "prop-types";
 import {userType} from "../../types";
 import {Link} from "react-router-dom";
@@ -36,24 +34,16 @@ const UserBlock = (props) => {
   );
 };
 
+UserBlock.propTypes = {
+  user: userType,
+  authorizationStatus: PropTypes.string,
+};
+
 const mapStateToProps = (state) => ({
   user: getUser(state),
   authorizationStatus: getAuthorizationStatus(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSignInClick(evt) {
-    evt.preventDefault();
-    dispatch(ActionCreator.setCurrentScreen(ScreenType.SIGN_IN));
-  },
-});
-
-UserBlock.propTypes = {
-  user: userType,
-  onSignInClick: PropTypes.func,
-  authorizationStatus: PropTypes.string,
-};
-
 export {UserBlock};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserBlock);
+export default connect(mapStateToProps)(UserBlock);

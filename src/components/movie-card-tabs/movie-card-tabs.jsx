@@ -80,6 +80,14 @@ class MovieCardTabs extends React.PureComponent {
   }
 }
 
+MovieCardTabs.propTypes = {
+  movie: movieType,
+  activeTab: PropTypes.string,
+  onChangeTab: PropTypes.func,
+  comments: PropTypes.arrayOf(commentType),
+  onReviewsTabClick: PropTypes.func,
+};
+
 const mapStateToProps = (state) => ({
   comments: getComments(state),
 });
@@ -89,14 +97,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(Operation.loadComments(movie));
   },
 });
-
-MovieCardTabs.propTypes = {
-  movie: movieType,
-  activeTab: PropTypes.string,
-  onChangeTab: PropTypes.func,
-  comments: PropTypes.arrayOf(commentType),
-  onReviewsTabClick: PropTypes.func,
-};
 
 export {MovieCardTabs};
 
