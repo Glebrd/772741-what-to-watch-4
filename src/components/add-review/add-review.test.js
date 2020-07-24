@@ -36,7 +36,7 @@ it(`Add review renders`, () => {
         <Router history={history}>
           <Provider store={store}>
             <AddReview
-              currentMovie = {movie}
+              currentMovie={movie}
             />
           </Provider>
         </Router>

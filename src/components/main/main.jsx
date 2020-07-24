@@ -95,7 +95,7 @@ const Main = (props) => {
           />
 
           <MoviesList
-            movies = {filteredMovies.slice(0, numberOfMoviesOnMain)}
+            movies={filteredMovies.slice(0, numberOfMoviesOnMain)}
           />
 
           <div className="catalog__more">

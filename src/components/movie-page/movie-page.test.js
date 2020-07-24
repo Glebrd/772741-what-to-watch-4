@@ -73,8 +73,8 @@ it(`Movie page renders`, () => {
           <Provider store={store}>
             <MoviePage
               currentMovie={movie}
-              user = {{}}
-              sameGenreMovies = {movies}
+              user={{}}
+              sameGenreMovies={movies}
             />
           </Provider>
         </Router>

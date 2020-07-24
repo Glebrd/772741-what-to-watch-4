@@ -32,7 +32,7 @@ class MovieCardTabs extends React.PureComponent {
                 <li
                   key={tabNameKey}
                   className= {`movie-nav__item ${currentlyActiveTab === tabNameValue ? `movie-nav__item--active` : ``}`}>
-                  <a href="#" className="movie-nav__link"
+                  <a href="#!" className="movie-nav__link"
                     onClick={(evt) => {
                       evt.preventDefault();
                       onChangeTab(tabNameValue);

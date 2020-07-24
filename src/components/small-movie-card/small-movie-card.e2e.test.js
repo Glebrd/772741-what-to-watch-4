@@ -29,8 +29,8 @@ describe(`withPlayOnHover tests`, () => {
     };
     let catalogCard = shallow(
         <SmallMovieCard
-          smallMovieCard = {movie}
-          onCardClick = {()=>{}}
+          smallMovieCard={movie}
+          onCardClick={()=>{}}
         />
     );
     catalogCard.instance()._videoRef.current = videoRef;

@@ -24,7 +24,7 @@ it(`Video-player renders correctly`, () => {
         <VideoPlayer
           videoRef={React.createRef()}
           poster={movie.picture}
-          videoPreview = {movie.videoPreview}
+          videoPreview={movie.videoPreview}
         />).toJSON();
 
   expect(tree).toMatchSnapshot();

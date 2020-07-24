@@ -90,7 +90,7 @@ const MoviePage = (props) => {
                 height="327"/>
             </div>
             <MovieCardTabs
-              movie = {currentMovie}
+              movie={currentMovie}
             />
           </div>
         </div>
@@ -100,7 +100,7 @@ const MoviePage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <MoviesList
-            movies = {sameGenreMovies}
+            movies={sameGenreMovies}
           />
         </section>
 

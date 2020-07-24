@@ -51,7 +51,7 @@ it(`Movie card tabs component renders`, () => {
   const tree = renderer
     .create(
         <MovieCardTabs
-          movie = {movie}
+          movie={movie}
           onReviewsTabClick={() => {}}
         />
     ).toJSON();

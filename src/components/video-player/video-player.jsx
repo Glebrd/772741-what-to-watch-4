@@ -9,7 +9,7 @@ const VideoPlayer = (props) => {
       poster={poster}
       width="280"
       height="175"
-      src = {videoPreview}
+      src={videoPreview}
       muted
     >
     </video>

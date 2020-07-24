@@ -10,9 +10,9 @@ it(`Catalog genres list renders`, () => {
   const tree = renderer
     .create(
         <CatalogGenresList
-          currentGenre = {currentGenre}
-          genres = {genres}
-          onChange = {onChange}
+          currentGenre={currentGenre}
+          genres={genres}
+          onChange={onChange}
         />
     ).toJSON();
 

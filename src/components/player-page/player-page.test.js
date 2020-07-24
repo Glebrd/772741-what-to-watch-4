@@ -57,8 +57,8 @@ it(`Player page renders`, () => {
     .create(
         <Router history={history}>
           <PlayerPage
-            onExit = {onExit}
-            currentMovie = {currentMovie}
+            onExit={onExit}
+            currentMovie={currentMovie}
             history={{}}
           />
         </Router>

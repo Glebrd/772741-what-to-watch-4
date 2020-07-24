@@ -44,7 +44,7 @@ class SmallMovieCard extends React.PureComponent {
             <VideoPlayer
               videoRef={this._videoRef}
               poster={picture}
-              videoPreview = {videoPreview}
+              videoPreview={videoPreview}
             />
           </div>
         </Link>
