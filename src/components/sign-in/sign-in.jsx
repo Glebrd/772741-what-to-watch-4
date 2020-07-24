@@ -6,6 +6,7 @@ import {ScreenType} from "../../const";
 import {Operation} from "../../reducer/user/user";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import history from "../../history";
 
 
 class SignIn extends PureComponent {
@@ -18,7 +19,7 @@ class SignIn extends PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(evt) {
-    const {onSubmit, isValid, history} = this.props;
+    const {onSubmit, isValid} = this.props;
     evt.preventDefault();
     if (isValid) {
       onSubmit({

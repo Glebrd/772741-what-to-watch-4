@@ -1,17 +1,18 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {getUser} from "../../reducer/user/selectors";
+import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors";
 import {ActionCreator} from "../../reducer/application/application";
 import {ScreenType} from "../../const";
 import {checkIfObjectEmpty} from "../../utils";
 import PropTypes from "prop-types";
 import {userType} from "../../types";
 import {Link} from "react-router-dom";
+import {AuthorizationStatus} from "../../reducer/user/user";
 
 
 const UserBlock = (props) => {
-  const {user} = props;
+  const {user, authorizationStatus} = props;
   const {avatarURL} = user;
   let fullAvatarURL = `https://4.react.pages.academy${avatarURL}`;
 
@@ -27,7 +28,7 @@ const UserBlock = (props) => {
 
   return (
     <div className="user-block">
-      {checkIfObjectEmpty(user)
+      {authorizationStatus === AuthorizationStatus.AUTH
         ?
         userAvatarBlock
         :
@@ -39,6 +40,7 @@ const UserBlock = (props) => {
 
 const mapStateToProps = (state) => ({
   user: getUser(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

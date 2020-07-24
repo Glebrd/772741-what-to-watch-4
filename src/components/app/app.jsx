@@ -13,6 +13,17 @@ import history from "../../history";
 import AddReview from "../add-review/add-review.jsx";
 import MyList from "../my-list/my-list.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
+import {getUser} from "../../reducer/user/selectors";
+import {checkIfObjectEmpty} from "../../utils";
+import {AuthorizationStatus} from "../../reducer/user/user";
+
+function check(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -27,6 +38,8 @@ class App extends React.PureComponent {
           <PrivateRoute
             exact
             path='/films/:id/review'
+            requiredAuthorizationStatus={AuthorizationStatus.AUTH}
+            pathToRedirect={`/login`}
             render={(match) => {
               return <AddReview
                 match={match}
@@ -36,11 +49,21 @@ class App extends React.PureComponent {
           <PrivateRoute
             exact
             path='/mylist'
+            requiredAuthorizationStatus={AuthorizationStatus.AUTH}
+            pathToRedirect={`/login`}
             render={() => {
               return <MyList/>;
             }}
           />
-          <Route exact path='/login' component={SignIn}/>
+          <PrivateRoute
+            exact
+            path='/login'
+            requiredAuthorizationStatus={AuthorizationStatus.NO_AUTH}
+            pathToRedirect={`/`}
+            render={() => {
+              return <SignIn/>;
+            }}
+          />
           <Route exact path='/' component={Main}/>
         </Switch>
       </Router>
@@ -52,6 +75,7 @@ const mapStateToProps = (state) => ({
   currentScreen: getCurrentScreen(state),
   promoMovie: getPromoMovie(state),
   currentMovie: getCurrentMovie(state),
+  user: getUser(state),
 });
 
 

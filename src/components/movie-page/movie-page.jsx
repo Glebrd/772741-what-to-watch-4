@@ -7,9 +7,9 @@ import {movieType, userType} from "../../types";
 import {Operation} from "../../reducer/data/data";
 import {getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application/selectors";
 import UserBlock from "../user-block/user-block.jsx";
-import {getUser} from "../../reducer/user/selectors";
-import {checkIfObjectEmpty} from "../../utils";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
+import {AuthorizationStatus} from "../../reducer/user/user";
 
 const getSvgIconMyList = (isFavorite) =>
   isFavorite
@@ -17,7 +17,7 @@ const getSvgIconMyList = (isFavorite) =>
     : `#add`;
 
 const MoviePage = (props) => {
-  const {currentMovie, sameGenreMovies, onButtonListClick, user} = props;
+  const {currentMovie, sameGenreMovies, onButtonListClick, authorizationStatus} = props;
   const {title, genre, date, poster, background, backgroundColor, isFavorite} = currentMovie;
   return (
     <React.Fragment>
@@ -72,7 +72,7 @@ const MoviePage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                {checkIfObjectEmpty(user)
+                {authorizationStatus === AuthorizationStatus.AUTH
                   ? <Link to={`/films/${currentMovie.id}/review`} href="add-review.html" className="btn movie-card__button">Add review</Link>
                   : ``
                 }
@@ -125,7 +125,7 @@ const mapStateToProps = (state, props) => {
   return {
     currentMovie,
     sameGenreMovies: getSameGenreMovies(state, currentMovie),
-    user: getUser(state),
+    authorizationStatus: getAuthorizationStatus(state),
   };
 };
 

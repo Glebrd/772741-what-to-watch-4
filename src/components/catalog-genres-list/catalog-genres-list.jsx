@@ -19,7 +19,7 @@ const CatalogGenresList = (props)=>{
             <a href="#" className="catalog__genres-link"
               onClick={(evt) => {
                 evt.preventDefault();
-                onChangeTab(currentlyActiveTab);
+                onChangeTab(genre);
                 onGenreChange(genre);
               }}
 
