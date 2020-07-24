@@ -88,19 +88,11 @@ exports[`Add review renders 1`] = `
           className="user-block"
         >
           <a
-            href="/mylist"
+            className="user-block__link"
+            href="/login"
             onClick={[Function]}
           >
-            <div
-              className="user-block__avatar"
-            >
-              <img
-                alt="User avatar"
-                height="63"
-                src="https://4.react.pages.academyimg/1.png"
-                width="63"
-              />
-            </div>
+            Sign in
           </a>
         </div>
       </div>

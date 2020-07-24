@@ -1,10 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-
 import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors";
 import {ActionCreator} from "../../reducer/application/application";
 import {ScreenType} from "../../const";
-import {checkIfObjectEmpty} from "../../utils";
 import PropTypes from "prop-types";
 import {userType} from "../../types";
 import {Link} from "react-router-dom";
@@ -53,6 +51,7 @@ const mapDispatchToProps = (dispatch) => ({
 UserBlock.propTypes = {
   user: userType,
   onSignInClick: PropTypes.func,
+  authorizationStatus: PropTypes.string,
 };
 
 export {UserBlock};

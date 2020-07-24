@@ -142,6 +142,7 @@ MoviePage.propTypes = {
   onPlayClick: PropTypes.func,
   user: userType,
   onButtonListClick: PropTypes.func,
+  authorizationStatus: PropTypes.string,
 };
 
 export {MoviePage};

@@ -57,7 +57,6 @@ const withReviewValidation = (Component) => {
 
       onUploadReview(currentMovie, review, rating)
         .then((response) => {
-          console.log(response);
           if (response.status !== 200) {
             this.setState((state) => ({
               isLoading: !state.isLoading,

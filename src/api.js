@@ -18,11 +18,9 @@ export const createAPI = () => {
 
   const onFail = (err) => {
     const {response} = err;
-    console.log(response);
     if (
       response.status === Error.UNAUTHORIZED
       && response.config.url.includes(`favorite`)) {
-      console.log(response);
       history.push(`/login`);
     }
     return err;

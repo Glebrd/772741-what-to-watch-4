@@ -14,16 +14,7 @@ import AddReview from "../add-review/add-review.jsx";
 import MyList from "../my-list/my-list.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
 import {getUser} from "../../reducer/user/selectors";
-import {checkIfObjectEmpty} from "../../utils";
 import {AuthorizationStatus} from "../../reducer/user/user";
-
-function check(props) {
-  const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return <UserGreeting />;
-  }
-  return <GuestGreeting />;
-}
 
 class App extends React.PureComponent {
   constructor(props) {
