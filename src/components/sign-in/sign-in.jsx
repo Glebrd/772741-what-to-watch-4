@@ -67,7 +67,7 @@ class SignIn extends PureComponent {
               <div className="sign-in__field">
                 <input
                   ref={this.passwordRef}
-                  autoComplete="on"
+                  autoComplete="off"
                   className="sign-in__input" type="password" placeholder="Password" name="user-password"
                   id="user-password"
                 />

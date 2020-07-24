@@ -10,6 +10,7 @@ import UserBlock from "../user-block/user-block.jsx";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
+import history from "../../history";
 
 const getSvgIconMyList = (isFavorite) =>
   isFavorite
@@ -53,15 +54,16 @@ const MoviePage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`/films/${currentMovie.id}/player`}>
-                  <button
-                    className="btn btn--play movie-card__button" type="button">
-                    <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s"></use>
-                    </svg>
-                    <span>Play</span>
-                  </button>
-                </Link>
+                <button
+                  onClick={() => {
+                    history.push(`/films/${currentMovie.id}/player`);
+                  }}
+                  className="btn btn--play movie-card__button" type="button">
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#play-s"></use>
+                  </svg>
+                  <span>Play</span>
+                </button>
                 <button
                   onClick={() => {
                     onButtonListClick(currentMovie);

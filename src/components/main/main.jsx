@@ -6,7 +6,7 @@ import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
 import {movieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button.jsx";
 import {ActionCreator} from "../../reducer/application/application";
-
+import history from "../../history";
 import {
   getCurrentGenre,
   getFilteredMovies,
@@ -15,7 +15,6 @@ import {
 } from "../../reducer/application/selectors";
 import {getPromoMovie} from "../../reducer/data/selectors";
 import UserBlock from "../user-block/user-block.jsx";
-import {Link} from "react-router-dom";
 import {Operation} from "../../reducer/data/data";
 
 const getSvgIconMyList = (isFavorite) =>
@@ -60,14 +59,16 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`/films/${currentMovie.id}/player`}>
-                  <button className="btn btn--play movie-card__button" type="button">
-                    <svg viewBox="0 0 19 19" widtth="19" height="19">
-                      <use xlinkHref="#play-s"></use>
-                    </svg>
-                    <span>Play</span>
-                  </button>
-                </Link>
+                <button
+                  onClick={() => {
+                    history.push(`/films/${currentMovie.id}/player`);
+                  }}
+                  className="btn btn--play movie-card__button" type="button">
+                  <svg viewBox="0 0 19 19" widtth="19" height="19">
+                    <use xlinkHref="#play-s"></use>
+                  </svg>
+                  <span>Play</span>
+                </button>
                 <button
                   onClick={() => {
                     onButtonListClick(currentMovie);
