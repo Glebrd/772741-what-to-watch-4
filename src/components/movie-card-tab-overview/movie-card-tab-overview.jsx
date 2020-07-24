@@ -1,18 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+export const UserRatingName = {
+  AWESOME: `Awesome`,
+  VERY_GOOD: `Very good`,
+  GOOD: `Good`,
+  NORMAL: `Normal`,
+  BAD: `Bad`,
+};
+
+export const RatingValue = {
+  MINIMUM_AWESOME: 19,
+  MINIMUM_VERY_GOOD: 8,
+  MINIMUM_GOOD: 5,
+  MINIMUM_NORMAL: 3,
+};
+
 const getMovieRank = (rating) => {
   let movieRank = ``;
-  if (rating === 10) {
-    movieRank = `Awesome`;
-  } else if (rating >= 8) {
-    movieRank = `Very good`;
-  } else if (rating >= 5) {
-    movieRank = `Good`;
-  } else if (rating >= 3) {
-    movieRank = `Normal`;
+  if (rating === RatingValue.MINIMUM_AWESOME) {
+    movieRank = UserRatingName.AWESOME;
+  } else if (rating >= RatingValue.MINIMUM_VERY_GOOD) {
+    movieRank = UserRatingName.VERY_GOOD;
+  } else if (rating >= RatingValue.MINIMUM_GOOD) {
+    movieRank = UserRatingName.GOOD;
+  } else if (rating >= RatingValue.MINIMUM_NORMAL) {
+    movieRank = UserRatingName.NORMAL;
   } else {
-    movieRank = `Bad`;
+    movieRank = UserRatingName.BAD;
   }
   return movieRank;
 };

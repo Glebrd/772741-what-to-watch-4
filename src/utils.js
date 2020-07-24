@@ -1,7 +1,14 @@
 import {ISOStringProperty, MILLISECONDS_IN_SECOND, MINUTES_IN_HOUR} from "./const";
 
-export const extend = (a, b) => {
-  return Object.assign({}, a, b);
+const DELETE_COUNT = 1;
+
+const TimeAbbreviation = {
+  HOURS: `h`,
+  MINUTES: `m`,
+};
+
+export const extend = (firstSource, secondSource) => {
+  return Object.assign({}, firstSource, secondSource);
 };
 
 export const formatTime = (seconds) => {
@@ -12,12 +19,12 @@ export const formatTime = (seconds) => {
 export const formatDuration = (totalMinutes) =>{
   let hours = Math.floor(totalMinutes / MINUTES_IN_HOUR);
   let minutes = totalMinutes % MINUTES_IN_HOUR;
-  return `${hours}h ${minutes}m`;
+  return `${hours + TimeAbbreviation.HOURS} ${minutes + TimeAbbreviation.MINUTES}`;
 };
 
 export const replaceMovie = (movie, movies) => {
   const index = movies.findIndex((oldMovie) => oldMovie.id === movie.id);
-  movies.splice(index, 1, movie);
+  movies.splice(index, DELETE_COUNT, movie);
   return movies;
 };
 

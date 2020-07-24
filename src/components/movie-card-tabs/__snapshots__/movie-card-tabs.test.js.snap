@@ -10,12 +10,13 @@ exports[`Movie card tabs component renders 1`] = `
     <ul
       className="movie-nav__list"
     >
+      .
       <li
         className="movie-nav__item movie-nav__item--active"
       >
         <a
           className="movie-nav__link"
-          href="#"
+          href="#!"
           onClick={[Function]}
         >
           Overview
@@ -26,7 +27,7 @@ exports[`Movie card tabs component renders 1`] = `
       >
         <a
           className="movie-nav__link"
-          href="#"
+          href="#!"
           onClick={[Function]}
         >
           Details
@@ -37,7 +38,7 @@ exports[`Movie card tabs component renders 1`] = `
       >
         <a
           className="movie-nav__link"
-          href="#"
+          href="#!"
           onClick={[Function]}
         >
           Reviews

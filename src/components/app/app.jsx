@@ -25,7 +25,7 @@ const App = () => {
         <Route exact path={AppRoute.PLAYER_PAGE} component={Player}/>
         <PrivateRoute
           exact
-          path={AppRoute.REVIEW}
+          path={AppRoute.REVIEW_PAGE}
           requiredAuthorizationStatus={AuthorizationStatus.AUTH}
           pathToRedirect={AppRoute.LOGIN}
           render={(match) => {
