@@ -15,18 +15,19 @@ import MyList from "../my-list/my-list.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
 import {getUser} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
+import {AppRoute} from "../../const";
 
 const App = () => {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path='/films/:id' component={MoviePage} />
-        <Route exact path='/films/:id/player' component={Player}/>
+        <Route exact path={AppRoute.MOVIE} component={MoviePage} />
+        <Route exact path={AppRoute.PLAYER} component={Player}/>
         <PrivateRoute
           exact
-          path='/films/:id/review'
+          path={AppRoute.REVIEW}
           requiredAuthorizationStatus={AuthorizationStatus.AUTH}
-          pathToRedirect={`/login`}
+          pathToRedirect={AppRoute.LOGIN}
           render={(match) => {
             return <AddReview
               match={match}
@@ -35,23 +36,23 @@ const App = () => {
         />
         <PrivateRoute
           exact
-          path='/mylist'
+          path={AppRoute.MY_LIST}
           requiredAuthorizationStatus={AuthorizationStatus.AUTH}
-          pathToRedirect={`/login`}
+          pathToRedirect={AppRoute.LOGIN}
           render={() => {
             return <MyList/>;
           }}
         />
         <PrivateRoute
           exact
-          path='/login'
+          path={AppRoute.LOGIN}
           requiredAuthorizationStatus={AuthorizationStatus.NO_AUTH}
-          pathToRedirect={`/`}
+          pathToRedirect={AppRoute.ROOT}
           render={() => {
             return <SignIn/>;
           }}
         />
-        <Route exact path='/' component={Main}/>
+        <Route exact path={AppRoute.ROOT} component={Main}/>
       </Switch>
     </Router>
   );

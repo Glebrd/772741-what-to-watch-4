@@ -3,14 +3,14 @@ import withTabs from "../../hocs/with-tabs/with-tabs.js";
 import MovieCardTabOverview from "../movie-card-tab-overview/movie-card-tab-overview.jsx";
 import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-details.jsx";
 import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews.jsx";
-import {Tabs} from "../../const";
+import {Tab} from "../../const";
 import PropTypes from "prop-types";
 import {commentType, movieType} from "../../types";
 import {getComments} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
 import {Operation} from "../../reducer/data/data";
 
-const DEFAULT_ACTIVE_ITEM = Tabs.OVERVIEW;
+const DEFAULT_ACTIVE_ITEM = Tab.OVERVIEW;
 class MovieCardTabs extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ class MovieCardTabs extends React.PureComponent {
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             .
-            {Object.entries(Tabs).map(([tabNameKey, tabNameValue]) => {
+            {Object.entries(Tab).map(([tabNameKey, tabNameValue]) => {
               return (
                 <li
                   key={tabNameKey}
@@ -48,7 +48,7 @@ class MovieCardTabs extends React.PureComponent {
         </nav>
         {(() => {
           switch (currentlyActiveTab) {
-            case Tabs.OVERVIEW:
+            case Tab.OVERVIEW:
               return (
                 <MovieCardTabOverview
                   rating={rating}
@@ -57,7 +57,7 @@ class MovieCardTabs extends React.PureComponent {
                   director={director}
                   scores={scores}
                 />);
-            case Tabs.DETAILS:
+            case Tab.DETAILS:
               return (
                 <MovieCardTabDetails
                   starring={starring}
@@ -66,7 +66,7 @@ class MovieCardTabs extends React.PureComponent {
                   date={date}
                   genre={genre}
                 />);
-            case Tabs.REVIEWS:
+            case Tab.REVIEWS:
               return (
                 <MovieCardTabReviews
                   comments={comments}
