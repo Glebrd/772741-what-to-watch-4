@@ -6,6 +6,7 @@ import {movieType} from "../../types";
 import PropTypes from "prop-types";
 import history from "../../history";
 import {getCurrentMovieByID} from "../../reducer/application/selectors";
+import {AppRoute} from "../../const";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
@@ -67,7 +68,7 @@ const withReviewValidation = (Component) => {
               isLoading: !state.isLoading,
               networkError: false,
             }));
-            history.push(`/films/${currentMovie.id}`);
+            history.push(AppRoute.MOVIES + currentMovie.id);
           }
         });
     }

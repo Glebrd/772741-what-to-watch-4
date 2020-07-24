@@ -19,7 +19,9 @@ export const ISOStringProperty = {
 
 export const AppRoute = {
   MOVIE: `/films/:id`,
-  PLAYER: `/films/:id/player`,
+  MOVIES: `/films/`,
+  PLAYER_PAGE: `/films/:id/player`,
+  PLAYER: `/player`,
   REVIEW: `/films/:id/review`,
   LOGIN: `/login`,
   ROOT: `/`,

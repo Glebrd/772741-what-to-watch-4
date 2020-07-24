@@ -4,6 +4,7 @@ import UserBlock from "../user-block/user-block.jsx";
 import {movieType} from "../../types";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {AppRoute} from "../../const";
 
 const AddReview = (props) => {
   const {onRatingChange, onReviewChange, onSubmit, reviewIsValid, ratingIsValid, currentMovie, isLoading, networkError} = props;
@@ -21,7 +22,7 @@ const AddReview = (props) => {
 
         <header className="page-header">
           <div className="logo">
-            <Link to="/" className="logo__link">
+            <Link to={AppRoute.ROOT} className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
@@ -31,7 +32,7 @@ const AddReview = (props) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`/films/${currentMovie.id}`} className="breadcrumbs__link">{title}</Link>
+                <Link to={AppRoute.MOVIES + currentMovie.id} className="breadcrumbs__link">{title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>

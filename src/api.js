@@ -1,14 +1,19 @@
 import axios from "axios";
 import history from "./history";
+import {AppRoute} from "./const";
 
 const Error = {
   UNAUTHORIZED: 401
 };
 
+const BASE_URL = `https://4.react.pages.academy/wtw`;
+const TIMEOUT = 5000;
+const ADD_TO_FAVORITE_REQUEST_PATH = `favorite`;
+
 export const createAPI = () => {
   const api = axios.create({
-    baseURL: `https://4.react.pages.academy/wtw`,
-    timeout: 1000 * 5,
+    baseURL: BASE_URL,
+    timeout: TIMEOUT,
     withCredentials: true,
   });
 
@@ -20,8 +25,8 @@ export const createAPI = () => {
     const {response} = err;
     if (
       response.status === Error.UNAUTHORIZED
-      && response.config.url.includes(`favorite`)) {
-      history.push(`/login`);
+      && response.config.url.includes(ADD_TO_FAVORITE_REQUEST_PATH)) {
+      history.push(AppRoute.LOGIN);
     }
     return err;
   };

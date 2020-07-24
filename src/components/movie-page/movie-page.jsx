@@ -11,6 +11,7 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import history from "../../history";
+import {AppRoute} from "../../const";
 
 const getSvgIconMyList = (isFavorite) =>
   isFavorite
@@ -35,7 +36,7 @@ const MoviePage = (props) => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <Link to="/" className="logo__link">
+              <Link to={AppRoute.ROOT} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
@@ -56,7 +57,7 @@ const MoviePage = (props) => {
               <div className="movie-card__buttons">
                 <button
                   onClick={() => {
-                    history.push(`/films/${currentMovie.id}/player`);
+                    history.push(AppRoute.MOVIES + currentMovie.id + AppRoute.PLAYER);
                   }}
                   className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -75,7 +76,7 @@ const MoviePage = (props) => {
                   <span>My list</span>
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH
-                  ? <Link to={`/films/${currentMovie.id}/review`} href="add-review.html" className="btn movie-card__button">Add review</Link>
+                  ? <Link to={AppRoute.MOVIES + currentMovie.id + AppRoute.REVIEW} href="add-review.html" className="btn movie-card__button">Add review</Link>
                   : ``
                 }
               </div>
@@ -106,7 +107,7 @@ const MoviePage = (props) => {
 
         <footer className="page-footer">
           <div className="logo">
-            <Link to="/" className="logo__link logo__link--light">
+            <Link to={AppRoute.ROOT} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>

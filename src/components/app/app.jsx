@@ -22,7 +22,7 @@ const App = () => {
     <Router history={history}>
       <Switch>
         <Route exact path={AppRoute.MOVIE} component={MoviePage} />
-        <Route exact path={AppRoute.PLAYER} component={Player}/>
+        <Route exact path={AppRoute.PLAYER_PAGE} component={Player}/>
         <PrivateRoute
           exact
           path={AppRoute.REVIEW}

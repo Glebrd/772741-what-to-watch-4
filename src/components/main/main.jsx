@@ -16,6 +16,7 @@ import {
 import {getPromoMovie} from "../../reducer/data/selectors";
 import UserBlock from "../user-block/user-block.jsx";
 import {Operation} from "../../reducer/data/data";
+import {AppRoute} from "../../const";
 
 const getSvgIconMyList = (isFavorite) =>
   isFavorite
@@ -61,7 +62,7 @@ const Main = (props) => {
               <div className="movie-card__buttons">
                 <button
                   onClick={() => {
-                    history.push(`/films/${currentMovie.id}/player`);
+                    history.push(AppRoute.MOVIES + currentMovie.id + AppRoute.PLAYER);
                   }}
                   className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" widtth="19" height="19">
