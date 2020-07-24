@@ -26,37 +26,23 @@ class MovieCardTabs extends React.PureComponent {
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
-
-            <li className= {`movie-nav__item ${currentlyActiveTab === Tabs.OVERVIEW ? `movie-nav__item--active` : ``}`}>
-              <a href="#" className="movie-nav__link"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  onChangeTab(`Overview`);
-                }}
-              >
-              Overview
-              </a>
-            </li>
-            <li className= {`movie-nav__item ${currentlyActiveTab === Tabs.DETAILS ? `movie-nav__item--active` : ``}`}>
-              <a href="#" className="movie-nav__link"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  onChangeTab(`Details`);
-                }}
-              >
-              Details
-              </a>
-            </li>
-            <li className= {`movie-nav__item ${currentlyActiveTab === Tabs.REVIEWS ? `movie-nav__item--active` : ``}`}>
-              <a href="#" className="movie-nav__link"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  onChangeTab(`Reviews`);
-                }}
-              >
-              Reviews
-              </a>
-            </li>
+            .
+            {Object.entries(Tabs).map(([tabNameKey, tabNameValue]) => {
+              return (
+                <li
+                  key={tabNameKey}
+                  className= {`movie-nav__item ${currentlyActiveTab === tabNameValue ? `movie-nav__item--active` : ``}`}>
+                  <a href="#" className="movie-nav__link"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onChangeTab(tabNameValue);
+                    }}
+                  >
+                    {tabNameValue}
+                  </a>
+                </li>
+              );
+            })}
 
           </ul>
         </nav>
