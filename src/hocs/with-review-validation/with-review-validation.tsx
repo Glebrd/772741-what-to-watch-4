@@ -104,23 +104,24 @@ const withReviewValidation = (Component) => {
     }
   }
 
-  return WithReviewValidation;
+
+
+  const mapStateToProps = (state, props) => ({
+    currentMovie: getCurrentMovieByID(state, props.match.params.id),
+  });
+
+  const mapDispatchToProps = {
+    onUploadReview: Operation.uploadReview,
+  };
+
+  const ConnectedWithReviewValidation = connect(mapStateToProps, mapDispatchToProps)(WithReviewValidation);
+
+  return ConnectedWithReviewValidation;
 };
 
-const mapStateToProps = (state, props) => ({
-  currentMovie: getCurrentMovieByID(state, props.match.params.id),
-});
 
-const mapDispatchToProps = {
-  onUploadReview: Operation.uploadReview,
-};
 
 export {withReviewValidation};
 
-
-
-export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    withReviewValidation
-);
+export default withReviewValidation
 

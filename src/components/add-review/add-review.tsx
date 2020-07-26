@@ -119,5 +119,4 @@ const AddReview: React.FunctionComponent<Props> = (props: Props) => {
 
 export {AddReview};
 
-// export default withReviewValidation(AddReview);
-export default AddReview;
+export default withReviewValidation(AddReview);
