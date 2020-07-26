@@ -37,6 +37,13 @@ it(`Add review renders`, () => {
           <Provider store={store}>
             <AddReview
               currentMovie={movie}
+              onRatingChange={() => {}}
+              onReviewChange={() => {}}
+              onSubmit={() => {}}
+              ratingIsValid={true}
+              reviewIsValid={true}
+              isLoading={false}
+              networkError={false}
             />
           </Provider>
         </Router>

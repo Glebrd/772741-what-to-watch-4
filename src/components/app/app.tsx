@@ -15,8 +15,11 @@ import PrivateRoute from "../private-route/private-route";
 import {getUser} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {AppRoute} from "../../const";
+import withReviewValidation from "../../hocs/with-review-validation/with-review-validation";
 
-const App = () => {
+const AddReviewWithValidaton = withReviewValidation(AddReview);
+
+const App: React.FunctionComponent = () => {
   return (
     <Router history={history}>
       <Switch>
@@ -28,7 +31,7 @@ const App = () => {
           requiredAuthorizationStatus={AuthorizationStatus.AUTH}
           pathToRedirect={AppRoute.LOGIN}
           render={(match) => {
-            return <AddReview
+            return <AddReviewWithValidaton
               match={match}
             />;
           }}

@@ -2,7 +2,7 @@ import * as React from "react";
 import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {movieType} from "../../types";
+import {MovieType} from "../../types";
 import history from "../../history";
 import {getCurrentMovieByID} from "../../reducer/application/selectors";
 import {AppRoute} from "../../const";
@@ -14,8 +14,22 @@ const validateReview = (review) => {
   return review.length >= MIN_REVIEW_LENGTH && review.length <= MAX_REVIEW_LENGTH;
 };
 
+interface Props {
+  onUploadReview: (currentMovie: MovieType, review: string, rating: number) => Promise<{message: string, status: number}>;
+  currentMovie: MovieType;
+}
+
+interface State {
+  review: string;
+  rating: number;
+  reviewIsValid: boolean;
+  ratingIsValid: boolean;
+  isLoading: boolean;
+  networkError: string | boolean;
+}
+
 const withReviewValidation = (Component) => {
-  class WithReviewValidation extends React.PureComponent {
+  class WithReviewValidation extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -90,11 +104,6 @@ const withReviewValidation = (Component) => {
     }
   }
 
-  // WithReviewValidation.propTypes = {
-  //   onUploadReview: PropTypes.func,
-  //   currentMovie: movieType,
-  // };
-
   return WithReviewValidation;
 };
 
@@ -107,6 +116,8 @@ const mapDispatchToProps = {
 };
 
 export {withReviewValidation};
+
+
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),

@@ -1,11 +1,22 @@
 import * as React from "react";
 import withReviewValidation from "../../hocs/with-review-validation/with-review-validation";
 import UserBlock from "../user-block/user-block";
-import {movieType} from "../../types";
+import {MovieType} from "../../types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
 
-const AddReview = (props) => {
+interface Props {
+  currentMovie: MovieType;
+  onReviewChange: () => void;
+  onSubmit: () => void;
+  onRatingChange: () => void;
+  ratingIsValid: boolean;
+  reviewIsValid: boolean;
+  networkError: boolean;
+  isLoading: boolean;
+}
+
+const AddReview: React.FunctionComponent<Props> = (props: Props) => {
   const {onRatingChange, onReviewChange, onSubmit, reviewIsValid, ratingIsValid, currentMovie, isLoading, networkError} = props;
   const {title, background, poster, backgroundColor} = currentMovie;
   return (
@@ -106,17 +117,7 @@ const AddReview = (props) => {
   );
 };
 
-// AddReview.propTypes = {
-//   currentMovie: movieType,
-//   onReviewChange: PropTypes.func,
-//   onSubmit: PropTypes.func,
-//   onRatingChange: PropTypes.func,
-//   ratingIsValid: PropTypes.bool,
-//   reviewIsValid: PropTypes.bool,
-//   networkError: PropTypes.bool,
-//   isLoading: PropTypes.bool,
-// };
-
 export {AddReview};
 
-export default withReviewValidation(AddReview);
+// export default withReviewValidation(AddReview);
+export default AddReview;

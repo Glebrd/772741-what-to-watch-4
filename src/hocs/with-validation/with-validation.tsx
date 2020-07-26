@@ -2,8 +2,12 @@ import * as React from "react";
 
 const REGEX_EMAIL = /\S+@\S+\.\S+/;
 
+interface State {
+  isValid: boolean;
+}
+
 const withValidation = (Component) => {
-  class WithValidation extends React.PureComponent {
+  class WithValidation extends React.PureComponent<State> {
     constructor(props) {
       super(props);
 
