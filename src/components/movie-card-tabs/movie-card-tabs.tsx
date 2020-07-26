@@ -4,13 +4,22 @@ import MovieCardTabOverview from "../movie-card-tab-overview/movie-card-tab-over
 import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-details";
 import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews";
 import {Tab} from "../../const";
-import {commentType, movieType} from "../../types";
+import {CommentType, MovieType} from "../../types";
 import {getComments} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
 import {Operation} from "../../reducer/data/data";
 
 const DEFAULT_ACTIVE_ITEM = Tab.OVERVIEW;
-class MovieCardTabs extends React.PureComponent {
+
+interface Props {
+  movie: MovieType;
+  activeTab: string;
+  onChangeTab: (tabNameValue: string) => {void};
+  comments: CommentType[];
+  onReviewsTabClick: (MovieType) => {void};
+}
+
+class MovieCardTabs extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -20,13 +29,12 @@ class MovieCardTabs extends React.PureComponent {
   render() {
     const {movie, onChangeTab, activeTab, comments} = this.props;
     const {rating, description, starring, director, scores, date, runTime, genre} = movie;
-    let currentlyActiveTab = activeTab ? activeTab : DEFAULT_ACTIVE_ITEM;
+    const currentlyActiveTab = activeTab ? activeTab : DEFAULT_ACTIVE_ITEM;
     return (
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
-            .
-            {Object.entries(Tab).map(([tabNameKey, tabNameValue]) => {
+            {Object.entries<string>(Tab).map(([tabNameKey, tabNameValue]) => {
               return (
                 <li
                   key={tabNameKey}
@@ -78,14 +86,6 @@ class MovieCardTabs extends React.PureComponent {
     );
   }
 }
-
-// MovieCardTabs.propTypes = {
-//   movie: movieType,
-//   activeTab: PropTypes.string,
-//   onChangeTab: PropTypes.func,
-//   comments: PropTypes.arrayOf(commentType),
-//   onReviewsTabClick: PropTypes.func,
-// };
 
 const mapStateToProps = (state) => ({
   comments: getComments(state),

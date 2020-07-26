@@ -31,7 +31,15 @@ const getMovieRank = (rating) => {
   return movieRank;
 };
 
-const MovieCardTabOverview = (props) => {
+interface Props {
+  director: string;
+  starring: string[];
+  rating: number;
+  scores: number;
+  description: string;
+}
+
+const MovieCardTabOverview: React.FunctionComponent<Props> = (props: Props) => {
   const {rating, description, starring, director, scores} = props;
 
   return (
@@ -51,13 +59,5 @@ const MovieCardTabOverview = (props) => {
     </React.Fragment>
   );
 };
-
-// MovieCardTabOverview.propTypes = {
-//   rating: PropTypes.number,
-//   scores: PropTypes.number,
-//   director: PropTypes.string,
-//   starring: PropTypes.arrayOf(PropTypes.string),
-//   description: PropTypes.string,
-// };
 
 export default MovieCardTabOverview;

@@ -3,7 +3,11 @@ import {ActionCreator} from "../../reducer/application/application";
 import {connect} from "react-redux";
 import {getCurrentGenre} from "../../reducer/application/selectors";
 
-const CatalogButton = (props)=>{
+interface Props {
+  onCatalogButtonClick: () => {};
+}
+
+const CatalogButton: React.FunctionComponent<Props> = (props: Props) => {
   const {onCatalogButtonClick} = props;
   return (
     <button
@@ -12,10 +16,6 @@ const CatalogButton = (props)=>{
     </button>
   );
 };
-
-// CatalogButton.propTypes = {
-//   onCatalogButtonClick: PropTypes.func,
-// };
 
 const mapStateToProps = (state) => ({
   currentGenre: getCurrentGenre(state),

@@ -27,11 +27,11 @@ interface Props {
   currentMovie: MovieType;
   currentGenre: string;
   numberOfMoviesOnMain: number;
-  genres: [string];
-  onGenreChange: () => {};
+  genres: string[];
+  onGenreChange: (genre: string) => {void};
   onPlayClick: () => {};
   onButtonListClick: (currentMovie) => {};
-};
+}
 
 const Main: React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onButtonListClick} = props;

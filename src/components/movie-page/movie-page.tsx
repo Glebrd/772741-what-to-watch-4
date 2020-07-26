@@ -2,7 +2,7 @@ import * as React from "react";
 import MoviesList from "../movies-list/movies-list";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs";
 import {connect} from "react-redux";
-import {movieType, userType} from "../../types";
+import {MovieType, UserType} from "../../types";
 import {Operation} from "../../reducer/data/data";
 import {getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application/selectors";
 import UserBlock from "../user-block/user-block";
@@ -17,7 +17,16 @@ const getSvgIconMyList = (isFavorite) =>
     ? `#in-list`
     : `#add`;
 
-const MoviePage = (props) => {
+interface Props {
+  sameGenreMovies: MovieType[];
+  currentMovie: MovieType;
+  onPlayClick: () => {void};
+  user: UserType;
+  onButtonListClick: (MovieType) => {void};
+  authorizationStatus: string;
+}
+
+const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, sameGenreMovies, onButtonListClick, authorizationStatus} = props;
   const {title, genre, date, poster, background, backgroundColor, isFavorite} = currentMovie;
   return (
@@ -121,15 +130,6 @@ const MoviePage = (props) => {
     </React.Fragment>
   );
 };
-
-// MoviePage.propTypes = {
-//   sameGenreMovies: PropTypes.arrayOf(movieType),
-//   currentMovie: movieType,
-//   onPlayClick: PropTypes.func,
-//   user: userType,
-//   onButtonListClick: PropTypes.func,
-//   authorizationStatus: PropTypes.string,
-// };
 
 const mapStateToProps = (state, props) => {
   const currentMovie = getCurrentMovieByID(state, props.match.params.id);

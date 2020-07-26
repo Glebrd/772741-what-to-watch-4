@@ -1,8 +1,8 @@
 import * as React from "react";
-import {MovieType} from "../../types";
 
 interface Props {
-  movie: MovieType;
+  onGenreChange: (genre:string) => {};
+  genres: string[];
 }
 
 interface State {

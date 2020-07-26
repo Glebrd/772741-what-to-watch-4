@@ -1,7 +1,12 @@
 import * as React from "react";
 import * as moment from "moment";
+import {CommentType} from "../../types";
 
-const MovieCardTabReviews = (props) => {
+interface Props {
+comments: CommentType[];
+}
+
+const MovieCardTabReviews: React.FunctionComponent<Props> = (props: Props) => {
   const {comments} = props;
   const secondColumnStart = Math.ceil(comments.length / 2);
   const formatDate = (date) => moment(date).format(`MMMM DD, YYYY`);
@@ -15,7 +20,7 @@ const MovieCardTabReviews = (props) => {
               <p className="review__text">{comment.comment}</p>
 
               <footer className="review__details">
-                <cite className="review__author">{comment.name}</cite>
+                <cite className="review__author">{comment.user.name}</cite>
                 <time className="review__date" dateTime="2015-11-18">{formatDate(comment.date)}</time>
               </footer>
             </blockquote>
@@ -31,7 +36,7 @@ const MovieCardTabReviews = (props) => {
               <p className="review__text">{comment.comment}</p>
 
               <footer className="review__details">
-                <cite className="review__author">{comment.name}</cite>
+                <cite className="review__author">{comment.user.name}</cite>
                 <time className="review__date" dateTime="2015-11-18">{formatDate(comment.date)}</time>
               </footer>
             </blockquote>

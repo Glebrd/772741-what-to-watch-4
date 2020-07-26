@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {Router} from "react-router-dom";
 import history from "../../history";
+import {noOperation} from "../../utils";
 
 const mockStore = configureStore([]);
 
@@ -37,9 +38,9 @@ it(`Add review renders`, () => {
           <Provider store={store}>
             <AddReview
               currentMovie={movie}
-              onRatingChange={() => {}}
-              onReviewChange={() => {}}
-              onSubmit={() => {}}
+              onRatingChange={noOperation}
+              onReviewChange={noOperation}
+              onSubmit={noOperation}
               ratingIsValid={true}
               reviewIsValid={true}
               isLoading={false}

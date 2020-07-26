@@ -32,4 +32,6 @@ export const replacePromo = (updatedMovie, promoMovie) => {
   return updatedMovie.id === promoMovie.id ? updatedMovie : promoMovie;
 };
 
+export const noOperation = () => {
+};
 

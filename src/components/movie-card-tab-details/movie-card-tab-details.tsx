@@ -1,7 +1,15 @@
 import * as React from "react";
 import {formatDuration} from "../../utils";
 
-const MovieCardTabDetails = (props) => {
+interface Props {
+  genre: string;
+  date: number;
+  director: string;
+  starring: string[];
+  runTime: number;
+}
+
+const MovieCardTabDetails: React.FunctionComponent<Props> = (props: Props) => {
   const {runTime, starring, director, date, genre} = props;
 
   const runTimeFormated = formatDuration(runTime);
@@ -16,8 +24,9 @@ const MovieCardTabDetails = (props) => {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            {starring.reduce((all, current, i) =>
-              [all, <br key={i} />, current]
+            {starring.reduce(
+                (all, current, i) =>
+                  [all, <br key={i} />, current], []
             )}
           </span>
         </p>
@@ -40,14 +49,5 @@ const MovieCardTabDetails = (props) => {
     </div>
   );
 };
-
-// MovieCardTabDetails.propTypes = {
-//   genre: PropTypes.string,
-//   date: PropTypes.number,
-//   director: PropTypes.string,
-//   starring: PropTypes.arrayOf(PropTypes.string),
-//   runTime: PropTypes.number,
-// };
-
 
 export default MovieCardTabDetails;

@@ -2,12 +2,16 @@ import * as React from "react";
 import {getFavoriteMovies} from "../../reducer/application/selectors";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list";
-import {movieType} from "../../types";
+import {MovieType} from "../../types";
 import UserBlock from "../user-block/user-block";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
 
-const MyList = (props) => {
+interface Props {
+  favoriteMovies: MovieType[];
+}
+
+const MyList: React.FunctionComponent<Props> = (props: Props) => {
 
   const {favoriteMovies} = props;
 
