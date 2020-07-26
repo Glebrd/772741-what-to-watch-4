@@ -57,10 +57,6 @@ const MyList: React.FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-// MyList.propTypes = {
-//   favoriteMovies: PropTypes.arrayOf(movieType),
-// };
-
 const mapStateToProps = (state) => ({
   favoriteMovies: getFavoriteMovies(state),
 });

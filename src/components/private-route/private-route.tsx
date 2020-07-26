@@ -1,10 +1,19 @@
 import * as React from "react";
-import {Route, Redirect} from "react-router-dom";
+import {Route, Redirect, RouteComponentProps, match} from "react-router-dom";
 import {connect} from "react-redux";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
+interface Props {
+  authorizationStatus: string;
+  exact: boolean;
+  path: string;
+  render: (computedMatch: match) => React.ReactNode;
+  computedMatch: match;
+  requiredAuthorizationStatus: string;
+  pathToRedirect: string;
+}
 
-const PrivateRoute = (props) => {
+const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
   const {render, path, exact, computedMatch, authorizationStatus, requiredAuthorizationStatus, pathToRedirect} = props;
   return (
     <Route
@@ -21,16 +30,6 @@ const PrivateRoute = (props) => {
     />
   );
 };
-
-// PrivateRoute.propTypes = {
-//   authorizationStatus: PropTypes.string,
-//   exact: PropTypes.bool.isRequired,
-//   path: PropTypes.string.isRequired,
-//   render: PropTypes.func.isRequired,
-//   computedMatch: PropTypes.object,
-//   requiredAuthorizationStatus: PropTypes.string,
-//   pathToRedirect: PropTypes.string,
-// };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),

@@ -16,6 +16,7 @@ export interface MovieType {
   runTime: number;
   backgroundColor: string;
   isFavorite: boolean;
+  videoLink: string;
 }
 
 export interface UserType {

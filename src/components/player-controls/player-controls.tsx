@@ -1,7 +1,12 @@
 import * as React from "react";
 import withProgress from "../../hocs/with-progress/with-progress";
 
-const PlayerControls = (props) => {
+interface Props {
+  progressValue: number;
+  remainingTime: string;
+}
+
+const PlayerControls: React.FunctionComponent<Props> = (props: Props) => {
   const {progressValue, remainingTime} = props;
   return (
     <div className="player__controls-row">
@@ -13,11 +18,6 @@ const PlayerControls = (props) => {
     </div>
   );
 };
-
-// PlayerControls.propTypes = {
-//   progressValue: PropTypes.number,
-//   remainingTime: PropTypes.string,
-// };
 
 export {PlayerControls};
 export default withProgress(PlayerControls);

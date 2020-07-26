@@ -2,8 +2,18 @@ import * as React from "react";
 import {formatTime} from "../../utils";
 import {FRACTION_TO_PERCENT_COEFFICIENT} from "../../const";
 
+interface Props {
+  videoRef: React.RefObject<HTMLMediaElement>;
+}
+
+interface State {
+  remainingTime: number;
+  progressValue: number;
+}
+
 const withProgress = (Component) => {
-  class WithProgress extends React.PureComponent {
+  class WithProgress extends React.PureComponent<Props,State> {
+    private _video: HTMLMediaElement;
     constructor(props) {
       super(props);
 
@@ -17,7 +27,7 @@ const withProgress = (Component) => {
 
     componentDidMount() {
       this._video = this.props.videoRef.current;
-      this._video.onloadedmetadata = () => this.setState({timeLeft: this._video.duration});
+      this._video.onloadedmetadata = () => this.setState({remainingTime: this._video.duration});
       this._video.ontimeupdate = () => this._handleTimeUpdate(this._video.currentTime, this._video.duration);
     }
 
@@ -45,11 +55,6 @@ const withProgress = (Component) => {
       );
     }
   }
-
-
-  // WithProgress.propTypes = {
-  //   videoRef: PropTypes.object,
-  // };
 
   return WithProgress;
 };

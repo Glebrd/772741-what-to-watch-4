@@ -1,17 +1,27 @@
 import * as React from "react";
 import withVideo from "../../hocs/with-video/with-video";
 import PlayerControls from "../player-controls/player-controls";
-import {movieType} from "../../types";
 import {getCurrentMovieByID} from "../../reducer/application/selectors";
 import {connect} from "react-redux";
+import history from "../../history";
+import {MovieType} from "../../types";
 
 const getSvgIconPlayPause = (isPlaying) =>
   isPlaying
     ? `#pause`
     : `#play-s`;
 
-const PlayerPage = (props)=>{
-  const {currentMovie, videoRef, onPlayPause, onFullScreen, isPlaying, history} = props;
+interface Props {
+  currentMovie: MovieType;
+  videoRef: React.RefObject<HTMLInputElement>;
+  onPlayPause: () => {void};
+  onFullScreen: () => {void};
+  isPlaying: boolean;
+  onExit: () => {void};
+}
+
+const PlayerPage: React.FunctionComponent<Props> = (props: Props) => {
+  const {currentMovie, videoRef, onPlayPause, onFullScreen, isPlaying} = props;
   const {picture, videoLink, title} = currentMovie;
   return (
     <div className="player">
@@ -59,17 +69,6 @@ const PlayerPage = (props)=>{
     </div>
   );
 };
-
-// PlayerPage.propTypes = {
-//   currentMovie: movieType,
-//   videoRef: PropTypes.object,
-//   onPlayPause: PropTypes.func,
-//   onFullScreen: PropTypes.func,
-//   isPlaying: PropTypes.bool,
-//   onExit: PropTypes.func,
-//   history: PropTypes.object,
-// };
-
 
 const mapStateToProps = (state, props) => ({
   currentMovie: getCurrentMovieByID(state, props.match.params.id),
