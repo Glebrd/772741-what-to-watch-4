@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {formatDuration} from "../../utils";
 
 const MovieCardTabDetails = (props) => {
@@ -42,13 +41,13 @@ const MovieCardTabDetails = (props) => {
   );
 };
 
-MovieCardTabDetails.propTypes = {
-  genre: PropTypes.string,
-  date: PropTypes.number,
-  director: PropTypes.string,
-  starring: PropTypes.arrayOf(PropTypes.string),
-  runTime: PropTypes.number,
-};
+// MovieCardTabDetails.propTypes = {
+//   genre: PropTypes.string,
+//   date: PropTypes.number,
+//   director: PropTypes.string,
+//   starring: PropTypes.arrayOf(PropTypes.string),
+//   runTime: PropTypes.number,
+// };
 
 
 export default MovieCardTabDetails;

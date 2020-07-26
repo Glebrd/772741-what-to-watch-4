@@ -4,7 +4,6 @@ import MovieCardTabOverview from "../movie-card-tab-overview/movie-card-tab-over
 import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-details";
 import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews";
 import {Tab} from "../../const";
-import PropTypes from "prop-types";
 import {commentType, movieType} from "../../types";
 import {getComments} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
@@ -80,13 +79,13 @@ class MovieCardTabs extends React.PureComponent {
   }
 }
 
-MovieCardTabs.propTypes = {
-  movie: movieType,
-  activeTab: PropTypes.string,
-  onChangeTab: PropTypes.func,
-  comments: PropTypes.arrayOf(commentType),
-  onReviewsTabClick: PropTypes.func,
-};
+// MovieCardTabs.propTypes = {
+//   movie: movieType,
+//   activeTab: PropTypes.string,
+//   onChangeTab: PropTypes.func,
+//   comments: PropTypes.arrayOf(commentType),
+//   onReviewsTabClick: PropTypes.func,
+// };
 
 const mapStateToProps = (state) => ({
   comments: getComments(state),

@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {getFavoriteMovies} from "../../reducer/application/selectors";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list";
@@ -54,9 +53,9 @@ const MyList = (props) => {
   );
 };
 
-MyList.propTypes = {
-  favoriteMovies: PropTypes.arrayOf(movieType),
-};
+// MyList.propTypes = {
+//   favoriteMovies: PropTypes.arrayOf(movieType),
+// };
 
 const mapStateToProps = (state) => ({
   favoriteMovies: getFavoriteMovies(state),

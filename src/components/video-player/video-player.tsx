@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 
 const VideoPlayer = (props) => {
   const {poster, videoRef, videoPreview} = props;
@@ -16,10 +15,10 @@ const VideoPlayer = (props) => {
   );
 };
 
-VideoPlayer.propTypes = {
-  poster: PropTypes.string,
-  videoPreview: PropTypes.string,
-  videoRef: PropTypes.object,
-};
+// VideoPlayer.propTypes = {
+//   poster: PropTypes.string,
+//   videoPreview: PropTypes.string,
+//   videoRef: PropTypes.object,
+// };
 
 export default VideoPlayer;

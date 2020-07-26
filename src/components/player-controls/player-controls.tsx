@@ -1,6 +1,5 @@
 import * as React from "react";
 import withProgress from "../../hocs/with-progress/with-progress";
-import PropTypes from "prop-types";
 
 const PlayerControls = (props) => {
   const {progressValue, remainingTime} = props;
@@ -15,10 +14,10 @@ const PlayerControls = (props) => {
   );
 };
 
-PlayerControls.propTypes = {
-  progressValue: PropTypes.number,
-  remainingTime: PropTypes.string,
-};
+// PlayerControls.propTypes = {
+//   progressValue: PropTypes.number,
+//   remainingTime: PropTypes.string,
+// };
 
 export {PlayerControls};
 export default withProgress(PlayerControls);

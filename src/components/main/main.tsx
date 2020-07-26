@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list";
 import CatalogGenresList from "../catalog-genres-list/catalog-genres-list";
@@ -14,7 +13,7 @@ import {
   getNumberOfMoviesOnMain
 } from "../../reducer/application/selectors";
 import {getPromoMovie} from "../../reducer/data/selectors";
-import UserBlock from "../user-block/user-block.jsx";
+import UserBlock from "../user-block/user-block";
 import {Operation} from "../../reducer/data/data";
 import {AppRoute} from "../../const";
 
@@ -121,16 +120,16 @@ const Main = (props) => {
   );
 };
 
-Main.propTypes = {
-  filteredMovies: PropTypes.arrayOf(movieType),
-  currentMovie: movieType,
-  currentGenre: PropTypes.string,
-  numberOfMoviesOnMain: PropTypes.number,
-  genres: PropTypes.object,
-  onGenreChange: PropTypes.func,
-  onPlayClick: PropTypes.func,
-  onButtonListClick: PropTypes.func,
-};
+// Main.propTypes = {
+//   filteredMovies: PropTypes.arrayOf(movieType),
+//   currentMovie: movieType,
+//   currentGenre: PropTypes.string,
+//   numberOfMoviesOnMain: PropTypes.number,
+//   genres: PropTypes.object,
+//   onGenreChange: PropTypes.func,
+//   onPlayClick: PropTypes.func,
+//   onButtonListClick: PropTypes.func,
+// };
 
 const mapStateToProps = (state) => ({
   genres: getGenres(state),

@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 
 export const UserRatingName = {
   AWESOME: `Awesome`,
@@ -53,12 +52,12 @@ const MovieCardTabOverview = (props) => {
   );
 };
 
-MovieCardTabOverview.propTypes = {
-  rating: PropTypes.number,
-  scores: PropTypes.number,
-  director: PropTypes.string,
-  starring: PropTypes.arrayOf(PropTypes.string),
-  description: PropTypes.string,
-};
+// MovieCardTabOverview.propTypes = {
+//   rating: PropTypes.number,
+//   scores: PropTypes.number,
+//   director: PropTypes.string,
+//   starring: PropTypes.arrayOf(PropTypes.string),
+//   description: PropTypes.string,
+// };
 
 export default MovieCardTabOverview;

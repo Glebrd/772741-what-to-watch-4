@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from "react";
 import withProgress from "./with-progress";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";

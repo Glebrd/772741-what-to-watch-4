@@ -1,7 +1,6 @@
 import * as React from "react";
 import {ActionCreator} from "../../reducer/application/application";
 import {connect} from "react-redux";
-import PropTypes from "prop-types";
 import {getCurrentGenre} from "../../reducer/application/selectors";
 
 const CatalogButton = (props)=>{
@@ -14,9 +13,9 @@ const CatalogButton = (props)=>{
   );
 };
 
-CatalogButton.propTypes = {
-  onCatalogButtonClick: PropTypes.func,
-};
+// CatalogButton.propTypes = {
+//   onCatalogButtonClick: PropTypes.func,
+// };
 
 const mapStateToProps = (state) => ({
   currentGenre: getCurrentGenre(state),

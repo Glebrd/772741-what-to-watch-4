@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import withTabs from "../../hocs/with-tabs/with-tabs";
 
 const DEFAULT_ACTIVE_ITEM = `All genres`;
@@ -31,14 +30,14 @@ const CatalogGenresList = (props)=>{
   );
 };
 
-CatalogGenresList.propTypes = {
-  currentGenre: PropTypes.string,
-  genres: PropTypes.object,
-  onChange: PropTypes.func,
-  onChangeTab: PropTypes.func,
-  onGenreChange: PropTypes.func,
-  activeTab: PropTypes.string,
-};
+// CatalogGenresList.propTypes = {
+//   currentGenre: PropTypes.string,
+//   genres: PropTypes.object,
+//   onChange: PropTypes.func,
+//   onChangeTab: PropTypes.func,
+//   onGenreChange: PropTypes.func,
+//   activeTab: PropTypes.string,
+// };
 
 export {CatalogGenresList};
 export default withTabs(CatalogGenresList);

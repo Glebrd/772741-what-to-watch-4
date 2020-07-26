@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import CatalogCard from "../small-movie-card/small-movie-card";
 import {movieType} from "../../types";
 
@@ -19,9 +18,9 @@ const MoviesList = (props) => {
   );
 };
 
-MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(movieType),
-  movie: movieType,
-};
+// MoviesList.propTypes = {
+//   movies: PropTypes.arrayOf(movieType),
+//   movie: movieType,
+// };
 
 export default MoviesList;

@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page";
 import {Switch, Route, Router} from "react-router-dom";
@@ -58,12 +57,12 @@ const App = () => {
   );
 };
 
-App.propTypes = {
-  onExit: PropTypes.func,
-  login: PropTypes.func,
-  currentMovie: movieType,
-  promoMovie: movieType,
-};
+// App.propTypes = {
+//   onExit: PropTypes.func,
+//   login: PropTypes.func,
+//   currentMovie: movieType,
+//   promoMovie: movieType,
+// };
 
 const mapStateToProps = (state) => ({
   promoMovie: getPromoMovie(state),

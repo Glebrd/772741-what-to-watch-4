@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import * as moment from "moment";
 
 const MovieCardTabReviews = (props) => {
@@ -45,17 +44,17 @@ const MovieCardTabReviews = (props) => {
   );
 };
 
-MovieCardTabReviews.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    user: PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    }),
-    rating: PropTypes.number,
-    comment: PropTypes.string,
-    date: PropTypes.string,
-  }))
-};
+// MovieCardTabReviews.propTypes = {
+//   comments: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number,
+//     user: PropTypes.shape({
+//       id: PropTypes.number,
+//       name: PropTypes.string,
+//     }),
+//     rating: PropTypes.number,
+//     comment: PropTypes.string,
+//     date: PropTypes.string,
+//   }))
+// };
 
 export default MovieCardTabReviews;

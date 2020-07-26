@@ -61,9 +61,9 @@ class SmallMovieCard extends React.PureComponent {
   }
 }
 
-SmallMovieCard.propTypes = {
-  smallMovieCard: movieType,
-};
+// SmallMovieCard.propTypes = {
+//   smallMovieCard: movieType,
+// };
 
 export {SmallMovieCard};
 export default SmallMovieCard;

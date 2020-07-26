@@ -2,7 +2,6 @@ import * as React from "react";
 import withReviewValidation from "../../hocs/with-review-validation/with-review-validation";
 import UserBlock from "../user-block/user-block";
 import {movieType} from "../../types";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
 
@@ -107,16 +106,16 @@ const AddReview = (props) => {
   );
 };
 
-AddReview.propTypes = {
-  currentMovie: movieType,
-  onReviewChange: PropTypes.func,
-  onSubmit: PropTypes.func,
-  onRatingChange: PropTypes.func,
-  ratingIsValid: PropTypes.bool,
-  reviewIsValid: PropTypes.bool,
-  networkError: PropTypes.bool,
-  isLoading: PropTypes.bool,
-};
+// AddReview.propTypes = {
+//   currentMovie: movieType,
+//   onReviewChange: PropTypes.func,
+//   onSubmit: PropTypes.func,
+//   onRatingChange: PropTypes.func,
+//   ratingIsValid: PropTypes.bool,
+//   reviewIsValid: PropTypes.bool,
+//   networkError: PropTypes.bool,
+//   isLoading: PropTypes.bool,
+// };
 
 export {AddReview};
 

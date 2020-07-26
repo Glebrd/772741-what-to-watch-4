@@ -1,6 +1,5 @@
 import * as React from "react";
 import MoviesList from "../movies-list/movies-list";
-import PropTypes from "prop-types";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs";
 import {connect} from "react-redux";
 import {movieType, userType} from "../../types";
@@ -123,14 +122,14 @@ const MoviePage = (props) => {
   );
 };
 
-MoviePage.propTypes = {
-  sameGenreMovies: PropTypes.arrayOf(movieType),
-  currentMovie: movieType,
-  onPlayClick: PropTypes.func,
-  user: userType,
-  onButtonListClick: PropTypes.func,
-  authorizationStatus: PropTypes.string,
-};
+// MoviePage.propTypes = {
+//   sameGenreMovies: PropTypes.arrayOf(movieType),
+//   currentMovie: movieType,
+//   onPlayClick: PropTypes.func,
+//   user: userType,
+//   onButtonListClick: PropTypes.func,
+//   authorizationStatus: PropTypes.string,
+// };
 
 const mapStateToProps = (state, props) => {
   const currentMovie = getCurrentMovieByID(state, props.match.params.id);

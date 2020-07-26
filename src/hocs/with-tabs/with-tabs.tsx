@@ -28,9 +28,9 @@ const withTabs = (Component) => {
     }
   }
 
-  WithTabs.propTypes = {
-    movie: movieType,
-  };
+  // WithTabs.propTypes = {
+  //   movie: movieType,
+  // };
   return WithTabs;
 };
 export default withTabs;

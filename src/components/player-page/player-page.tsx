@@ -1,7 +1,6 @@
 import * as React from "react";
 import withVideo from "../../hocs/with-video/with-video";
 import PlayerControls from "../player-controls/player-controls";
-import PropTypes from "prop-types";
 import {movieType} from "../../types";
 import {getCurrentMovieByID} from "../../reducer/application/selectors";
 import {connect} from "react-redux";
@@ -61,15 +60,15 @@ const PlayerPage = (props)=>{
   );
 };
 
-PlayerPage.propTypes = {
-  currentMovie: movieType,
-  videoRef: PropTypes.object,
-  onPlayPause: PropTypes.func,
-  onFullScreen: PropTypes.func,
-  isPlaying: PropTypes.bool,
-  onExit: PropTypes.func,
-  history: PropTypes.object,
-};
+// PlayerPage.propTypes = {
+//   currentMovie: movieType,
+//   videoRef: PropTypes.object,
+//   onPlayPause: PropTypes.func,
+//   onFullScreen: PropTypes.func,
+//   isPlaying: PropTypes.bool,
+//   onExit: PropTypes.func,
+//   history: PropTypes.object,
+// };
 
 
 const mapStateToProps = (state, props) => ({

@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import withValidation from "../../hocs/with-validation/with-validation";
 import {Operation} from "../../reducer/user/user";
 import {connect} from "react-redux";
@@ -97,12 +96,12 @@ class SignIn extends React.PureComponent {
   }
 }
 
-SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  isValid: PropTypes.bool,
-  onChange: PropTypes.func,
-  history: PropTypes.object,
-};
+// SignIn.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+//   isValid: PropTypes.bool,
+//   onChange: PropTypes.func,
+//   history: PropTypes.object,
+// };
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {

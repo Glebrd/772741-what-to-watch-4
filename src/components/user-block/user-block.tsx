@@ -1,7 +1,6 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors";
-import PropTypes from "prop-types";
 import {userType} from "../../types";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
@@ -36,10 +35,10 @@ const UserBlock = (props) => {
   );
 };
 
-UserBlock.propTypes = {
-  user: userType,
-  authorizationStatus: PropTypes.string,
-};
+// UserBlock.propTypes = {
+//   user: userType,
+//   authorizationStatus: PropTypes.string,
+// };
 
 const mapStateToProps = (state) => ({
   user: getUser(state),

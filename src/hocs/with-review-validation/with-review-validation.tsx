@@ -3,7 +3,6 @@ import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {movieType} from "../../types";
-import PropTypes from "prop-types";
 import history from "../../history";
 import {getCurrentMovieByID} from "../../reducer/application/selectors";
 import {AppRoute} from "../../const";
@@ -91,10 +90,10 @@ const withReviewValidation = (Component) => {
     }
   }
 
-  WithReviewValidation.propTypes = {
-    onUploadReview: PropTypes.func,
-    currentMovie: movieType,
-  };
+  // WithReviewValidation.propTypes = {
+  //   onUploadReview: PropTypes.func,
+  //   currentMovie: movieType,
+  // };
 
   return WithReviewValidation;
 };

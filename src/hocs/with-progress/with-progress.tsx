@@ -1,7 +1,6 @@
 import * as React from "react";
 import {formatTime} from "../../utils";
 import {FRACTION_TO_PERCENT_COEFFICIENT} from "../../const";
-import PropTypes from "prop-types";
 
 const withProgress = (Component) => {
   class WithProgress extends React.PureComponent {
@@ -48,9 +47,9 @@ const withProgress = (Component) => {
   }
 
 
-  WithProgress.propTypes = {
-    videoRef: PropTypes.object,
-  };
+  // WithProgress.propTypes = {
+  //   videoRef: PropTypes.object,
+  // };
 
   return WithProgress;
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {configure, shallow} from 'enzyme';
 import withTabs from "./with-tabs";
 import Adapter from "enzyme-adapter-react-16";
