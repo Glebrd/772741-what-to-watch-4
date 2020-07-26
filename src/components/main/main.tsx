@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import MoviesList from "../movies-list/movies-list.jsx";
-import CatalogGenresList from "../catalog-genres-list/catalog-genres-list.jsx";
+import MoviesList from "../movies-list/movies-list";
+import CatalogGenresList from "../catalog-genres-list/catalog-genres-list";
 import {movieType} from "../../types";
-import CatalogButton from "../catalog-button/catalog-button.jsx";
+import CatalogButton from "../catalog-button/catalog-button";
 import {ActionCreator} from "../../reducer/application/application";
 import history from "../../history";
 import {

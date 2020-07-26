@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {formatTime} from "../../utils";
 import {FRACTION_TO_PERCENT_COEFFICIENT} from "../../const";
 import PropTypes from "prop-types";

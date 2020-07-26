@@ -1,6 +1,6 @@
-import React, {PureComponent, createRef} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import withValidation from "../../hocs/with-validation/with-validation.js";
+import withValidation from "../../hocs/with-validation/with-validation";
 import {Operation} from "../../reducer/user/user";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
@@ -8,12 +8,12 @@ import history from "../../history";
 import {AppRoute} from "../../const";
 
 
-class SignIn extends PureComponent {
+class SignIn extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.loginRef = createRef();
-    this.passwordRef = createRef();
+    this.loginRef = React.createRef();
+    this.passwordRef = React.createRef();
 
     this._handleSubmit = this._handleSubmit.bind(this);
   }

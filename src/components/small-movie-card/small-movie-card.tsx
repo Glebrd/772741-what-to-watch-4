@@ -1,6 +1,6 @@
-import React from "react";
-import VideoPlayer from "../video-player/video-player.jsx";
-import {MOVIE_WAIT} from "../../const.js";
+import * as React from "react";
+import VideoPlayer from "../video-player/video-player";
+import {MOVIE_WAIT} from "../../const";
 import {movieType} from "../../types";
 import {Link} from "react-router-dom";
 

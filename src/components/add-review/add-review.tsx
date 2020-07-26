@@ -1,6 +1,6 @@
-import React from "react";
-import withReviewValidation from "../../hocs/with-review-validation/with-review-validation.jsx";
-import UserBlock from "../user-block/user-block.jsx";
+import * as React from "react";
+import withReviewValidation from "../../hocs/with-review-validation/with-review-validation";
+import UserBlock from "../user-block/user-block";
 import {movieType} from "../../types";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";

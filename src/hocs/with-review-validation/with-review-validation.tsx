@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
 import {compose} from "redux";

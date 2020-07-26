@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {getFavoriteMovies} from "../../reducer/application/selectors";
 import {connect} from "react-redux";
-import MoviesList from "../movies-list/movies-list.jsx";
+import MoviesList from "../movies-list/movies-list";
 import {movieType} from "../../types";
-import UserBlock from "../user-block/user-block.jsx";
+import UserBlock from "../user-block/user-block";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
 

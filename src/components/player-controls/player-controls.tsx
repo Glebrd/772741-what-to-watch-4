@@ -1,5 +1,5 @@
-import React from "react";
-import withProgress from "../../hocs/with-progress/with-progress.js";
+import * as React from "react";
+import withProgress from "../../hocs/with-progress/with-progress";
 import PropTypes from "prop-types";
 
 const PlayerControls = (props) => {

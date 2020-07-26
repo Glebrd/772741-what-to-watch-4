@@ -1,8 +1,8 @@
-import React from "react";
-import withTabs from "../../hocs/with-tabs/with-tabs.js";
-import MovieCardTabOverview from "../movie-card-tab-overview/movie-card-tab-overview.jsx";
-import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-details.jsx";
-import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews.jsx";
+import * as React from "react";
+import withTabs from "../../hocs/with-tabs/with-tabs";
+import MovieCardTabOverview from "../movie-card-tab-overview/movie-card-tab-overview";
+import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-details";
+import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews";
 import {Tab} from "../../const";
 import PropTypes from "prop-types";
 import {commentType, movieType} from "../../types";

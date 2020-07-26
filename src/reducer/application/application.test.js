@@ -1,4 +1,4 @@
-import {reducer} from "./application.js";
+import {reducer} from "./application";
 import {ActionType} from "./application";
 import {extend} from "../../utils";
 

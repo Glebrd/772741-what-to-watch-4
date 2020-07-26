@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 const withVideo = (Component) => {
   class WithVideo extends React.PureComponent {

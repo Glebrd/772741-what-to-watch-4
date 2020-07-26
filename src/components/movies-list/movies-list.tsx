@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import CatalogCard from "../small-movie-card/small-movie-card.jsx";
+import CatalogCard from "../small-movie-card/small-movie-card";
 import {movieType} from "../../types";
 
 const MoviesList = (props) => {

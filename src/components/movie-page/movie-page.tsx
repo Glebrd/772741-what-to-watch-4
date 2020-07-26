@@ -1,12 +1,12 @@
-import React from "react";
-import MoviesList from "../movies-list/movies-list.jsx";
+import * as React from "react";
+import MoviesList from "../movies-list/movies-list";
 import PropTypes from "prop-types";
-import MovieCardTabs from "../movie-card-tabs/movie-card-tabs.jsx";
+import MovieCardTabs from "../movie-card-tabs/movie-card-tabs";
 import {connect} from "react-redux";
 import {movieType, userType} from "../../types";
 import {Operation} from "../../reducer/data/data";
 import {getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application/selectors";
-import UserBlock from "../user-block/user-block.jsx";
+import UserBlock from "../user-block/user-block";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
