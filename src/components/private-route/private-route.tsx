@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Route, Redirect, RouteComponentProps, match} from "react-router-dom";
+import {Route, Redirect, match} from "react-router-dom";
 import {connect} from "react-redux";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 

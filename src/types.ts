@@ -24,7 +24,7 @@ export interface UserType {
   email: string;
   name: string;
   avatarURL: string;
-});
+}
 
 export interface CommentType {
   id: number;
