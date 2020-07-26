@@ -1,8 +1,16 @@
 import * as React from "react";
-import {movieType} from "../../types";
+import {MovieType} from "../../types";
+
+interface Props {
+  movie: MovieType;
+}
+
+interface State {
+  currentTab: string;
+}
 
 const withTabs = (Component) => {
-  class WithTabs extends React.PureComponent {
+  class WithTabs extends React.PureComponent<Props,State> {
     constructor(props) {
       super(props);
 
@@ -28,9 +36,6 @@ const withTabs = (Component) => {
     }
   }
 
-  // WithTabs.propTypes = {
-  //   movie: movieType,
-  // };
   return WithTabs;
 };
 export default withTabs;

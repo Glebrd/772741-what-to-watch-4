@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list";
 import CatalogGenresList from "../catalog-genres-list/catalog-genres-list";
-import {movieType} from "../../types";
+import {MovieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button";
 import {ActionCreator} from "../../reducer/application/application";
 import history from "../../history";
@@ -22,7 +22,18 @@ const getSvgIconMyList = (isFavorite) =>
     ? `#in-list`
     : `#add`;
 
-const Main = (props) => {
+interface Props {
+  filteredMovies: [MovieType];
+  currentMovie: MovieType;
+  currentGenre: string;
+  numberOfMoviesOnMain: number;
+  genres: [string];
+  onGenreChange: () => {};
+  onPlayClick: () => {};
+  onButtonListClick: (currentMovie) => {};
+};
+
+const Main: React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onButtonListClick} = props;
   const {title, genre, date, background, poster, isFavorite} = currentMovie;
 
@@ -64,7 +75,7 @@ const Main = (props) => {
                     history.push(AppRoute.MOVIES + currentMovie.id + AppRoute.PLAYER);
                   }}
                   className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" widtth="19" height="19">
+                  <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
@@ -119,17 +130,6 @@ const Main = (props) => {
     </React.Fragment>
   );
 };
-
-// Main.propTypes = {
-//   filteredMovies: PropTypes.arrayOf(movieType),
-//   currentMovie: movieType,
-//   currentGenre: PropTypes.string,
-//   numberOfMoviesOnMain: PropTypes.number,
-//   genres: PropTypes.object,
-//   onGenreChange: PropTypes.func,
-//   onPlayClick: PropTypes.func,
-//   onButtonListClick: PropTypes.func,
-// };
 
 const mapStateToProps = (state) => ({
   genres: getGenres(state),

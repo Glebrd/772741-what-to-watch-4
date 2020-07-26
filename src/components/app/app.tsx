@@ -3,7 +3,6 @@ import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page";
 import {Switch, Route, Router} from "react-router-dom";
 import {connect} from "react-redux";
-import {movieType} from "../../types";
 import Player from "../player-page/player-page";
 import {getCurrentMovie} from "../../reducer/application/selectors";
 import {getPromoMovie} from "../../reducer/data/selectors";
