@@ -64,13 +64,17 @@ const store = mockStore({
   user: {user: {avatarURL: `img/1.png`}},
 });
 
+// jest.mock(`../small-movie-card/small-movie-card`, () => `SmallMovieCard`);
+// jest.mock(`../video-player/video-player`, () => `VideoPlayer`);
+// jest.mock(`../small-movie-card/small-movie-card`, () => `SmallMovieCard`);
+// jest.mock(`../movies-list/movies-list`, () => `MoviesList1`);
+
 it(`Render Main`, () => {
   const tree = renderer
     .create(
         <Router history={history}>
           <Provider store={store}>
-            <Main
-            />
+            <Main/>
           </Provider>
         </Router>
     ).toJSON();

@@ -16,10 +16,10 @@ interface Props {
   activeTab: string;
   onChangeTab: (tabNameValue: string) => {void};
   comments: CommentType[];
-  onReviewsTabClick: (MovieType) => {void};
+  onReviewsTabClick: (movie:MovieType) => void;
 }
 
-class MovieCardTabs extends React.PureComponent<Props, {}> {
+class MovieCardTabs extends React.PureComponent <Props> {
   constructor(props) {
     super(props);
   }

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {configure, shallow} from 'enzyme';
 import withValidation from "./with-validation";
-import Adapter from "enzyme-adapter-react-16";
+import * as Adapter from "enzyme-adapter-react-16";
 
 const MockComponent = () => <div/>;
 const WrappedMockComponent = withValidation(MockComponent);

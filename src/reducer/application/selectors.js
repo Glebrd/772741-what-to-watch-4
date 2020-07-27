@@ -12,10 +12,12 @@ export const getCurrentMovie = (state) => state.application.currentMovie;
 export const getCurrentMovieByID = (state, currentMovieID) => state.data.movies.find((movie) => movie.id === parseInt(currentMovieID, 10));
 
 export const getSameGenreMovies = (state, currentMovie) =>
+{
+  console.log(currentMovie)
   state.data.movies
   .filter(({id, genre}) => id !== currentMovie.id && genre === currentMovie.genre)
   .slice(sameGenreMoviesProperties.MIN_LENGTH, sameGenreMoviesProperties.MAX_LENGTH);
-
+}
 export const getFavoriteMovies = (state) =>
   state.data.movies
     .filter(({isFavorite}) => isFavorite);

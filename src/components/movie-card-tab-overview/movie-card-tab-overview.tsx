@@ -16,19 +16,19 @@ export const RatingValue = {
 };
 
 const getMovieRank = (rating) => {
-  let movieRank = ``;
   if (rating === RatingValue.MINIMUM_AWESOME) {
-    movieRank = UserRatingName.AWESOME;
-  } else if (rating >= RatingValue.MINIMUM_VERY_GOOD) {
-    movieRank = UserRatingName.VERY_GOOD;
-  } else if (rating >= RatingValue.MINIMUM_GOOD) {
-    movieRank = UserRatingName.GOOD;
-  } else if (rating >= RatingValue.MINIMUM_NORMAL) {
-    movieRank = UserRatingName.NORMAL;
-  } else {
-    movieRank = UserRatingName.BAD;
+    return UserRatingName.AWESOME;
   }
-  return movieRank;
+  if (rating >= RatingValue.MINIMUM_VERY_GOOD) {
+    return UserRatingName.VERY_GOOD;
+  }
+  if (rating >= RatingValue.MINIMUM_GOOD) {
+    return UserRatingName.GOOD;
+  }
+  if (rating >= RatingValue.MINIMUM_NORMAL) {
+    return UserRatingName.NORMAL;
+  }
+  return UserRatingName.BAD;
 };
 
 interface Props {

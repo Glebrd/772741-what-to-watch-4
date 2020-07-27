@@ -9,7 +9,7 @@ interface Props {
   smallMovieCard: MovieType;
 }
 class SmallMovieCard extends React.PureComponent<Props> {
-  private _videoRef: RefObject<HTMLMediaElement>;
+  private _videoRef: RefObject<HTMLVideoElement>;
   private _timeout: ReturnType<typeof setTimeout>;
   constructor(props) {
     super(props);

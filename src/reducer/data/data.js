@@ -113,8 +113,9 @@ const reducer = (state = initialState, action) => {
             promoMovie: replacePromo(updatedMovie,
                 state.promoMovie)
           });
+    default:
+      return state;
   }
-  return state;
 };
 
 export {reducer, ActionType, ActionCreator, Operation};

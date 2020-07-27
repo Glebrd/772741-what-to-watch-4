@@ -105,9 +105,7 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
             genres={genres}
           />
 
-          <MoviesList
-            movies={filteredMovies.slice(0, numberOfMoviesOnMain)}
-          />
+          <MoviesList movies={filteredMovies.slice(0, numberOfMoviesOnMain)}/>
 
           <div className="catalog__more">
             {numberOfMoviesOnMain <= filteredMovies.length

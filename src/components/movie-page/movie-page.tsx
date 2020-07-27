@@ -22,7 +22,7 @@ interface Props {
   currentMovie: MovieType;
   onPlayClick: () => {void};
   user: UserType;
-  onButtonListClick: (MovieType) => {void};
+  onButtonListClick: (movie: MovieType) => {void};
   authorizationStatus: string;
 }
 
@@ -133,6 +133,7 @@ const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
 
 const mapStateToProps = (state, props) => {
   const currentMovie = getCurrentMovieByID(state, props.match.params.id);
+  console.log(props.match.params.id);
   return {
     currentMovie,
     sameGenreMovies: getSameGenreMovies(state, currentMovie),

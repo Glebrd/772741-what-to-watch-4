@@ -1,10 +1,10 @@
 import * as React from "react";
-import {LegacyRef} from "react";
+import {RefObject} from "react";
 
 interface Props {
   poster: string;
   videoPreview: string;
-  videoRef: LegacyRef<HTMLVideoElement>;
+  videoRef: RefObject<HTMLVideoElement>;
 }
 
 const VideoPlayer: React.FunctionComponent<Props> = (props: Props) => {

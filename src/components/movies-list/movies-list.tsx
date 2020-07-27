@@ -12,7 +12,8 @@ const MoviesList: React.FunctionComponent<Props> = (props: Props) => {
 
   return (
     <div className="catalog__movies-list">
-      {movies.map((movie) =>
+      {movies &&
+      movies.map((movie) =>
         <CatalogCard
           key={movie.id}
           smallMovieCard={movie}
@@ -22,4 +23,4 @@ const MoviesList: React.FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default MoviesList;
+export default MoviesList
