@@ -1,11 +1,16 @@
 import * as React from "react";
 import VideoPlayer from "../video-player/video-player";
 import {MOVIE_WAIT} from "../../const";
-import {movieType} from "../../types";
+import {MovieType} from "../../types";
 import {Link} from "react-router-dom";
+import {RefObject} from "react";
 
-
-class SmallMovieCard extends React.PureComponent {
+interface Props {
+  smallMovieCard: MovieType;
+}
+class SmallMovieCard extends React.PureComponent<Props> {
+  private _videoRef: RefObject<HTMLMediaElement>;
+  private _timeout: ReturnType<typeof setTimeout>;
   constructor(props) {
     super(props);
 
@@ -60,10 +65,6 @@ class SmallMovieCard extends React.PureComponent {
     );
   }
 }
-
-// SmallMovieCard.propTypes = {
-//   smallMovieCard: movieType,
-// };
 
 export {SmallMovieCard};
 export default SmallMovieCard;

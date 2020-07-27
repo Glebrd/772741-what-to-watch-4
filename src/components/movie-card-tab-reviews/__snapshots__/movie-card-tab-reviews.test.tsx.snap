@@ -23,7 +23,9 @@ exports[`Movie card tab reviews renders correctly 1`] = `
         >
           <cite
             className="review__author"
-          />
+          >
+            Kate Mur
+          </cite>
           <time
             className="review__date"
             dateTime="2015-11-18"

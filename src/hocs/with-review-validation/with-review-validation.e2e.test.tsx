@@ -2,6 +2,7 @@ import * as React from "react";
 import {configure, shallow} from 'enzyme';
 import {withReviewValidation} from "./with-review-validation.jsx";
 import Adapter from "enzyme-adapter-react-16";
+import {noOperation} from "../../utils";
 
 const MockComponent = () => <div/>;
 const WrappedMockComponent = withReviewValidation(MockComponent);
@@ -54,7 +55,7 @@ describe(`State correctly changed by handleRatingChange`, () => {
 });
 
 test(`onUploadReview called by handleSubmit`, () => {
-  const event = {preventDefault: () => {}};
+  const event = {preventDefault: noOperation};
 
   const onUploadReview = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
   const wrapper = shallow(<WrappedMockComponent onUploadReview={onUploadReview}/>);

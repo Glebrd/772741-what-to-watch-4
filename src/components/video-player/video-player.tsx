@@ -1,6 +1,13 @@
 import * as React from "react";
+import {LegacyRef} from "react";
 
-const VideoPlayer = (props) => {
+interface Props {
+  poster: string;
+  videoPreview: string;
+  videoRef: LegacyRef<HTMLVideoElement>;
+}
+
+const VideoPlayer: React.FunctionComponent<Props> = (props: Props) => {
   const {poster, videoRef, videoPreview} = props;
   return (
     <video
@@ -14,11 +21,5 @@ const VideoPlayer = (props) => {
     </video>
   );
 };
-
-// VideoPlayer.propTypes = {
-//   poster: PropTypes.string,
-//   videoPreview: PropTypes.string,
-//   videoRef: PropTypes.object,
-// };
 
 export default VideoPlayer;

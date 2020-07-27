@@ -1,7 +1,6 @@
 import * as React from "react";
 import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
-import {compose} from "redux";
 import {MovieType} from "../../types";
 import history from "../../history";
 import {getCurrentMovieByID} from "../../reducer/application/selectors";
@@ -15,7 +14,7 @@ const validateReview = (review) => {
 };
 
 interface Props {
-  onUploadReview: (currentMovie: MovieType, review: string, rating: number) => Promise<{message: string, status: number}>;
+  onUploadReview: (currentMovie: MovieType, review: string, rating: number) => Promise<{message: string; status: number}>;
   currentMovie: MovieType;
 }
 
@@ -104,8 +103,6 @@ const withReviewValidation = (Component) => {
     }
   }
 
-
-
   const mapStateToProps = (state, props) => ({
     currentMovie: getCurrentMovieByID(state, props.match.params.id),
   });
@@ -119,9 +116,6 @@ const withReviewValidation = (Component) => {
   return ConnectedWithReviewValidation;
 };
 
-
-
 export {withReviewValidation};
 
-export default withReviewValidation
-
+export default withReviewValidation;

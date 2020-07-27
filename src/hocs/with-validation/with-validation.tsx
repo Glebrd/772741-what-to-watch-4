@@ -7,7 +7,7 @@ interface State {
 }
 
 const withValidation = (Component) => {
-  class WithValidation extends React.PureComponent<{},State> {
+  class WithValidation extends React.PureComponent<{}, State> {
     constructor(props) {
       super(props);
 

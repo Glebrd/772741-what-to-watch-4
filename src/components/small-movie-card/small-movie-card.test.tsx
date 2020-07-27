@@ -3,6 +3,7 @@ import * as renderer from "react-test-renderer";
 import {SmallMovieCard} from "./small-movie-card.jsx";
 import {Router} from "react-router-dom";
 import history from "../../history";
+import {noOperation} from "../../utils";
 
 const movie = {
   id: 29,
@@ -20,17 +21,14 @@ const movie = {
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
 };
 
-const onCardClick = () => {};
-const onMovieCardHover = () => {};
-
 it(`Catalog renders correctly`, () => {
   const tree = renderer
     .create(
         <Router history={history}>
           <SmallMovieCard
             smallMovieCard={movie}
-            onCardClick={onCardClick}
-            onMovieCardHover={onMovieCardHover}
+            onCardClick={noOperation}
+            onMovieCardHover={noOperation}
           />
         </Router>
         , {

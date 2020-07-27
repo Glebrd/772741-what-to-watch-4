@@ -7,7 +7,15 @@ import history from "../../history";
 import {AppRoute} from "../../const";
 
 
-class SignIn extends React.PureComponent {
+interface Props {
+  onSubmit: ({login, password}: {login: string; password: string}) => void;
+  isValid: boolean;
+  onChange: () => {void};
+}
+
+class SignIn extends React.PureComponent<Props, {}> {
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
   constructor(props) {
     super(props);
 

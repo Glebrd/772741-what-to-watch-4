@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface Props {
-  onGenreChange: (genre:string) => {};
+  onGenreChange: (genre: string) => {};
   genres: string[];
 }
 
@@ -10,7 +10,7 @@ interface State {
 }
 
 const withTabs = (Component) => {
-  class WithTabs extends React.PureComponent<Props,State> {
+  class WithTabs extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 

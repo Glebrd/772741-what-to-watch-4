@@ -2,6 +2,7 @@ import * as React from "react";
 import {configure, shallow} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 import {SmallMovieCard} from "./small-movie-card";
+import {noOperation} from "../../utils";
 
 const movie = {
   id: 36,
@@ -23,14 +24,14 @@ configure({adapter: new Adapter()});
 
 describe(`withPlayOnHover tests`, () => {
   test(`video stops to play when call handleMouseLeave`, () => {
-    let videoRef = {
+    const videoRef = {
       play: jest.fn(),
       load: jest.fn(),
     };
-    let catalogCard = shallow(
+    const catalogCard = shallow(
         <SmallMovieCard
           smallMovieCard={movie}
-          onCardClick={()=>{}}
+          onCardClick={noOperation}
         />
     );
     catalogCard.instance()._videoRef.current = videoRef;

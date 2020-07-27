@@ -3,8 +3,8 @@ import * as renderer from "react-test-renderer";
 import {UserBlock} from "./user-block";
 import {Router} from "react-router-dom";
 import history from "../../history";
+import {noOperation} from "../../utils";
 
-const onSignInClick = () => {};
 const user = {
   avatarURL: `/wtw/static/avatar/2.jpg`,
 };
@@ -15,7 +15,7 @@ it(`UserBlock component renders`, () => {
         <Router history={history}>
           <UserBlock
             user={user}
-            onSignInClick={onSignInClick}
+            onSignInClick={noOperation}
           />
         </Router>
     ).toJSON();

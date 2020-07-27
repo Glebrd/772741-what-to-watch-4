@@ -32,6 +32,7 @@ exports[`Movie card tab details component renders 1`] = `
       <span
         className="movie-card__details-value"
       >
+        <br />
         Bunnie Litchmore
         <br />
         Philippine Tick

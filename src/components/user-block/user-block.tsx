@@ -1,17 +1,22 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors";
-import {userType} from "../../types";
+import {UserType} from "../../types";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {AppRoute} from "../../const";
 
 const SERVER_URL = `https://4.react.pages.academy`;
 
-const UserBlock = (props) => {
+interface Props {
+    user: UserType;
+    authorizationStatus: string;
+}
+
+const UserBlock: React.FunctionComponent<Props> = (props: Props) => {
   const {user, authorizationStatus} = props;
   const {avatarURL} = user;
-  let fullAvatarURL = SERVER_URL + avatarURL;
+  const fullAvatarURL = SERVER_URL + avatarURL;
 
   const userAvatarBlock =
     <Link to={AppRoute.MY_LIST}>
@@ -34,11 +39,6 @@ const UserBlock = (props) => {
     </div>
   );
 };
-
-// UserBlock.propTypes = {
-//   user: userType,
-//   authorizationStatus: PropTypes.string,
-// };
 
 const mapStateToProps = (state) => ({
   user: getUser(state),

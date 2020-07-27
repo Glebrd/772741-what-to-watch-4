@@ -11,13 +11,13 @@ import {Operation} from "./reducer/data/data";
 import {Operation as UserOperation} from "./reducer/user/user";
 import thunk from "redux-thunk";
 
-const api = createAPI(() => {});
+const api = createAPI();
 
 const store = createStore(
-  reducer,
-  composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument(api))
-  )
+    reducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
 

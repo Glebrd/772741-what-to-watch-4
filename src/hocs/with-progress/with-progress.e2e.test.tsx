@@ -3,6 +3,7 @@ import withProgress from "./with-progress";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {FRACTION_TO_PERCENT_COEFFICIENT} from "../../const";
+import {noOperation} from "../../utils";
 
 const CURRENT_TIME = 30;
 const DURATION = 120;
@@ -13,7 +14,7 @@ const WrappedMockComponent = withProgress(MockComponent);
 configure({adapter: new Adapter()});
 
 describe(`withProgress tests`, () => {
-  jest.spyOn(WrappedMockComponent.prototype, `componentDidMount`).mockImplementationOnce(() => {});
+  jest.spyOn(WrappedMockComponent.prototype, `componentDidMount`).mockImplementationOnce(noOperation);
   const wrapper = shallow(<WrappedMockComponent/>);
 
   test(`remainingTime correctly changed my handleTimeUpdate`, () => {

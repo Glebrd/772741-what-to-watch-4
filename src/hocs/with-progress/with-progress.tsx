@@ -12,7 +12,7 @@ interface State {
 }
 
 const withProgress = (Component) => {
-  class WithProgress extends React.PureComponent<Props,State> {
+  class WithProgress extends React.PureComponent<Props, State> {
     private _video: HTMLMediaElement;
     constructor(props) {
       super(props);
