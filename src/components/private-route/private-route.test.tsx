@@ -7,6 +7,7 @@ import history from "../../history";
 import {PrivateRoute} from "./private-route";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import MyList from "../my-list/my-list";
+import MoviePage from "../movie-page/movie-page";
 
 const mockStore = configureStore([]);
 
@@ -24,7 +25,15 @@ it(`Private route render correctly`, () => {
             <PrivateRoute
               exact
               path='/mylist'
-              requiredAuthorizationStatus={AuthorizationStatus.AUTH}
+              authorizationStatus={`AUTH`}
+              requiredAuthorizationStatus={`AUTH`}
+              computedMatch={{
+                isExact: true,
+                path: '/mylist',
+                url: '/mylist',
+                params: {
+                  id: 1}
+              }}
               pathToRedirect={`/login`}
               render={() => {
                 return <MyList/>;

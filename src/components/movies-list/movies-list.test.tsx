@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {MoviesList1} from "./movies-list";
+import MoviesList from "./movies-list";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {Router} from "react-router-dom";
@@ -58,7 +58,7 @@ it(`Catalog renders correctly`, () => {
     .create(
         <Router history={history}>
           <Provider store={store}>
-            <MoviesList1
+            <MoviesList
               movies={movies}
             />
           </Provider>
