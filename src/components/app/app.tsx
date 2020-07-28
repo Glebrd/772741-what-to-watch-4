@@ -14,7 +14,7 @@ import PrivateRoute from "../private-route/private-route";
 import {getUser} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {AppRoute} from "../../const";
-
+//nn
 const App: React.FunctionComponent = () => {
   return (
     <Router history={history}>

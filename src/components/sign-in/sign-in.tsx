@@ -104,13 +104,6 @@ class SignIn extends React.PureComponent<Props, {}> {
   }
 }
 
-// SignIn.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-//   isValid: PropTypes.bool,
-//   onChange: PropTypes.func,
-//   history: PropTypes.object,
-// };
-
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
     dispatch(Operation.login(authData));

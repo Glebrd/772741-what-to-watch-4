@@ -6,10 +6,11 @@ import configureStore from "redux-mock-store";
 import {Router} from "react-router-dom";
 import history from "../../history";
 import {noOperation} from "../../utils";
+import {MovieType} from "../../types";
 
 const mockStore = configureStore([]);
 
-const movie = {
+const movie: MovieType = {
   id: 19,
   title: `Mindhunter`,
   picture: `img/mindhunter.jpg `,
