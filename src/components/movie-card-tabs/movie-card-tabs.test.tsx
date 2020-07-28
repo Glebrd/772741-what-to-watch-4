@@ -24,7 +24,7 @@ const movie = {
   isFavorite: true,
 };
 
-const comment:CommentType =
+const comment: CommentType =
   {
     "id": 1,
     "user": {

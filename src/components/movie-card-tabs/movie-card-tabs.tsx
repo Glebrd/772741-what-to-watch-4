@@ -16,7 +16,7 @@ interface Props {
   activeTab: string;
   onChangeTab: (tabNameValue: string) => {void};
   comments: CommentType[];
-  onReviewsTabClick: (movie:MovieType) => void;
+  onReviewsTabClick: (movie: MovieType) => void;
 }
 
 class MovieCardTabs extends React.PureComponent <Props> {

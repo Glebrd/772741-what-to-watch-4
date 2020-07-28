@@ -7,10 +7,9 @@ import {adaptMovie, adaptMovies} from "../../adapters/movies";
 import {Router} from "react-router-dom";
 import history from "../../history";
 import {noOperation} from "../../utils";
-import {CommentType, MovieType} from "../../types";
-import thunk from 'redux-thunk'
+import {MovieType} from "../../types";
 
-const mockStore = configureStore([])
+const mockStore = configureStore([]);
 
 const movies = [
   {
@@ -81,54 +80,17 @@ const store = mockStore({
 
 const user = {
   id: 1,
-    email: 'sdfsd@gmail.com',
-    name: 'sdfsd',
-    avatarURL: '/wtw/static/avatar/9.jpg'
+  email: `sdfsd@gmail.com`,
+  name: `sdfsd`,
+  avatarURL: `/wtw/static/avatar/9.jpg`,
 };
 
-const comment:CommentType =
-  {
-    "id": 1,
-    "user": {
-      "id": 5,
-      "name": `Kate Mur`
-    },
-    "rating": 8.9,
-    "comment": `Two detectives, a rookie and a veteran, hunt a serial killer who uses`,
-    "date": `2019-05-08T14:13:56.569Z`
+jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
+  return {
+    'default': `MovieCardTabs`
   };
-
-const comments = [comment];
-
-jest.mock('../movie-card-tabs/movie-card-tabs', () => () => {
-  const ComponentToMock = () => <div />;
-  return `ComponentToMock`;
 });
 
-// const MoviePage = require('../movie-card-tabs/movie-card-tabs').default;
-
-// window['onReviewsTabClick'] = jest.fn();
-
-// jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => () => `MovieCardTabs`)
-
-jest.mock('../movie-card-tabs/movie-card-tabs.tsx', () => {
-  return {
-    'default': 'ChildComponent'
-  }
-});;
-
-// jest.mock("../movie-card-tabs/movie-card-tabs", function() => () => {
-//   return {
-//     onReviewsTabClick: jest.fn().mockImplementationOnce(() => Promise.resolve(``)),
-//     }
-//   });
-
-// jest.mock('../movie-card-tabs/movie-card-tabs', () => ({
-//   onReviewsTabClick: jest.fn().mockImplementationOnce(() => Promise.resolve(``)),
-// }));
-
-// const onReviewsTabClick = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
-// const api = {};
 it(`Movie page renders`, () => {
   const tree = renderer
     .create(
@@ -139,9 +101,9 @@ it(`Movie page renders`, () => {
               user={user}
               sameGenreMovies={movies}
               onPlayClick={noOperation}
-              authorizationStatus={`1`}
+              authorizationStatus={`AUTH`}
               onButtonListClick={null}
-              match={{params:{id:1}}}
+              match={{params: {id: 1}}}
             />
           </Provider>
         </Router>).toJSON();

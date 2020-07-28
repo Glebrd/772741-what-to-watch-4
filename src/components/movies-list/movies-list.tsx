@@ -23,4 +23,4 @@ const MoviesList: React.FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default MoviesList
+export default MoviesList;

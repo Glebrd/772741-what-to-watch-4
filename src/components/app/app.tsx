@@ -56,13 +56,6 @@ const App: React.FunctionComponent = () => {
   );
 };
 
-// App.propTypes = {
-//   onExit: PropTypes.func,
-//   login: PropTypes.func,
-//   currentMovie: movieType,
-//   promoMovie: movieType,
-// };
-
 const mapStateToProps = (state) => ({
   promoMovie: getPromoMovie(state),
   currentMovie: getCurrentMovie(state),

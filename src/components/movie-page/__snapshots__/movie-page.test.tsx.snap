@@ -148,7 +148,7 @@ Array [
             width="218"
           />
         </div>
-        <ChildComponent
+        <MovieCardTabs
           movie={
             Object {
               "background": undefined,
@@ -192,7 +192,37 @@ Array [
       </h2>
       <div
         className="catalog__movies-list"
-      />
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            href="/films/35"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                muted={true}
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/35"
+              onClick={[Function]}
+            />
+          </h3>
+        </article>
+      </div>
     </section>
     <footer
       className="page-footer"
