@@ -5,16 +5,13 @@ import {Router} from "react-router-dom";
 import history from "../../history";
 import {noOperation} from "../../utils";
 
-
-const isValid: boolean = true;
-
 it(`SignIn component renders`, () => {
   const tree = renderer
     .create(
         <Router history={history}>
           <SignIn
             onSubmit={noOperation}
-            isValid={isValid}
+            isValid={true}
             onChange={noOperation}
           />
         </Router>

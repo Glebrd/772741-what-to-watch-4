@@ -13,6 +13,8 @@ export const Tab = {
   REVIEWS: `Reviews`
 };
 
+export const Tabs = new Map(Object.entries(Tab));
+
 export const ISOStringProperty = {
   START_OF_HOURS: 11,
   LENGTH_OF_HH_MM_SS_SUBSTRING: 8

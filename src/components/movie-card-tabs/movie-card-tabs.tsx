@@ -3,7 +3,7 @@ import withTabs from "../../hocs/with-tabs/with-tabs";
 import MovieCardTabOverview from "../movie-card-tab-overview/movie-card-tab-overview";
 import MovieCardTabDetails from "../movie-card-tab-details/movie-card-tab-details";
 import MovieCardTabReviews from "../movie-card-tab-reviews/movie-card-tab-reviews";
-import {Tab} from "../../const";
+import {Tab, Tabs} from "../../const";
 import {CommentType, MovieType} from "../../types";
 import {getComments} from "../../reducer/data/selectors";
 import {connect} from "react-redux";
@@ -34,7 +34,7 @@ class MovieCardTabs extends React.PureComponent <Props> {
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
-            {Object.entries<string>(Tab).map(([tabNameKey, tabNameValue]) => {
+            {Array.from(Tabs).map(([tabNameKey, tabNameValue]) => {
               return (
                 <li
                   key={tabNameKey}
