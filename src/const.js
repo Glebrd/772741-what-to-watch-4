@@ -32,16 +32,4 @@ export const AppRoute = {
   MY_LIST: `/mylist`,
 };
 
-export const MovieRank = {
-  MOVIE: `/films/:id`,
-  MOVIES: `/films/`,
-  PLAYER_PAGE: `/films/:id/player`,
-  PLAYER: `/player`,
-  REVIEW_PAGE: `/films/:id/review`,
-  REVIEW: `/review`,
-  LOGIN: `/login`,
-  ROOT: `/`,
-  MY_LIST: `/mylist`,
-};
-
 
