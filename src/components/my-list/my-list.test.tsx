@@ -23,6 +23,10 @@ const movies = [
     starring: [`Worthy Gerbi`, `Karolina Conibeer`, `Jemimah Calwell`, `Hyacinthie Topp`],
     description: `Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.`,
     videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    backgroundColor: `#D8E3E5`,
+    videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+    runTime: 135,
+    isFavorite: true,
   },
   {
     id: 422,
@@ -38,13 +42,21 @@ const movies = [
     starring: [`Christean Ormonde`, `Ulric Gilbart`, `Rowland Vyvyan`, `Carney Elgood`],
     description: `A Phoenix secretary embezzles forty thousand dollars from her employer's client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.`,
     videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    backgroundColor: `#D8E3E5`,
+    videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+    runTime: 135,
+    isFavorite: true,
   },
 ];
 
 const store = mockStore({
 });
 
-jest.mock(`../user-block/user-block`, () => `UserBlock`);
+jest.mock(`../user-block/user-block.tsx`, () => {
+  return {
+    'default': `UserBlock`
+  };
+});
 
 it(`Catalog renders correctly`, () => {
   const tree = renderer

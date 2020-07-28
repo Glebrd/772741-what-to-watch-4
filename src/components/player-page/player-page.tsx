@@ -13,7 +13,7 @@ const getSvgIconPlayPause = (isPlaying) =>
 
 interface Props {
   currentMovie: MovieType;
-  videoRef: React.RefObject<HTMLInputElement>;
+  videoRef: React.RefObject<HTMLVideoElement>;
   onPlayPause: () => {void};
   onFullScreen: () => {void};
   isPlaying: boolean;

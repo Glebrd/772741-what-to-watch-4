@@ -1,7 +1,7 @@
 import * as React from "react";
 import {configure, shallow} from 'enzyme';
-import {withReviewValidation} from "./with-review-validation.jsx";
-import Adapter from "enzyme-adapter-react-16";
+import {withReviewValidation} from "./with-review-validation";
+import * as Adapter from "enzyme-adapter-react-16";
 import {noOperation} from "../../utils";
 
 const MockComponent = () => <div/>;

@@ -1,7 +1,12 @@
 import * as React from "react";
 
+interface State {
+  isPlaying: boolean;
+}
+
 const withVideo = (Component) => {
-  class WithVideo extends React.PureComponent {
+  class WithVideo  extends React.PureComponent<{}, State> {
+    private _video: React.RefObject<HTMLVideoElement>;
     constructor(props) {
       super(props);
 
