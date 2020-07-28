@@ -112,7 +112,6 @@ const withReviewValidation = (Component) => {
   };
 
   const ConnectedWithReviewValidation = connect(mapStateToProps, mapDispatchToProps)(WithReviewValidation);
-
   return ConnectedWithReviewValidation;
 };
 
