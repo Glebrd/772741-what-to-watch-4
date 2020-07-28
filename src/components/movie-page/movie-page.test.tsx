@@ -80,8 +80,8 @@ const store = mockStore({
 
 const user = {
   id: 1,
-  email: `sdfsd@gmail.com`,
-  name: `sdfsd`,
+  email: `gleb@gmail.com`,
+  name: `gleb`,
   avatarURL: `/wtw/static/avatar/9.jpg`,
 };
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {AddReview} from "./add-review.jsx";
+import {AddReview} from "./add-review";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {Router} from "react-router-dom";
@@ -24,6 +24,9 @@ const movie = {
   description: `Set in the late 1970s, two FBI agents are tasked with interviewing serial killers to solve open cases.`,
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   runTime: 123,
+  backgroundColor: `#D8E3E5`,
+  videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+  isFavorite: true,
 };
 
 const store = mockStore({

@@ -1,7 +1,7 @@
 import * as React from "react";
 import withProgress from "./with-progress";
 import {shallow, configure} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import * as Adapter from "enzyme-adapter-react-16";
 import {FRACTION_TO_PERCENT_COEFFICIENT} from "../../const";
 import {noOperation} from "../../utils";
 
@@ -15,7 +15,11 @@ configure({adapter: new Adapter()});
 
 describe(`withProgress tests`, () => {
   jest.spyOn(WrappedMockComponent.prototype, `componentDidMount`).mockImplementationOnce(noOperation);
-  const wrapper = shallow(<WrappedMockComponent/>);
+  const wrapper = shallow(
+      <WrappedMockComponent
+        videoRef={React.createRef()}
+      />
+  );
 
   test(`remainingTime correctly changed my handleTimeUpdate`, () => {
     wrapper.instance()._handleTimeUpdate(CURRENT_TIME, DURATION);

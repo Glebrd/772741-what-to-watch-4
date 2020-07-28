@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import VideoPlayer from "./video-player.jsx";
+import VideoPlayer from "./video-player";
 
 const movie = {
   id: 10,

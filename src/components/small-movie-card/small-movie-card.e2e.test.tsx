@@ -1,8 +1,7 @@
 import * as React from "react";
 import {configure, shallow} from 'enzyme';
-import Adapter from "enzyme-adapter-react-16";
+import * as Adapter from "enzyme-adapter-react-16";
 import {SmallMovieCard} from "./small-movie-card";
-import {noOperation} from "../../utils";
 
 const movie = {
   id: 36,
@@ -18,6 +17,10 @@ const movie = {
   starring: [`Julia Bazeley`, `Suellen Grinaugh`, `Mandie Wickie`, `Con Bride`],
   description: `With aerial footage from fifty-four countries, 'Home' is a depiction of how Earth's problems are all interlinked.`,
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  backgroundColor: `#D8E3E5`,
+  videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+  runTime: 135,
+  isFavorite: true,
 };
 
 configure({adapter: new Adapter()});
@@ -31,7 +34,6 @@ describe(`withPlayOnHover tests`, () => {
     const catalogCard = shallow(
         <SmallMovieCard
           smallMovieCard={movie}
-          onCardClick={noOperation}
         />
     );
     catalogCard.instance()._videoRef.current = videoRef;

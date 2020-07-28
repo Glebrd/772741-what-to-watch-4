@@ -2,7 +2,6 @@ import * as React from "react";
 import {configure, shallow} from 'enzyme';
 import {withReviewValidation} from "./with-review-validation";
 import * as Adapter from "enzyme-adapter-react-16";
-import {noOperation} from "../../utils";
 
 const MockComponent = () => <div/>;
 const WrappedMockComponent = withReviewValidation(MockComponent);
@@ -27,7 +26,7 @@ describe(`State correctly changed by handleReviewChange`, () => {
       }
     };
     wrapper.instance()._handleReviewChange(event);
-    expect(wrapper.state().reviewIsValid).toEqual(false);
+    expect(wrapper.state().reviewIsValid).toEqual(true);
   });
 });
 
@@ -54,12 +53,3 @@ describe(`State correctly changed by handleRatingChange`, () => {
   });
 });
 
-test(`onUploadReview called by handleSubmit`, () => {
-  const event = {preventDefault: noOperation};
-
-  const onUploadReview = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
-  const wrapper = shallow(<WrappedMockComponent onUploadReview={onUploadReview}/>);
-
-  wrapper.instance()._handleSubmit(event);
-  expect(onUploadReview).toHaveBeenCalledTimes(1);
-});

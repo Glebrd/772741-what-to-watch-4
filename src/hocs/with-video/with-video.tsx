@@ -5,7 +5,7 @@ interface State {
 }
 
 const withVideo = (Component) => {
-  class WithVideo  extends React.PureComponent<{}, State> {
+  class WithVideo extends React.PureComponent<{}, State> {
     private _video: React.RefObject<HTMLVideoElement>;
     constructor(props) {
       super(props);

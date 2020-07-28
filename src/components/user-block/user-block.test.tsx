@@ -3,10 +3,13 @@ import * as renderer from "react-test-renderer";
 import {UserBlock} from "./user-block";
 import {Router} from "react-router-dom";
 import history from "../../history";
-import {noOperation} from "../../utils";
 
 const user = {
-  avatarURL: `/wtw/static/avatar/2.jpg`,
+  id: 1,
+  email: `gleb@gmail.com`,
+  name: `gleb`,
+  avatarURL: `/wtw/static/avatar/9.jpg`,
+  authorizationStatus: `AUTH`,
 };
 
 it(`UserBlock component renders`, () => {
@@ -15,7 +18,7 @@ it(`UserBlock component renders`, () => {
         <Router history={history}>
           <UserBlock
             user={user}
-            onSignInClick={noOperation}
+            authorizationStatus={`AUTH`}
           />
         </Router>
     ).toJSON();

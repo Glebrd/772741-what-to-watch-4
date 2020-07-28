@@ -9,7 +9,10 @@ it(`SignIn component renders`, () => {
   const tree = renderer
     .create(
         <Router history={history}>
-          <SignIn onSubmit={noOperation}
+          <SignIn
+            onSubmit={noOperation}
+            isValid={true}
+            onChange={noOperation}
           />
         </Router>
     ).toJSON();
