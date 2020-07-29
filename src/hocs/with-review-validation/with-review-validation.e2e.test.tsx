@@ -4,8 +4,20 @@ import {withReviewValidation} from "./with-review-validation";
 import * as Adapter from "enzyme-adapter-react-16";
 import configureStore from "redux-mock-store";
 import {adaptMovie, adaptMovies} from "../../adapters/movies";
+jest.mock('../../reducer/data/data.js', () => ({
+  __esModule: true, // this property makes it work
+  default: 'mockedDefaultExport',
+  Operation: jest.fn(),
+}));
 
-const mockStore = configureStore();
+// import defaultExport, {Operation} from '../../reducer/data/data.js';
+
+import thunk from "redux-thunk";
+import configureMockStore from 'redux-mock-store'
+
+
+
+const mockStore = configureMockStore([thunk])
 
 const movie = {
   id: 79,
@@ -21,6 +33,10 @@ const movie = {
   starring: [`Pauly Tebbs`, `Kin Monger`, `Morten Wallas`, `Cammy Portsmouth`, `Ruth Bracco`, `Blondy Itzchaki`],
   description: `A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.`,
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  runTime: 120,
+  backgroundColor: `#D8E3E5`,
+  videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+  isFavorite: true,
 };
 const movies = [
   {
@@ -119,4 +135,52 @@ describe(`State correctly changed by handleRatingChange`, () => {
     wrapper.instance()._handleRatingChange(event);
     expect(wrapper.state().ratingIsValid).toEqual(false);
   });
+});
+
+test(`onUploadReview called by handleSubmit`, () => {
+  // beforeAll(() => {
+  //   global.api = jest.fn();
+  //   //window.fetch = jest.fn(); if running browser environment
+  // });
+  const event = {preventDefault: () => {}};
+  const api= {post:null}
+  const onUploadReview = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
+  const wrapper = shallow(
+    <WrappedMockComponent
+      onUploadReview={onUploadReview}
+      currentMovie={movie}
+      store={store}
+      match={{params: {id: 1}}}
+      api={api}
+    />
+  );
+
+
+
+  // jest.mock(`../../reducer/data/data.js`, () => {
+  //   return {
+  //     'default': `Operation`
+  //   };
+  // });
+// import(`../../api`)
+  jest.mock(`react-redux`, () => {
+    const exampleArticles = [
+      { title: 'test article', url: 'test url' }
+    ];
+
+    return {
+      post: jest.fn(() => Promise.resolve(exampleArticles)),
+    };
+  });
+
+  // api.post = jest.fn().mockResolvedValueOnce('bloofblurg');
+  // wrapper.props(). = onUploadReview;
+  // wrapper.instance().dive().onUploadReview();
+  // this.onUploadReview = onUploadReview;
+
+  // wrapper.setProps({onUploadReview: onUploadReview});
+  // const frapper = wrapper.find(onUploadReview);
+  // console.log(frapper)
+  wrapper.dive().dive().instance()._handleSubmit(event);
+  expect(onUploadReview).toHaveBeenCalledTimes(1);
 });
