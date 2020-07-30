@@ -140,8 +140,5 @@ it(`Component mounting calls onReviewsTabClick callback with right data`, () => 
 
   wrapper.find(`.btn--play`).simulate(`click`);
   expect(historyMock.push).toHaveBeenCalledTimes(1);
-  const fuck = AppRoute.MOVIES + movie.id + AppRoute.PLAYER;
-  console.log(fuck);
-  // console.log(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]);
-  expect(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatch(  fuck);
+  expect(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatch(AppRoute.MOVIES + movie.id + AppRoute.PLAYER);
 });
