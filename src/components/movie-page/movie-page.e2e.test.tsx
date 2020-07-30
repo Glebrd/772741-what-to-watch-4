@@ -117,16 +117,6 @@ it(`Component mounting calls onReviewsTabClick callback with right data`, () => 
   const historyMock = { push: jest.fn() };
   const onButtonListClick = jest.fn();
 
-  jest.mock(`history`, () => {
-    return extend(history, historyMock);
-  });
-
-  jest.mock(`history`, () => ({
-    __esModule: true,
-    default: extend(history, historyMock),
-    history: extend(history, historyMock)
-  }));
-
   const wrapper = shallow(
     <MoviePage
       history = {extend(history, historyMock)}
