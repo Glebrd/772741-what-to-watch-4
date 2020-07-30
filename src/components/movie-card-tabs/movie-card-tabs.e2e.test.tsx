@@ -41,7 +41,7 @@ const comment: CommentType =
   };
 
 const comments = [comment];
-const mockEvent = {preventDefault:noOperation ,genre: `Romance`}
+const mockEvent = {preventDefault: noOperation, genre: `Romance`};
 
 it(`Component mounting calls onReviewsTabClick callback with right data`, () => {
 
@@ -49,13 +49,13 @@ it(`Component mounting calls onReviewsTabClick callback with right data`, () => 
   const onChangeTab = jest.fn();
 
   shallow(
-    <MovieCardTabs
-      movie={movie}
-      onReviewsTabClick={onReviewsTabClick}
-      activeTab={`active`}
-      comments={comments}
-      onChangeTab={onChangeTab}
-    />
+      <MovieCardTabs
+        movie={movie}
+        onReviewsTabClick={onReviewsTabClick}
+        activeTab={`active`}
+        comments={comments}
+        onChangeTab={onChangeTab}
+      />
   );
 
   expect(onReviewsTabClick).toHaveBeenCalledTimes(1);
@@ -69,13 +69,13 @@ it(`Tab change calls onChangeTab callback with right data`, () => {
   const onChangeTab = jest.fn();
 
   const wrapper = shallow(
-    <MovieCardTabs
-      movie={movie}
-      onReviewsTabClick={onReviewsTabClick}
-      activeTab={`active`}
-      comments={comments}
-      onChangeTab={onChangeTab}
-    />
+      <MovieCardTabs
+        movie={movie}
+        onReviewsTabClick={onReviewsTabClick}
+        activeTab={`Details`}
+        comments={comments}
+        onChangeTab={onChangeTab}
+      />
   );
 
   wrapper.find(`.movie-nav__link`).at(1).simulate(`click`, mockEvent);

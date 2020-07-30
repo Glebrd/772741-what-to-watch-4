@@ -30,13 +30,9 @@ const movie: MovieType = {
 
 it(`Click on user answer should pass to the callback data-object from which this answer was created`, () => {
   const onRatingChange = jest.fn();
-  const userAnswer = {
-    artist: `one`,
-    picture: `pic-one`,
-  };
 
   const mockEvent = {
-    target:{value:3},
+    target: {value: 3},
   };
 
   const screen = shallow(<AddReview

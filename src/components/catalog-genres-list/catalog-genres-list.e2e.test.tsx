@@ -11,7 +11,7 @@ const currentGenre = `All genres`;
 const genres = new Set([`Drams`, `Sci-Fi`, `Romance`]);
 const activeTab = `All genres`;
 
-const mockEvent = {preventDefault:noOperation ,genre: `Romance`}
+const mockEvent = {preventDefault: noOperation, genre: `Romance`};
 
 it(`Genre change calls onChangeTab callback with right data`, () => {
 
@@ -19,13 +19,13 @@ it(`Genre change calls onChangeTab callback with right data`, () => {
   const onGenreChange = jest.fn();
 
   const wrapper = shallow(
-    <CatalogGenresList
-      currentGenre={currentGenre}
-      genres={genres}
-      onChangeTab={onChangeTab}
-      onGenreChange={onGenreChange}
-      activeTab={activeTab}
-    />
+      <CatalogGenresList
+        currentGenre={currentGenre}
+        genres={genres}
+        onChangeTab={onChangeTab}
+        onGenreChange={onGenreChange}
+        activeTab={activeTab}
+      />
   );
 
   wrapper.find(`.catalog__genres-link`).at(1).simulate(`click`, mockEvent);
@@ -42,13 +42,13 @@ it(`Genre change calls onGenreChange callback with right data`, () => {
   const onGenreChange = jest.fn();
 
   const wrapper = shallow(
-    <CatalogGenresList
-      currentGenre={currentGenre}
-      genres={genres}
-      onChangeTab={onChangeTab}
-      onGenreChange={onGenreChange}
-      activeTab={activeTab}
-    />
+      <CatalogGenresList
+        currentGenre={currentGenre}
+        genres={genres}
+        onChangeTab={onChangeTab}
+        onGenreChange={onGenreChange}
+        activeTab={activeTab}
+      />
   );
 
   wrapper.find(`.catalog__genres-link`).at(1).simulate(`click`, mockEvent);

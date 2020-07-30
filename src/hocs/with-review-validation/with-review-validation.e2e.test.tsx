@@ -4,12 +4,13 @@ import {withReviewValidation} from "./with-review-validation";
 import * as Adapter from "enzyme-adapter-react-16";
 import thunk from "redux-thunk";
 import {adaptMovie, adaptMovies} from "../../adapters/movies";
-import configureMockStore from 'redux-mock-store'
-const mockStore = configureMockStore([thunk])
+import configureMockStore from 'redux-mock-store';
+const mockStore = configureMockStore([thunk]);
+import {noOperation} from "../../utils";
 
-jest.mock('../../reducer/data/data.js', () => ({
+jest.mock(`../../reducer/data/data.js`, () => ({
   __esModule: true,
-  default: 'mockedDefaultExport',
+  default: `mockedDefaultExport`,
   Operation: jest.fn(),
 }));
 
@@ -131,17 +132,17 @@ describe(`State correctly changed by handleRatingChange`, () => {
 });
 
 test(`onUploadReview called by handleSubmit`, () => {
-  const event = {preventDefault: () => {}};
-  const api= {post:null}
+  const event = {preventDefault: noOperation};
+  const api = {post: null};
   const onUploadReview = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
   const wrapper = shallow(
-    <WrappedMockComponent
-      onUploadReview={onUploadReview}
-      currentMovie={movie}
-      store={store}
-      match={{params: {id: 1}}}
-      api={api}
-    />
+      <WrappedMockComponent
+        onUploadReview={onUploadReview}
+        currentMovie={movie}
+        store={store}
+        match={{params: {id: 1}}}
+        api={api}
+      />
   );
 
   wrapper.dive().dive().instance()._handleSubmit(event);

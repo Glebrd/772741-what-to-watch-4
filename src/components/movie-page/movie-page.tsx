@@ -20,7 +20,6 @@ const getSvgIconMyList = (isFavorite) =>
 interface Props {
   sameGenreMovies: MovieType[];
   currentMovie: MovieType;
-  onPlayClick: () => {void};
   user: UserType;
   onButtonListClick: (movie: MovieType) => {void};
   authorizationStatus: string;
