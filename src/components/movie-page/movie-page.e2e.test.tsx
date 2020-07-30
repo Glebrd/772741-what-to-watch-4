@@ -93,6 +93,8 @@ jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
 });
 
 
+
+
 // it(`Component mounting calls onReviewsTabClick callback with right data`, () => {
 //
 //   const onButtonListClick = jest.fn();
@@ -114,11 +116,23 @@ jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
 it(`Component mounting calls onReviewsTabClick callback with right data`, () => {
   const historyMock = { push: jest.fn() };
   const onButtonListClick = jest.fn();
-console.log(history);
+
+  jest.mock(`history`, () => {
+    return extend(history, historyMock);
+  });
+
+  jest.mock(`history`, () => ({
+    __esModule: true,
+    default: extend(history, historyMock),
+    history: extend(history, historyMock)
+  }));
+
+  console.log(history);
 
   const wrapper = shallow(
     <Router history={extend(history, historyMock)}>
     <MoviePage
+      history = {extend(history, historyMock)}
       currentMovie={movie}
       user={user}
       sameGenreMovies={movies}
@@ -128,13 +142,8 @@ console.log(history);
     </Router>
   );
 
-
-  // const wrapper = mount(<Component {...props} />);
-  // wrapper.instance().methodName();
-  // expect(spy).toHaveBeenCalled();
-  //
-  //
-  wrapper.dive().dive().dive().find(`.movie-card__button`).at(0).simulate(`click`);
-  expect(onButtonListClick).toHaveBeenCalledTimes(1);
-  // expect(history.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(`ё32423`);
+  wrapper.find(`MoviePage`).dive().find(`.btn--play`).simulate(`click`);
+  console.log( wrapper.find(`MoviePage`).dive().find(`.btn--play`).instance());
+  expect(historyMock.push).toHaveBeenCalledTimes(1);
+  // expect(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(`ё32423`);
 });

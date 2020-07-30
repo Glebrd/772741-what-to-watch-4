@@ -23,6 +23,7 @@ interface Props {
   user: UserType;
   onButtonListClick: (movie: MovieType) => {void};
   authorizationStatus: string;
+  history: history;
 }
 
 const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
