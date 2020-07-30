@@ -9,7 +9,7 @@ import UserBlock from "../user-block/user-block";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
-import history from "../../history";
+import history, {History} from "../../history";
 import {AppRoute} from "../../const";
 
 const getSvgIconMyList = (isFavorite) =>
@@ -23,11 +23,11 @@ interface Props {
   user: UserType;
   onButtonListClick: (movie: MovieType) => {void};
   authorizationStatus: string;
-  history: history;
+  history: History;
 }
 
 const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
-  const {currentMovie, sameGenreMovies, onButtonListClick, authorizationStatus} = props;
+  const {currentMovie, sameGenreMovies, onButtonListClick, authorizationStatus, history} = props;
   const {title, genre, date, poster, background, backgroundColor, isFavorite} = currentMovie;
   return (
     <React.Fragment>

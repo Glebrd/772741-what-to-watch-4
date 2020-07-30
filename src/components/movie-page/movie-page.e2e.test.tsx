@@ -5,8 +5,8 @@ import * as Adapter from "enzyme-adapter-react-16";
 import {MockCallProperty} from "../../const";
 import {MovieType} from "../../types";
 import history from "../../history";
-import {Router} from "react-router-dom";
 import {extend} from "../../utils"
+import {AppRoute} from "../../const";
 
 configure({adapter: new Adapter()});
 
@@ -127,10 +127,7 @@ it(`Component mounting calls onReviewsTabClick callback with right data`, () => 
     history: extend(history, historyMock)
   }));
 
-  console.log(history);
-
   const wrapper = shallow(
-    <Router history={extend(history, historyMock)}>
     <MoviePage
       history = {extend(history, historyMock)}
       currentMovie={movie}
@@ -139,11 +136,12 @@ it(`Component mounting calls onReviewsTabClick callback with right data`, () => 
       authorizationStatus={`AUTH`}
       onButtonListClick={onButtonListClick}
     />
-    </Router>
   );
 
-  wrapper.find(`MoviePage`).dive().find(`.btn--play`).simulate(`click`);
-  console.log( wrapper.find(`MoviePage`).dive().find(`.btn--play`).instance());
+  wrapper.find(`.btn--play`).simulate(`click`);
   expect(historyMock.push).toHaveBeenCalledTimes(1);
-  // expect(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(`ё32423`);
+  const fuck = AppRoute.MOVIES + movie.id + AppRoute.PLAYER;
+  console.log(fuck);
+  // console.log(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]);
+  expect(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatch(  fuck);
 });
