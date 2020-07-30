@@ -9,13 +9,13 @@ it(`Button click calls onCatalogButtonClick callback`, () => {
 
   const onCatalogButtonClick = jest.fn();
 
-  const catalogButton = shallow(
+  const wrapper = shallow(
     <CatalogButton
       onCatalogButtonClick={onCatalogButtonClick}
     />
   );
 
-  catalogButton.find(`button.catalog__button`).simulate(`click`);
+  wrapper.find(`button.catalog__button`).simulate(`click`);
 
   expect(onCatalogButtonClick).toHaveBeenCalledTimes(1);
 });
