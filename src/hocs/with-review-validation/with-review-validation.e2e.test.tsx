@@ -2,22 +2,16 @@ import * as React from "react";
 import {configure, shallow, mount} from 'enzyme';
 import {withReviewValidation} from "./with-review-validation";
 import * as Adapter from "enzyme-adapter-react-16";
-import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
 import {adaptMovie, adaptMovies} from "../../adapters/movies";
+import configureMockStore from 'redux-mock-store'
+const mockStore = configureMockStore([thunk])
+
 jest.mock('../../reducer/data/data.js', () => ({
-  __esModule: true, // this property makes it work
+  __esModule: true,
   default: 'mockedDefaultExport',
   Operation: jest.fn(),
 }));
-
-// import defaultExport, {Operation} from '../../reducer/data/data.js';
-
-import thunk from "redux-thunk";
-import configureMockStore from 'redux-mock-store'
-
-
-
-const mockStore = configureMockStore([thunk])
 
 const movie = {
   id: 79,
@@ -76,7 +70,6 @@ const store = mockStore({
   application: {currentGenre: `All genres`},
   user: {user: {avatarURL: `img/1.png`}},
 });
-
 
 const MockComponent = () => <div/>;
 const WrappedMockComponent = withReviewValidation(MockComponent);
@@ -138,10 +131,6 @@ describe(`State correctly changed by handleRatingChange`, () => {
 });
 
 test(`onUploadReview called by handleSubmit`, () => {
-  // beforeAll(() => {
-  //   global.api = jest.fn();
-  //   //window.fetch = jest.fn(); if running browser environment
-  // });
   const event = {preventDefault: () => {}};
   const api= {post:null}
   const onUploadReview = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
@@ -155,32 +144,6 @@ test(`onUploadReview called by handleSubmit`, () => {
     />
   );
 
-
-
-  // jest.mock(`../../reducer/data/data.js`, () => {
-  //   return {
-  //     'default': `Operation`
-  //   };
-  // });
-// import(`../../api`)
-  jest.mock(`react-redux`, () => {
-    const exampleArticles = [
-      { title: 'test article', url: 'test url' }
-    ];
-
-    return {
-      post: jest.fn(() => Promise.resolve(exampleArticles)),
-    };
-  });
-
-  // api.post = jest.fn().mockResolvedValueOnce('bloofblurg');
-  // wrapper.props(). = onUploadReview;
-  // wrapper.instance().dive().onUploadReview();
-  // this.onUploadReview = onUploadReview;
-
-  // wrapper.setProps({onUploadReview: onUploadReview});
-  // const frapper = wrapper.find(onUploadReview);
-  // console.log(frapper)
   wrapper.dive().dive().instance()._handleSubmit(event);
   expect(onUploadReview).toHaveBeenCalledTimes(1);
 });
