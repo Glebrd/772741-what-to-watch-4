@@ -26,19 +26,36 @@ const movie = {
 configure({adapter: new Adapter()});
 
 describe(`withPlayOnHover tests`, () => {
-  test(`video stops to play when call handleMouseLeave`, () => {
+  // test(`video stops to play when call handleMouseLeave`, () => {
+  //   const videoRef = {
+  //     play: jest.fn(),
+  //     load: jest.fn(),
+  //   };
+  //   const catalogCard = shallow(
+  //       <SmallMovieCard
+  //         smallMovieCard={movie}
+  //       />
+  //   );
+  //   catalogCard.instance()._videoRef.current = videoRef;
+  //   catalogCard.instance()._handleMovieCardUnhover();
+  //   expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(0);
+  //   expect(catalogCard.instance()._videoRef.current.load).toHaveBeenCalledTimes(1);
+  // });
+
+  test(`video starts to play when call handleMouseLeave`, () => {
     const videoRef = {
       play: jest.fn(),
       load: jest.fn(),
     };
     const catalogCard = shallow(
-        <SmallMovieCard
-          smallMovieCard={movie}
-        />
+      <SmallMovieCard
+        smallMovieCard={movie}
+      />
     );
     catalogCard.instance()._videoRef.current = videoRef;
-    catalogCard.instance()._handleMovieCardUnhover();
-    expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(0);
-    expect(catalogCard.instance()._videoRef.current.load).toHaveBeenCalledTimes(1);
+    catalogCard.instance()._handleMovieCardHover();
+    setTimeout(() => {
+      expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(14246575);
+    }, 1000);
   });
 });

@@ -29,6 +29,8 @@ const PlayerPage: React.FunctionComponent<Props> = (props: Props) => {
         src={videoLink}
         ref={videoRef}
         className="player__video" poster={picture}
+        autoPlay={isPlaying}
+        muted={true}
       >
       </video>
 

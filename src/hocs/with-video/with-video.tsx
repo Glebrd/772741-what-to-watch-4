@@ -1,5 +1,7 @@
 import * as React from "react";
 
+const FIREFOX_FULSCREEN_METHOD = `mozRequestFullScreen`
+
 interface State {
   isPlaying: boolean;
 }
@@ -11,7 +13,7 @@ const withVideo = (Component) => {
       super(props);
 
       this.state = {
-        isPlaying: false,
+        isPlaying: true,
       };
 
       this._video = React.createRef();
@@ -29,7 +31,11 @@ const withVideo = (Component) => {
     }
 
     _handleFullScreen() {
-      this._video.current.requestFullscreen();
+      if (this._video.current[FIREFOX_FULSCREEN_METHOD]) {
+        this._video.current[FIREFOX_FULSCREEN_METHOD]();
+      } else {
+        this._video.current.requestFullscreen();
+      }
     }
     render() {
       const {isPlaying} = this.state;

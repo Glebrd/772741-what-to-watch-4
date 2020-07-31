@@ -95,25 +95,26 @@ jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
 
 
 
-// it(`Component mounting calls onReviewsTabClick callback with right data`, () => {
-//
-//   const onButtonListClick = jest.fn();
-//
-//   const wrapper = shallow(
-//       <MoviePage
-//         currentMovie={movie}
-//         user={user}
-//         sameGenreMovies={movies}
-//         authorizationStatus={`AUTH`}
-//         onButtonListClick={onButtonListClick}
-//       />
-//   );
-//
-//   wrapper.find(`.movie-card__button`).at(2).simulate(`click`);
-//   expect(onButtonListClick.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(movie);
-// });
+it(`List button click calls onButtonListClick with right data`, () => {
 
-it(`Component mounting calls onReviewsTabClick callback with right data`, () => {
+  const onButtonListClick = jest.fn();
+
+  const wrapper = shallow(
+      <MoviePage
+        history={history}
+        currentMovie={movie}
+        user={user}
+        sameGenreMovies={movies}
+        authorizationStatus={`AUTH`}
+        onButtonListClick={onButtonListClick}
+      />
+  );
+
+  wrapper.find(`.btn--list`).simulate(`click`);
+  expect(onButtonListClick.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(movie);
+});
+
+it(`Button play click calls history.push with right data`, () => {
   const historyMock = { push: jest.fn() };
   const onButtonListClick = jest.fn();
 
