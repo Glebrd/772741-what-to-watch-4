@@ -2,6 +2,7 @@ import * as React from "react";
 import {configure, shallow} from 'enzyme';
 import * as Adapter from "enzyme-adapter-react-16";
 import {SmallMovieCard} from "./small-movie-card";
+import {MOVIE_WAIT} from "../../const";
 
 const movie = {
   id: 36,
@@ -26,23 +27,23 @@ const movie = {
 configure({adapter: new Adapter()});
 
 describe(`withPlayOnHover tests`, () => {
-  // test(`video stops to play when call handleMouseLeave`, () => {
-  //   const videoRef = {
-  //     play: jest.fn(),
-  //     load: jest.fn(),
-  //   };
-  //   const catalogCard = shallow(
-  //       <SmallMovieCard
-  //         smallMovieCard={movie}
-  //       />
-  //   );
-  //   catalogCard.instance()._videoRef.current = videoRef;
-  //   catalogCard.instance()._handleMovieCardUnhover();
-  //   expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(0);
-  //   expect(catalogCard.instance()._videoRef.current.load).toHaveBeenCalledTimes(1);
-  // });
+  test(`video stops to play when call handleMouseLeave`, () => {
+    const videoRef = {
+      play: jest.fn(),
+      load: jest.fn(),
+    };
+    const catalogCard = shallow(
+        <SmallMovieCard
+          smallMovieCard={movie}
+        />
+    );
+    catalogCard.instance()._videoRef.current = videoRef;
+    catalogCard.instance()._handleMovieCardUnhover();
+    expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(0);
+    expect(catalogCard.instance()._videoRef.current.load).toHaveBeenCalledTimes(1);
+  });
 
-  test(`video starts to play when call handleMouseLeave`, () => {
+  test(`video starts to play when call handleMouseLeave`, done => {
     const videoRef = {
       play: jest.fn(),
       load: jest.fn(),
@@ -55,7 +56,8 @@ describe(`withPlayOnHover tests`, () => {
     catalogCard.instance()._videoRef.current = videoRef;
     catalogCard.instance()._handleMovieCardHover();
     setTimeout(() => {
-      expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(14246575);
-    }, 1000);
+      expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(1)
+      done();
+    }, MOVIE_WAIT);
   });
 });

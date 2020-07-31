@@ -32,6 +32,7 @@ const withVideo = (Component) => {
 
     _handleFullScreen() {
       if (this._video.current[FIREFOX_FULSCREEN_METHOD]) {
+        this._video.current.controls = !this._video.current.controls;
         this._video.current[FIREFOX_FULSCREEN_METHOD]();
       } else {
         this._video.current.requestFullscreen();
