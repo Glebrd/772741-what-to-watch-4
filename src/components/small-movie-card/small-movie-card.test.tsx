@@ -24,7 +24,7 @@ const movie = {
   isFavorite: true,
 };
 
-it(`Catalog renders correctly`, () => {
+it(`SmallMovieCard renders correctly`, () => {
   const tree = renderer
     .create(
         <Router history={history}>

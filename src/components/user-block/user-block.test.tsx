@@ -12,7 +12,7 @@ const user = {
   authorizationStatus: `AUTH`,
 };
 
-it(`UserBlock component renders`, () => {
+it(`UserBlock component renders correctly`, () => {
   const tree = renderer
     .create(
         <Router history={history}>

@@ -18,6 +18,7 @@ class SmallMovieCard extends React.PureComponent<Props> {
     this._videoRef = React.createRef();
   }
   componentWillUnmount() {
+    console.log(this._timeout);
     clearTimeout(this._timeout);
   }
   _handleMovieCardHover() {
