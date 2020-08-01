@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignIn component renders 1`] = `
+exports[`SignIn component renders correctly 1`] = `
 <div
   className="user-page"
 >

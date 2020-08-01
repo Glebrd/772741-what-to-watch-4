@@ -12,6 +12,7 @@ it(`SignIn component renders correctly`, () => {
     .create(
         <Router history={history}>
           <SignIn
+            history={history}
             onSubmit={noOperation}
             isValid={isValid}
             onChange={noOperation}

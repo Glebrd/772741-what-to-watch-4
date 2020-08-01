@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Catalog renders correctly 1`] = `
+exports[`SmallMovieCard renders correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onMouseEnter={[Function]}
