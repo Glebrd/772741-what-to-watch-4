@@ -26,6 +26,11 @@ class MovieCardTabs extends React.PureComponent <Props> {
   componentDidMount() {
     this.props.onReviewsTabClick(this.props.movie);
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.movie !== this.props.movie) {
+      this.props.onReviewsTabClick(this.props.movie);
+    }
+  }
   render() {
     const {movie, onChangeTab, activeTab, comments} = this.props;
     const {rating, description, starring, director, scores, date, runTime, genre} = movie;
