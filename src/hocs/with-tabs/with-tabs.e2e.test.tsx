@@ -8,17 +8,17 @@ const MockComponent = () => <div/>;
 const WrappedMockComponent = withTabs(MockComponent);
 configure({adapter: new Adapter()});
 
-describe(`State correctly changed`, () => {
+describe(`WithTabs state correctly changed  by handleTabSwitch`, () => {
   const wrapper = shallow(
       <WrappedMockComponent
         onGenreChange={noOperation}
         genres={[`Drama`]}
       />
   );
-  test(`State is empty at start`, () => {
+  test(`WithTabs State is empty at start`, () => {
     expect(wrapper.state().currentTab).toEqual(``);
   });
-  test(`State correctly changed by handleTabSwitch`, () => {
+  test(`WithTabs State correctly changed by handleTabSwitch`, () => {
 
     wrapper.instance()._handleTabSwitch(`Adventure`);
     expect(wrapper.state().currentTab).toEqual(`Adventure`);

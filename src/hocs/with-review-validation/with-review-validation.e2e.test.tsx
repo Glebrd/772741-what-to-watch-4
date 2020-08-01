@@ -7,6 +7,7 @@ import {adaptMovie, adaptMovies} from "../../adapters/movies";
 import configureMockStore from 'redux-mock-store';
 const mockStore = configureMockStore([thunk]);
 import {noOperation} from "../../utils";
+import {MockCallProperty} from "../../const";
 
 jest.mock(`../../reducer/data/data.js`, () => ({
   __esModule: true,
@@ -82,6 +83,7 @@ describe(`State correctly changed by handleReviewChange`, () => {
         store={store}
         match={{params: {id: 1}}}
       />).get(0));
+
   test(`Valid review should change reviewIsValid to true`, () => {
     const event = {
       target: {
@@ -109,6 +111,7 @@ describe(`State correctly changed by handleRatingChange`, () => {
         store={store}
         match={{params: {id: 1}}}
       />).get(0));
+
   test(`Valid rating should change reviewIsValid to true`, () => {
     const event = {
       target: {

@@ -7,7 +7,7 @@ const MockComponent = () => <div/>;
 const WrappedMockComponent = withValidation(MockComponent);
 configure({adapter: new Adapter()});
 
-describe(`Should change state when call handleChange`, () => {
+describe(`WithValidation Should change state when call handleChange`, () => {
   const wrapper = shallow(<WrappedMockComponent />);
   test(`Valid email should change state to true`, () => {
     const event = {

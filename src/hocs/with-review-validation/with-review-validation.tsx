@@ -8,6 +8,7 @@ import {AppRoute} from "../../const";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
+const DEFAULT_RATING = 3;
 
 const validateReview = (review) => {
   return review.length >= MIN_REVIEW_LENGTH && review.length <= MAX_REVIEW_LENGTH;
@@ -38,7 +39,7 @@ const withReviewValidation = (Component) => {
 
       this.state = {
         review: ``,
-        rating: 3,
+        rating: DEFAULT_RATING,
         reviewIsValid: false,
         ratingIsValid: true,
         isLoading: false,
