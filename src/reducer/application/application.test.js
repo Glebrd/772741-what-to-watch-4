@@ -23,34 +23,6 @@ const movieMock = {
   description: `A clueless tapped out parody band struggles through outlandish schemes to raise money to get to the South By Southwest Music Festival.`,
   videoPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   runTime: `1h 19m`,
-  comments: [{
-    id: 1,
-    user: {
-      id: 523,
-      name: `Candice Martignon`,
-    },
-    rating: 7,
-    comment: `An Overstuffed Sequel Loses Some of Its Magic`,
-    date: `December 24, 2018`
-  }, {
-    id: 2,
-    user: {
-      id: 53,
-      name: `Melisse MacNeely`,
-    },
-    rating: 3,
-    comment: ` More focused on franchise building than telling a good story! `,
-    date: `December 25, 2018`
-  }, {
-    id: 3,
-    user: {
-      id: 113,
-      name: `Lin Pedlow`,
-    },
-    rating: 4,
-    comment: `Watching this gives you the sense that nobody really knew where to go after the first film ended... and it shows. Beautiful film with a great cast, but an ultimately pointless story that sort of flops around like a dead fish not quite aware yet that its dead. This film is disappointing and forgettable.`,
-    date: `December 26, 2018`
-  }]
 };
 
 

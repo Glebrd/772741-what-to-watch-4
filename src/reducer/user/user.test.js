@@ -19,7 +19,7 @@ describe(`User reducer works correctly`, () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  test(`Reducer should change user by a given value`, () => {
+  test(`Reducer should change user by SET_USER`, () => {
     const action = {
       type: ActionType.SET_USER,
       payload: user,
@@ -31,7 +31,7 @@ describe(`User reducer works correctly`, () => {
         }));
   });
 
-  test(`Reducer should change authorizationStatus by a given value`, () => {
+  test(`Reducer should change authorizationStatus by REQUIRED_AUTHORIZATION`, () => {
     const actionAuth = {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: AuthorizationStatus.AUTH,
