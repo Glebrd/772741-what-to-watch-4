@@ -28,7 +28,7 @@ interface Props {
 const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, sameGenreMovies, onButtonListClick, authorizationStatus, history} = props;
   const {title, genre, date, poster, background, backgroundColor, isFavorite} = currentMovie;
-  console.log(History);
+
   return (
     <React.Fragment>
       <section

@@ -1,5 +1,5 @@
 import * as React from "react";
-import CatalogCard from "../small-movie-card/small-movie-card";
+import SmallMovieCard from "../small-movie-card/small-movie-card";
 import {MovieType} from "../../types";
 
 interface Props {
@@ -14,7 +14,7 @@ const MoviesList: React.FunctionComponent<Props> = (props: Props) => {
     <div className="catalog__movies-list">
       {movies &&
       movies.map((movie) =>
-        <CatalogCard
+        <SmallMovieCard
           key={movie.id}
           smallMovieCard={movie}
         />

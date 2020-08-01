@@ -52,7 +52,7 @@ const movies = [
 const store = mockStore({
 });
 
-it(`Catalog renders correctly`, () => {
+it(`Movies list renders correctly`, () => {
   const tree = renderer
 
     .create(
