@@ -77,16 +77,17 @@ jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
   };
 });
 
-it(`List button click calls onButtonListClick with right data`, () => {
+it(`Button list click calls onButtonListClick with right data`, () => {
 
   const onButtonListClick = jest.fn();
+  const authorizationStatus = `AUTH`;
 
   const wrapper = shallow(
       <MoviePage
         history={history}
         currentMovie={movie}
         sameGenreMovies={movies}
-        authorizationStatus={`AUTH`}
+        authorizationStatus={authorizationStatus}
         onButtonListClick={onButtonListClick}
       />
   );
@@ -98,18 +99,20 @@ it(`List button click calls onButtonListClick with right data`, () => {
 it(`Button play click calls history.push with right data`, () => {
   const historyMock = {push: jest.fn()};
   const onButtonListClick = jest.fn();
+  const authorizationStatus = `AUTH`;
 
   const wrapper = shallow(
       <MoviePage
         history = {extend(history, historyMock)}
         currentMovie={movie}
         sameGenreMovies={movies}
-        authorizationStatus={`AUTH`}
+        authorizationStatus={authorizationStatus}
         onButtonListClick={onButtonListClick}
       />
   );
 
   wrapper.find(`.btn--play`).simulate(`click`);
   expect(historyMock.push).toHaveBeenCalledTimes(1);
-  expect(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatch(AppRoute.MOVIES + movie.id + AppRoute.PLAYER);
+  expect(historyMock.push.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT])
+    .toMatch(AppRoute.MOVIES + movie.id + AppRoute.PLAYER);
 });

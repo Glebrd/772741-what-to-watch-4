@@ -9,7 +9,7 @@ import {getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
-import {History} from "../../history";
+import {History} from "history";
 import {AppRoute} from "../../const";
 
 const getSvgIconMyList = (isFavorite) =>
@@ -28,6 +28,7 @@ interface Props {
 const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
   const {currentMovie, sameGenreMovies, onButtonListClick, authorizationStatus, history} = props;
   const {title, genre, date, poster, background, backgroundColor, isFavorite} = currentMovie;
+  console.log(History);
   return (
     <React.Fragment>
       <section

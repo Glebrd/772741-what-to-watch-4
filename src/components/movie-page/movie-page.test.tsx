@@ -91,7 +91,11 @@ jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
   };
 });
 
+const authorizationStatus = `AUTH`;
+const matchMock = {params: {id: 1}};
+
 it(`Movie page renders`, () => {
+
   const tree = renderer
     .create(
         <Router history={history}>
@@ -101,9 +105,9 @@ it(`Movie page renders`, () => {
               user={user}
               sameGenreMovies={movies}
               onPlayClick={noOperation}
-              authorizationStatus={`AUTH`}
-              onButtonListClick={null}
-              match={{params: {id: 1}}}
+              authorizationStatus={authorizationStatus}
+              onButtonListClick={noOperation}
+              match={matchMock}
             />
           </Provider>
         </Router>).toJSON();

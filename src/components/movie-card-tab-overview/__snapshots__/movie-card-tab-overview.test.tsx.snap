@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie card tab overview component renders 1`] = `
+exports[`Movie card tab overview component renders correctly 1`] = `
 Array [
   <div
     className="movie-rating"
