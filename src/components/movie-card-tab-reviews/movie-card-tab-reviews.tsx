@@ -10,6 +10,7 @@ const MovieCardTabReviews: React.FunctionComponent<Props> = (props: Props) => {
   const {comments} = props;
   const secondColumnStart = Math.ceil(comments.length / 2);
   const formatDate = (date) => moment(date).format(`MMMM DD, YYYY`);
+  const getDateTimeAttribute = (date) => moment(date).format(`YYYY-MM-DD`);
 
   return (
     <div className="movie-card__reviews movie-card__row">
@@ -21,7 +22,7 @@ const MovieCardTabReviews: React.FunctionComponent<Props> = (props: Props) => {
 
               <footer className="review__details">
                 <cite className="review__author">{comment.user.name}</cite>
-                <time className="review__date" dateTime="2015-11-18">{formatDate(comment.date)}</time>
+                <time className="review__date" dateTime={getDateTimeAttribute(comment.date)}>{formatDate(comment.date)}</time>
               </footer>
             </blockquote>
 
@@ -37,7 +38,7 @@ const MovieCardTabReviews: React.FunctionComponent<Props> = (props: Props) => {
 
               <footer className="review__details">
                 <cite className="review__author">{comment.user.name}</cite>
-                <time className="review__date" dateTime="2015-11-18">{formatDate(comment.date)}</time>
+                <time className="review__date" dateTime={getDateTimeAttribute(comment.date)}>{formatDate(comment.date)}</time>
               </footer>
             </blockquote>
 
