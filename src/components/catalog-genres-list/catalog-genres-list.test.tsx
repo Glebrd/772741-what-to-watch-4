@@ -6,7 +6,7 @@ import {noOperation} from "../../utils";
 const currentGenre = `All genres`;
 const genres = new Set([`Drams`, `Sci-Fi`, `Romance`]);
 
-it(`Catalog genres list renders`, () => {
+it(`Catalog genres list renders correctly`, () => {
   const tree = renderer
     .create(
         <CatalogGenresList

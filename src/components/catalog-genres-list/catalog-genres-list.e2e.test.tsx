@@ -36,7 +36,7 @@ it(`Genre change calls onChangeTab callback with right data`, () => {
   expect(onChangeTab.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatch(genreCurrentValue);
 });
 
-it(`Genre change calls onGenreChange callback with right data`, () => {
+it(`Genre change calls onChangeTab callback with right data`, () => {
 
   const onChangeTab = jest.fn();
   const onGenreChange = jest.fn();

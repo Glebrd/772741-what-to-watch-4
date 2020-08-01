@@ -29,7 +29,6 @@ const CatalogGenresList: React.FunctionComponent<Props> = (props: Props) => {
                 onChangeTab(genre);
                 onGenreChange(genre);
               }}
-
             >{genre}</a>
           </li>
         );
