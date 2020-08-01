@@ -43,35 +43,35 @@ const comment: CommentType =
 const comments = [comment];
 const mockEvent = {preventDefault: noOperation, genre: `Romance`};
 
-it(`Component mounting calls onReviewsTabClick callback with right data`, () => {
+it(`Component mounting calls onReviewsLoad callback with right data`, () => {
 
-  const onReviewsTabClick = jest.fn();
+  const onReviewsLoad = jest.fn();
   const onChangeTab = jest.fn();
 
   shallow(
       <MovieCardTabs
         movie={movie}
-        onReviewsTabClick={onReviewsTabClick}
+        onReviewsLoad={onReviewsLoad}
         activeTab={`active`}
         comments={comments}
         onChangeTab={onChangeTab}
       />
   );
 
-  expect(onReviewsTabClick).toHaveBeenCalledTimes(1);
+  expect(onReviewsLoad).toHaveBeenCalledTimes(1);
 
-  expect(onReviewsTabClick.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(movie);
+  expect(onReviewsLoad.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(movie);
 });
 
 it(`Tab change calls onChangeTab callback with right data`, () => {
 
-  const onReviewsTabClick = jest.fn();
+  const onReviewsLoad = jest.fn();
   const onChangeTab = jest.fn();
 
   const wrapper = shallow(
       <MovieCardTabs
         movie={movie}
-        onReviewsTabClick={onReviewsTabClick}
+        onReviewsLoad={onReviewsLoad}
         activeTab={`Details`}
         comments={comments}
         onChangeTab={onChangeTab}

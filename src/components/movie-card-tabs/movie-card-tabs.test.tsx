@@ -44,7 +44,7 @@ it(`Movie card tabs component renders`, () => {
     .create(
         <MovieCardTabs
           movie={movie}
-          onReviewsTabClick={noOperation}
+          onReviewsLoad={noOperation}
           activeTab={`active`}
           comments={comments}
           onChangeTab={noOperation}

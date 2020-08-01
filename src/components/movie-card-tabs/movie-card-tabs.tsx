@@ -16,7 +16,7 @@ interface Props {
   activeTab: string;
   onChangeTab: (tabNameValue: string) => {void};
   comments: CommentType[];
-  onReviewsTabClick: (movie: MovieType) => void;
+  onReviewsLoad: (movie: MovieType) => void;
 }
 
 class MovieCardTabs extends React.PureComponent <Props> {
@@ -24,11 +24,11 @@ class MovieCardTabs extends React.PureComponent <Props> {
     super(props);
   }
   componentDidMount() {
-    this.props.onReviewsTabClick(this.props.movie);
+    this.props.onReviewsLoad(this.props.movie);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.movie !== this.props.movie) {
-      this.props.onReviewsTabClick(this.props.movie);
+      this.props.onReviewsLoad(this.props.movie);
     }
   }
   render() {
@@ -97,7 +97,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onReviewsTabClick(movie) {
+  onReviewsLoad(movie) {
     dispatch(Operation.loadComments(movie));
   },
 });
