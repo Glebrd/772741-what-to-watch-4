@@ -35,7 +35,7 @@ const store = mockStore({
   user: {user: {avatarURL: `img/1.png`}},
 });
 
-it(`Add review renders`, () => {
+it(`Add review renders correctly`, () => {
   const tree = renderer
     .create(
         <Router history={history}>

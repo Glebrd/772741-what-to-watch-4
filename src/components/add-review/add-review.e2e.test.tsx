@@ -28,7 +28,7 @@ const movie: MovieType = {
   isFavorite: true,
 };
 
-it(`Click on user answer should pass to the callback data-object from which this answer was created`, () => {
+it(`Changing rating calls onRatingChange with correct data`, () => {
   const onRatingChange = jest.fn();
 
   const mockEvent = {
@@ -46,10 +46,10 @@ it(`Click on user answer should pass to the callback data-object from which this
     networkError={false}
   />);
 
-  const answerInputs = screen.find(`input`);
-  const answerOne = answerInputs.at(0);
+  const ratingInputs = screen.find(`input`);
+  const ratingOne = ratingInputs.at(0);
 
-  answerOne.simulate(`change`, mockEvent);
+  ratingOne.simulate(`change`, mockEvent);
 
   expect(onRatingChange).toHaveBeenCalledTimes(1);
 
