@@ -3,7 +3,7 @@ import * as renderer from "react-test-renderer";
 import {CatalogButton} from "./catalog-button";
 import {noOperation} from "../../utils";
 
-it(`Catalog genres list renders`, () => {
+it(`CatalogButton renders correctly`, () => {
   const tree = renderer
     .create(
         <CatalogButton
