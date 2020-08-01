@@ -3,25 +3,22 @@ import * as Adapter from "enzyme-adapter-react-16";
 import {shallow, configure} from 'enzyme';
 import {SignIn} from "./sign-in";
 import {noOperation} from "../../utils";
+import {MockCallProperty} from "../../const";
 
 configure({adapter: new Adapter()});
 
-describe(`Should call an onAuthorizeUser function when call handleSubmit`, () => {
+describe(`handleSubmit calls onSubmit with right data`, () => {
   const event = {
     preventDefault: () => {}
   };
 
   const onSubmit = jest.fn().mockImplementationOnce(() => Promise.resolve(`data`));
+  const authDataMock = {
+    login: `login`,
+    password: `password`,
+  }
 
-
-  it(`with valid fields`, () => {
-
-    // beforeEach(() => {
-    //   wrapper.instance().loginRef.current = {value: `login`};
-    // });
-
-    const loginRef = {};
-    const passwordRef = {};
+  it(`handleSubmit calls onSubmit with right data on Valid`, () => {
 
     const isValid = true;
 
@@ -39,6 +36,7 @@ describe(`Should call an onAuthorizeUser function when call handleSubmit`, () =>
     // wrapper.instance().loginRef.current = {};
     wrapper.instance()._handleSubmit(event);
     expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit.mock.calls[MockCallProperty.FIRST_FUNCTION_CALL][MockCallProperty.FIRST_ARGUMENT]).toMatchObject(authDataMock);
   });
 
   // it(`with non valid fields`, () => {
