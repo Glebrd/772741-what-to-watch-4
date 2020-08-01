@@ -43,20 +43,20 @@ describe(`withPlayOnHover tests`, () => {
     expect(catalogCard.instance()._videoRef.current.load).toHaveBeenCalledTimes(1);
   });
 
-  test(`video starts to play when call handleMouseLeave`, done => {
+  test(`video starts to play when call handleMouseLeave`, (done) => {
     const videoRef = {
       play: jest.fn(),
       load: jest.fn(),
     };
     const catalogCard = shallow(
-      <SmallMovieCard
-        smallMovieCard={movie}
-      />
+        <SmallMovieCard
+          smallMovieCard={movie}
+        />
     );
     catalogCard.instance()._videoRef.current = videoRef;
     catalogCard.instance()._handleMovieCardHover();
     setTimeout(() => {
-      expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(1)
+      expect(catalogCard.instance()._videoRef.current.play).toHaveBeenCalledTimes(1);
       done();
     }, MOVIE_WAIT);
   });

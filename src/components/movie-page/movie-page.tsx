@@ -9,7 +9,7 @@ import UserBlock from "../user-block/user-block";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
-import history, {History} from "../../history";
+import {History} from "../../history";
 import {AppRoute} from "../../const";
 
 const getSvgIconMyList = (isFavorite) =>

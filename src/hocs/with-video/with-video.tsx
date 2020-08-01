@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const FIREFOX_FULSCREEN_METHOD = `mozRequestFullScreen`
+const FIREFOX_FULSCREEN_METHOD = `mozRequestFullScreen`;
 
 interface State {
   isPlaying: boolean;

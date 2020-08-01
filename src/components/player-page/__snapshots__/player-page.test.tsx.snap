@@ -5,7 +5,9 @@ exports[`Player page renders 1`] = `
   className="player"
 >
   <video
+    autoPlay={false}
     className="player__video"
+    muted={true}
     poster="img/revenant.jpg"
     src="http://media.xiph.org/mango/tears_of_steel_1080p.webm"
   />

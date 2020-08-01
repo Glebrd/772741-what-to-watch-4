@@ -1,11 +1,11 @@
 import * as React from "react";
-import {configure, shallow, mount} from 'enzyme';
+import {configure, shallow} from 'enzyme';
 import {MoviePage} from "./movie-page";
 import * as Adapter from "enzyme-adapter-react-16";
 import {MockCallProperty} from "../../const";
 import {MovieType} from "../../types";
 import history from "../../history";
-import {extend} from "../../utils"
+import {extend} from "../../utils";
 import {AppRoute} from "../../const";
 
 configure({adapter: new Adapter()});
@@ -73,12 +73,6 @@ const movie: MovieType = {
   isFavorite: true,
 };
 
-// const store = mockStore({
-//   data: {movies: adaptMovies(movies), promoMovie: adaptMovie(movie)},
-//   application: {currentGenre: `All genres`},
-//   user: {user: {avatarURL: `img/1.png`}},
-// });
-
 const user = {
   id: 1,
   email: `gleb@gmail.com`,
@@ -91,9 +85,6 @@ jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
     'default': `MovieCardTabs`
   };
 });
-
-
-
 
 it(`List button click calls onButtonListClick with right data`, () => {
 
@@ -115,18 +106,18 @@ it(`List button click calls onButtonListClick with right data`, () => {
 });
 
 it(`Button play click calls history.push with right data`, () => {
-  const historyMock = { push: jest.fn() };
+  const historyMock = {push: jest.fn()};
   const onButtonListClick = jest.fn();
 
   const wrapper = shallow(
-    <MoviePage
-      history = {extend(history, historyMock)}
-      currentMovie={movie}
-      user={user}
-      sameGenreMovies={movies}
-      authorizationStatus={`AUTH`}
-      onButtonListClick={onButtonListClick}
-    />
+      <MoviePage
+        history = {extend(history, historyMock)}
+        currentMovie={movie}
+        user={user}
+        sameGenreMovies={movies}
+        authorizationStatus={`AUTH`}
+        onButtonListClick={onButtonListClick}
+      />
   );
 
   wrapper.find(`.btn--play`).simulate(`click`);
