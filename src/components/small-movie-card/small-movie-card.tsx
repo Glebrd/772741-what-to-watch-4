@@ -1,6 +1,6 @@
 import * as React from "react";
 import VideoPlayer from "../video-player/video-player";
-import {MOVIE_WAIT} from "../../const";
+import {MOVIE_WAIT, AppRoute} from "../../const";
 import {MovieType} from "../../types";
 import {Link} from "react-router-dom";
 import {RefObject} from "react";
@@ -43,7 +43,7 @@ class SmallMovieCard extends React.PureComponent<Props> {
         }}
         className="small-movie-card catalog__movies-card">
         <Link
-          to={`/films/${smallMovieCard.id}`}
+          to={AppRoute.MOVIES + smallMovieCard.id}
         >
           <div className="small-movie-card__image">
             <VideoPlayer
@@ -56,7 +56,7 @@ class SmallMovieCard extends React.PureComponent<Props> {
         <h3 className="small-movie-card__title">
           <Link
             className="small-movie-card__link"
-            to={`/films/${smallMovieCard.id}`}
+            to={AppRoute.MOVIES + smallMovieCard.id}
           >
             {title}
           </Link>
