@@ -7,7 +7,6 @@ import {adaptMovie, adaptMovies} from "../../adapters/movies";
 import configureMockStore from 'redux-mock-store';
 const mockStore = configureMockStore([thunk]);
 import {noOperation} from "../../utils";
-import {MockCallProperty} from "../../const";
 
 jest.mock(`../../reducer/data/data.js`, () => ({
   __esModule: true,
