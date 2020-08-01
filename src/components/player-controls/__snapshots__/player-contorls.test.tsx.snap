@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Player controls renders 1`] = `
+exports[`Player controls renders correctly 1`] = `
 <div
   className="player__controls-row"
 >

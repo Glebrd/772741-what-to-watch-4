@@ -2,15 +2,15 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import {PlayerControls} from "./player-controls";
 
-const PROGRESS_VALUE = 30;
-const REMAINING_TIME = `120`;
+const progressValue = 30;
+const remainingTime = `120`;
 
-it(`Player controls renders`, () => {
+it(`Player controls renders correctly`, () => {
   const tree = renderer
     .create(
         <PlayerControls
-          progressValue={PROGRESS_VALUE}
-          remainingTime={REMAINING_TIME}
+          progressValue={progressValue}
+          remainingTime={remainingTime}
         />
     ).toJSON();
 

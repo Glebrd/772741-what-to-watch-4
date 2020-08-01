@@ -58,7 +58,7 @@ jest.mock(`../user-block/user-block.tsx`, () => {
   };
 });
 
-it(`Catalog renders correctly`, () => {
+it(`MyList renders correctly`, () => {
   const tree = renderer
 
     .create(

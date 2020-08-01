@@ -31,7 +31,8 @@ jest.mock(`../player-controls/player-controls`, () => {
   };
 });
 
-it(`Player page renders`, () => {
+it(`Player page renders correctly`, () => {
+  const isPlaying = false;
   const tree = renderer
     .create(
         <Router history={history}>
@@ -39,7 +40,7 @@ it(`Player page renders`, () => {
             onExit={noOperation}
             currentMovie={currentMovie}
             videoRef={React.createRef()}
-            isPlaying={false}
+            isPlaying={isPlaying }
             onFullScreen={noOperation}
             onPlayPause={noOperation}
           />
