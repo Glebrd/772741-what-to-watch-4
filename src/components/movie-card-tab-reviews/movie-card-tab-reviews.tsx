@@ -17,7 +17,6 @@ const MovieCardTabReviews: React.FunctionComponent<Props> = (props: Props) => {
   const formatDate = (date) => moment(date).format(`MMMM DD, YYYY`);
   const getDateTimeAttribute = (date) => moment(date).format(`YYYY-MM-DD`);
 
-  console.log(secondColumnStart);
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
