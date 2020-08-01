@@ -1,12 +1,13 @@
 import * as React from "react";
 import {configure, shallow} from 'enzyme';
-import {MoviePage} from "./movie-page";
+import {Main} from "./main";
 import * as Adapter from "enzyme-adapter-react-16";
 import {MockCallProperty} from "../../const";
 import {MovieType} from "../../types";
 import history from "../../history";
 import {extend} from "../../utils";
 import {AppRoute} from "../../const";
+import {noOperation} from "../../utils";
 
 configure({adapter: new Adapter()});
 
@@ -80,14 +81,20 @@ jest.mock(`../movie-card-tabs/movie-card-tabs.tsx`, () => {
 it(`List button click calls onButtonListClick with right data`, () => {
 
   const onButtonListClick = jest.fn();
+  const currentGenre = `All genres`;
+  const genres = [`Drama`, `Sci-Fi`, `Romance`];
+  const numberOfMoviesOnMain = 8;
 
   const wrapper = shallow(
-      <MoviePage
+      <Main
+        numberOfMoviesOnMain={numberOfMoviesOnMain}
+        currentGenre={currentGenre }
+        genres={genres}
         history={history}
         currentMovie={movie}
-        sameGenreMovies={movies}
-        authorizationStatus={`AUTH`}
         onButtonListClick={onButtonListClick}
+        filteredMovies={movies}
+        onGenreChange={noOperation}
       />
   );
 
@@ -96,16 +103,23 @@ it(`List button click calls onButtonListClick with right data`, () => {
 });
 
 it(`Button play click calls history.push with right data`, () => {
+
   const historyMock = {push: jest.fn()};
   const onButtonListClick = jest.fn();
+  const currentGenre = `All genres`;
+  const genres = [`Drama`, `Sci-Fi`, `Romance`];
+  const numberOfMoviesOnMain = 8;
 
   const wrapper = shallow(
-      <MoviePage
+      <Main
+        numberOfMoviesOnMain={numberOfMoviesOnMain}
+        currentGenre={currentGenre }
+        genres={genres}
         history = {extend(history, historyMock)}
         currentMovie={movie}
-        sameGenreMovies={movies}
-        authorizationStatus={`AUTH`}
         onButtonListClick={onButtonListClick}
+        filteredMovies={movies}
+        onGenreChange={noOperation}
       />
   );
 

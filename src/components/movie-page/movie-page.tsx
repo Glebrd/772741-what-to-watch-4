@@ -2,10 +2,10 @@ import * as React from "react";
 import MoviesList from "../movies-list/movies-list";
 import MovieCardTabs from "../movie-card-tabs/movie-card-tabs";
 import {connect} from "react-redux";
-import {MovieType, UserType} from "../../types";
+import {MovieType} from "../../types";
+import UserBlock from "../user-block/user-block";
 import {Operation} from "../../reducer/data/data";
 import {getCurrentMovieByID, getSameGenreMovies} from "../../reducer/application/selectors";
-import UserBlock from "../user-block/user-block";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {Link} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
@@ -20,7 +20,6 @@ const getSvgIconMyList = (isFavorite) =>
 interface Props {
   sameGenreMovies: MovieType[];
   currentMovie: MovieType;
-  user: UserType;
   onButtonListClick: (movie: MovieType) => {void};
   authorizationStatus: string;
   history: History;
@@ -84,7 +83,7 @@ const MoviePage: React.FunctionComponent<Props> = (props: Props) => {
                   <span>My list</span>
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH
-                  ? <Link to={AppRoute.MOVIES + currentMovie.id + AppRoute.REVIEW} href="add-review.html" className="btn movie-card__button">Add review</Link>
+                  ? <Link to={AppRoute.MOVIES + currentMovie.id + AppRoute.REVIEW} className="btn movie-card__button">Add review</Link>
                   : ``
                 }
               </div>

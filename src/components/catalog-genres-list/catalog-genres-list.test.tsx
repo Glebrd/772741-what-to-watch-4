@@ -14,7 +14,7 @@ it(`Catalog genres list renders correctly`, () => {
           genres={genres}
           onChangeTab={noOperation}
           onGenreChange={noOperation}
-          activeTab={`All genres`}
+          activeTab={currentGenre}
         />
     ).toJSON();
 

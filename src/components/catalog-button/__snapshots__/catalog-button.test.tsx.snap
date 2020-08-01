@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Catalog genres list renders 1`] = `
+exports[`CatalogButton renders correctly 1`] = `
 <button
   className="catalog__button"
   onClick={[Function]}

@@ -5,7 +5,6 @@ import CatalogGenresList from "../catalog-genres-list/catalog-genres-list";
 import {MovieType} from "../../types";
 import CatalogButton from "../catalog-button/catalog-button";
 import {ActionCreator} from "../../reducer/application/application";
-import history from "../../history";
 import {
   getCurrentGenre,
   getFilteredMovies,
@@ -16,6 +15,7 @@ import {getPromoMovie} from "../../reducer/data/selectors";
 import UserBlock from "../user-block/user-block";
 import {Operation} from "../../reducer/data/data";
 import {AppRoute} from "../../const";
+import {History} from "history";
 
 const getSvgIconMyList = (isFavorite) =>
   isFavorite
@@ -23,18 +23,18 @@ const getSvgIconMyList = (isFavorite) =>
     : `#add`;
 
 interface Props {
-  filteredMovies: [MovieType];
+  filteredMovies: MovieType[];
   currentMovie: MovieType;
   currentGenre: string;
   numberOfMoviesOnMain: number;
   genres: string[];
   onGenreChange: (genre: string) => {void};
-  onPlayClick: () => {};
   onButtonListClick: (currentMovie) => {};
+  history: History;
 }
 
 const Main: React.FunctionComponent<Props> = (props: Props) => {
-  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onButtonListClick} = props;
+  const {currentMovie, filteredMovies, numberOfMoviesOnMain, genres, onGenreChange, onButtonListClick, history} = props;
   const {title, genre, date, background, poster, isFavorite} = currentMovie;
 
   return (
@@ -140,9 +140,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onGenreChange(genre) {
     dispatch(ActionCreator.setCurrentGenre(genre));
-  },
-  onPlayClick(currentMovie) {
-    dispatch(ActionCreator.setCurrentMovie(currentMovie));
   },
   onButtonListClick(movie) {
     dispatch(Operation.changeFavoriteStatus(movie));
