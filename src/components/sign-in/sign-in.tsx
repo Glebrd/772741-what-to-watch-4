@@ -33,7 +33,6 @@ class SignIn extends React.PureComponent<Props, {}> {
         login: this.loginRef.current.value,
         password: this.passwordRef.current.value,
       });
-      // history.push(AppRoute.ROOT);
     }
   }
 
