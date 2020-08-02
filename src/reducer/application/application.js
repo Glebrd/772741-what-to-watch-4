@@ -1,6 +1,6 @@
 import {extend} from "../../utils";
 
-// Изначальное состояние.
+// Изначальное состояние..
 const initialState = {
   currentMovie: {},
   currentGenre: `All genres`,
