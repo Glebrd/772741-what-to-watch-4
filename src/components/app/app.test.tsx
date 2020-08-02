@@ -62,7 +62,7 @@ const store = mockStore({
   user: {user: {avatarURL: `img/1.png`}},
 });
 
-it(`Render App`, () => {
+it(`Render App.`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>

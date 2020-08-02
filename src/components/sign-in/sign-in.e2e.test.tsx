@@ -4,9 +4,6 @@ import {shallow, configure} from 'enzyme';
 import {SignIn} from "./sign-in";
 import {noOperation} from "../../utils";
 import {MockCallProperty} from "../../const";
-import history from "../../history";
-import {extend} from "../../utils";
-import {AppRoute} from "../../const";
 
 configure({adapter: new Adapter()});
 
@@ -26,7 +23,6 @@ describe(`handleSubmit calls onSubmit with right data`, () => {
 
     const wrapper = shallow(
         <SignIn
-          history = {history}
           onSubmit={onSubmit}
           isValid={isValid}
           onChange={noOperation}
@@ -47,7 +43,6 @@ describe(`handleSubmit calls onSubmit with right data`, () => {
 
     const wrapper = shallow(
         <SignIn
-          history = {history}
           onSubmit={onSubmit}
           isValid={isValid}
           onChange={noOperation}
@@ -58,6 +53,3 @@ describe(`handleSubmit calls onSubmit with right data`, () => {
     expect(onSubmit).toHaveBeenCalledTimes(0);
   });
 });
-
-
-

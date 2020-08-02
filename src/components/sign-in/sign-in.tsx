@@ -4,14 +4,11 @@ import {Operation} from "../../reducer/user/user";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
-import {History} from "history";
-
 
 interface Props {
   onSubmit: ({login, password}: {login: string; password: string}) => void;
   isValid: boolean;
   onChange: () => {void};
-  history: History;
 }
 
 class SignIn extends React.PureComponent<Props, {}> {
@@ -26,7 +23,7 @@ class SignIn extends React.PureComponent<Props, {}> {
     this._handleSubmit = this._handleSubmit.bind(this);
   }
   _handleSubmit(evt) {
-    const {onSubmit, isValid, history} = this.props;
+    const {onSubmit, isValid} = this.props;
     evt.preventDefault();
     if (isValid) {
       onSubmit({
